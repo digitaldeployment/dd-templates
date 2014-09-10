@@ -1,0 +1,91 @@
+/* ========================================================================== *\
+   INLINE FILE ATTACHMENTS
+\* ========================================================================== */
+
+.node-content span.file a {
+  text-decoration: none;
+  text-transform: none;
+}
+
+.node-content span.file .link-text:before {
+  display: inline-block;
+  content: "";
+  width: 14px;
+  height: 14px;
+  margin-right: 0.3em;
+  border: 1px solid @C1;
+  border-radius: 2px;
+  background: url('@{dd_templates_image_path}/icons/link.svg') no-repeat left top @C1;
+  background-size: 14px;
+  vertical-align: text-top;
+}
+
+/* No svg fallback support (eg. IE8) */
+html.no-svg .node-content span.file .link-text:before {
+  background-image: url('@{dd_templates_image_path}/icons/ie/link.png');
+}
+
+.node-content span.file-application-pdf .link-text:before {
+  border-color: #f91916 !important;
+  background-color: transparent;
+  background-image: url('@{dd_templates_image_path}/icons/pdf.svg');
+}
+
+/* No svg fallback support (eg. IE8) */
+html.no-svg .node-content span.file-application-pdf .link-text:before {
+  background-image: url('@{dd_templates_image_path}/icons/ie/pdf.png');
+}
+
+/* ========================================================================== *\
+   ICONS
+\* ========================================================================== */
+
+.icon {
+  float: left;
+  clear: left;
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+  border: 1px solid @C1;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background: url('@{dd_templates_image_path}/icons/link.svg') no-repeat left top @C1;
+}
+
+/* No svg fallback support (eg. IE8) */
+html.no-svg .icon {
+  background-image: url('@{dd_templates_image_path}/icons/link.png');
+}
+
+.link-file-application-pdf .icon {
+  border-color: #F91916 !important;
+  background-color: transparent;
+  background-image: url('@{dd_templates_image_path}/icons/pdf.svg');
+}
+
+/* No svg fallback support (eg. IE8) */
+html.no-svg .link-file-application-pdf .icon {
+  background-image: url('@{dd_templates_image_path}/icons/pdf.png');
+}
+
+.link .link-text-wrapper {
+  display: block;
+  padding-top: 6px;
+  margin-left: 36px;
+}
+
+.link .ext span.link-text {
+  padding-right: 12px;
+  background: url('/sites/all/modules/extlink/extlink.png') no-repeat right top;
+}
+
+.link span.ext {
+  display: none !important;
+}
+
+/* Axe the table of contents icons */
+
+#toc .icon {
+  display: none;
+}

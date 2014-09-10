@@ -1,0 +1,80 @@
+/* ========================================================================== *\
+   NODE SIDEBAR
+\* ========================================================================== */
+
+.node-fields {
+  .node-upper-meta {
+    display: none;
+  }
+
+  .block-title {
+    display: none;
+    font-size: 1.286em;     /* 18px */
+    line-height: 1.333;     /* 24px */
+    margin-bottom: 0.778em; /* 14px */
+    padding-top: 10px;
+    border-top: 1px solid @C8;
+
+    .has-links & {
+      display: block;
+    }
+  }
+
+  .node-image,
+  .node-upper-meta {
+    display: none;
+  }
+
+  .link-file,
+  .link-twitter,
+  .link-related {
+    padding-bottom: 0;
+    border: none;
+  }
+
+  .node-contact {
+    margin-top: 10px;
+    margin-bottom: 0;
+    border-bottom: none;
+    border-top: 1px solid @C8;
+  }
+
+  .node-contact-wrapper {
+    padding: 0;
+    background-color: transparent;
+  }
+
+  .node-links {
+    clear: both;
+    display: none;
+    margin-bottom: 0;
+
+    .has-links & {
+      display: block;
+    }
+  }
+}
+
+.expanding-links {
+  .block-title {
+    overflow: visible;
+
+    a {
+      color: @C2;
+      text-decoration: none;
+    }
+
+    .link-text {
+      margin-left: 24px;
+      white-space: nowrap;
+      font-size: 15px;
+
+      .num-links {
+        display: inline;
+        padding-left: 4px;
+        font-size: 10px;
+        vertical-align: bottom;
+      }
+    }
+  }
+}

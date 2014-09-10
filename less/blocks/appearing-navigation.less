@@ -1,0 +1,68 @@
+/* ========================================================================== *\
+   THIS ITEM APPEARS IN - LEFT NAVIGATION
+\* ========================================================================== */
+
+.appearing-nav {
+  #nav-back a {
+    margin-left: -20px;
+    margin-bottom: 20px;
+    padding: 10px 10px 10px 20px;
+    border-bottom: 0;
+    font-size: 1em;
+    line-height: 1em;
+    font-weight: bold;
+    text-transform: none;
+    letter-spacing: normal;
+    background: url('@{dd_templates_image_path}/back.svg') no-repeat -30px center @C2;
+    -webkit-transition: background-color 0.3s ease-out;
+    transition: background-color 0.3s ease-out;
+    color: #fff;
+  }
+
+  #nav-back a:hover {
+    background-color: @C1;
+  }
+
+  /* No svg fallback support (eg. IE8) */
+  html.no-svg & #nav-back a {
+    background-image: url('@{dd_templates_image_path}/back.png');
+  }
+
+  #nav-back a:before {
+    display: none;
+  }
+
+  .small {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 0 0 5px 0;
+    border-bottom: 1px solid @C10;
+    font-size: 0.786em; /* 11px */
+    line-height: 1em; /* 11px */
+    text-transform: uppercase;
+    color: @C8;
+  }
+
+  ul li {
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  li a {
+    margin: 0;
+    padding: 6px 0;
+    border-bottom: 1px solid @C10;
+    line-height: 1.214em;
+    color: @C8;
+  }
+
+  li a:hover {
+    color: @C1;
+  }
+
+  /* resets */
+
+  .first a {
+    border-top: none;
+  }
+}

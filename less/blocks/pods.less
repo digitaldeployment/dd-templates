@@ -1,0 +1,111 @@
+/* ========================================================================== *\
+   PODS
+\* ========================================================================== */
+
+.pods {
+  .node-item {
+    display: none;
+  }
+
+  .node-upper-image,
+  .node-header,
+  .node-links,
+  .node-webform {
+    display: block;
+  }
+
+  .node-header {
+    font-size: 1.286em; /* 18px */
+    line-height: 1.333; /* 24px */
+
+    .title {
+      color: #fff;
+    }
+
+    .subtitle {
+      font-size: 0.833em; /* 15px */
+      font-weight: normal;
+      color: #fff;
+    }
+  }
+
+  .link a {
+    color: #fff;
+  }
+
+  .link a:hover {
+    color: #000;
+  }
+
+  .node-links {
+    .link-read-more {
+      display: none;
+    }
+  }
+}
+  /* ========================================================================== *\
+     PODS RIGHT
+  \* ========================================================================== */
+
+.pods-right {
+  .node {
+    margin-bottom: 20px;
+    padding-bottom: 0;
+  }
+
+  .views-row-odd {
+    .node-inner {
+      background-color: @C1;
+      &:hover {
+        background-color: darken(@C1, 10%);
+      }
+    }
+  }
+
+  .views-row-even {
+    .node-inner {
+      background-color: @C2;
+      &:hover {
+        background-color: darken(@C2, 10%);
+      }
+    }
+  }
+
+  .node-inner {
+    padding: 15px;
+    .transition(background-color 0.3s ease-out);
+  }
+
+  .node-upper-image {
+    margin: -15px -15px 0 -15px;
+  }
+
+  .node-header {
+    font-size: 1.143em; /* 16px */
+    line-height: 1.313; /* 21px */
+
+    .subtitle {
+      font-size: 0.875em; /* 14px */
+    }
+  }
+
+  .field-image {
+    margin-bottom: 15px;
+  }
+}
+
+/* ========================================================================== *\
+   PODS BELOW
+\* ========================================================================== */
+
+.pods-below {
+  background-color: @C1;
+
+  .block-inner {
+    margin-top: 30px;
+  }
+
+  .node {
+    margin-bottom: 30px;
+  }
+}

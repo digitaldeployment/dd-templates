@@ -1,0 +1,48 @@
+/* ========================================================================== *\
+   TABLES
+\* ========================================================================== */
+
+.node-content {
+  table {
+    width: 100%;
+    table-layout: fixed;
+    .box-sizing(border-box);
+  }
+
+  th, td {
+    font-family: @F1;
+  }
+
+  table, tbody {
+    border: 1px solid #ccc;
+  }
+
+  thead {
+    border: 1px solid @C5;
+  }
+
+  th {
+    border: 1px solid @C5;
+    background-color: @C1;
+    color: #fff;
+  }
+
+  tr {
+    border: 1px solid #ddd;
+  }
+
+  td {
+    vertical-align: top;
+    border: 1px solid #ccc;
+  }
+
+  tbody {
+    tr.odd {
+      background-color: transparent;
+    }
+
+    tr.even {
+      background-color: #d9d7ce;
+    }
+  }
+}

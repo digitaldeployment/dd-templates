@@ -1,0 +1,89 @@
+/* ========================================================================== *\
+   TERM NAVIGATION
+\* ========================================================================== */
+
+.term-nav {
+  margin-left: 0;
+
+  ul,
+  li {
+    overflow: visible;
+  }
+
+  ul ul a { margin-left: 18px; }
+  ul ul ul a { margin-left: 36px; }
+  ul ul ul ul a { margin-left: 54px; }
+
+  .block-title {
+    font-size: 1em;
+  }
+
+  .block-title a,
+  .block-title a.depth-2,
+  .block-title a.depth-3 {
+    padding: 0 0 5px;
+    border-bottom: 1px solid @C9;
+    font-size: 1em;
+    line-height: 1.5em;
+    text-transform: uppercase;
+    letter-spacing: normal;
+    color: @C7;
+  }
+
+  .block-title a:hover,
+  .block-title a.depth-2:hover,
+  .block-title a.depth-3:hover {
+    color: @C1;
+  }
+
+  .block-title a.active {
+    color: @C2;
+    font-weight: bold;
+  }
+
+  .menu a {
+    position: relative;
+    padding: 5px 0;
+    border-bottom: 1px solid @C9;
+    line-height: 1.214em;
+    color: @C7;
+  }
+
+  .menu a:hover {
+    color: @C1;
+  }
+
+  .menu a.active {
+    color: @C2;
+    font-weight: bold;
+  }
+
+  .menu .collapsed > a:before,
+  .menu .expanded > a:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -24px;
+    width: 24px;
+    height: 24px;
+    margin-top: -12px;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-image: url('@{dd_templates_image_path}/chevrons/chevrons-normal.svg');
+    opacity: 0.5;
+  }
+
+  .menu .collapsed > a:before {
+    background-position: 0 0;
+  }
+
+  .menu .expanded > a:before {
+    background-position: 33% 0;
+  }
+}
+
+/* No svg fallback support (eg. IE8) */
+html.no-svg .term-nav .menu .collapsed > a:before,
+html.no-svg .term-nav .menu .expanded > a:before {
+  background-image: url('@{dd_templates_image_path}/chevrons/chevrons-normal.png');
+}

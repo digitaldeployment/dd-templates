@@ -1,0 +1,67 @@
+/* ========================================================================== *\
+   CONTENT LAYOUT
+\* ========================================================================== */
+
+#content {
+  clear: both;
+}
+
+// Set sitewide content layout
+
+#content, .no-sidebars #content {
+  width: 100%;
+  margin-left: 0;
+  margin-right: -100%;
+}
+
+.sidebar-left #content {
+  width: 100% - @sidebar-left-width;
+  margin-left: @sidebar-left-width;
+  margin-right: -100%;
+}
+
+.sidebar-right #content {
+  width: 100% - @sidebar-right-width;
+  margin-left: 0;
+  margin-right: -(100% - @sidebar-right-width);
+}
+
+.two-sidebars #content {
+  width: 100% - (@sidebar-left-width + @sidebar-right-width);
+  margin-left: @sidebar-left-width;
+  margin-right: -(100% - @sidebar-left-width);
+}
+
+#sidebar-left {
+  float: left;
+  width: @sidebar-left-width;
+  margin-left: 0;
+  margin-right: -@sidebar-left-width;
+}
+
+#sidebar-right {
+  float: left;
+  width: @sidebar-right-width;
+  margin-left: 100% - @sidebar-right-width;
+  margin-right: -100%;
+}
+
+// Set sitewide content gutters
+
+.region-content, .region-left, .region-right {
+  margin-top: @gutter-top-height;
+  margin-bottom: @gutter-bottom-height;
+}
+
+.region-left {
+  margin-left: @gutter-left-width;
+}
+
+.region-right {
+  margin-right: @gutter-right-width;
+}
+
+.region-content {
+  margin-left: @gutter-left-width;
+  margin-right: @gutter-right-width;
+}

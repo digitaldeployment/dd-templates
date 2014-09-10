@@ -1,0 +1,101 @@
+/* ========================================================================== *\
+   FORCE A FULL WIDTH CONTENT AND NO SIDEBAR RIGHT
+   Useful for a full page photo gallery
+\* ========================================================================== */
+
+.no-sidebar-right {
+  #content {
+    width: 80%;
+    margin-right: -100%;
+  }
+
+  #sidebar-right {
+    display: none;
+  }
+}
+
+/* ========================================================================== *\
+   COLUMN/GRID LAYOUTS
+\* ========================================================================== */
+
+.col-1 .node { width: 100.00%; }
+.col-2 .node { width:  50.00%; }
+.col-3 .node { width:  33.33%; }
+.col-4 .node { width:  25.00%; }
+.col-5 .node { width:  20.00%; }
+.col-6 .node { width:  16.66%; }
+
+/* Browsers that support :nth-child() pseudo class */
+
+.col-1 .views-row,
+.col-2 .views-row:nth-child(2n+1),
+.col-3 .views-row:nth-child(3n+1),
+.col-4 .views-row:nth-child(4n+1),
+.col-5 .views-row:nth-child(5n+1),
+.col-6 .views-row:nth-child(6n+1) {
+  clear: both;
+}
+
+/* ========================================================================== *\
+   HELPER CLASS GIVEN BY A DRUPAL JS BEHAVIOR FOR PROPER IE8 DISPLAY OF
+   COLUMN/GRID LAYOUTS
+   @see: ddTemplatesGridLayoutHelper();
+\* ========================================================================== */
+
+.clear-row {
+  clear: both;
+}
+
+/* ========================================================================== *\
+   GUTTER LAYOUTS
+\* ========================================================================== */
+
+.gap-0 .view-content  { margin-left: 0; }
+.gap-0 .node-inner    { margin-left: 0; }
+.gap-10 .view-content { margin-left: -10px; }
+.gap-10 .node-inner   { margin-left:  10px; }
+.gap-15 .view-content { margin-left: -15px; }
+.gap-15 .node-inner   { margin-left:  15px; }
+.gap-20 .view-content { margin-left: -20px; }
+.gap-20 .node-inner   { margin-left:  20px; }
+.gap-25 .view-content { margin-left: -25px; }
+.gap-25 .node-inner   { margin-left:  25px; }
+.gap-30 .view-content { margin-left: -30px; }
+.gap-30 .node-inner   { margin-left:  30px; }
+.gap-35 .view-content { margin-left: -35px; }
+.gap-35 .node-inner   { margin-left:  35px; }
+.gap-40 .view-content { margin-left: -40px; }
+.gap-40 .node-inner   { margin-left:  40px; }
+
+/* ========================================================================== *\
+   FIELD IMAGE WIDTH HELPER CLASSES
+\* ========================================================================== */
+
+.fiw-25 .field-image  { max-width: 25% !important; }
+.fiw-40 .field-image  { max-width: 40% !important; }
+.fiw-50 .field-image  { max-width: 50% !important; }
+.fiw-60 .field-image  { max-width: 60% !important; }
+.fiw-75 .field-image  { max-width: 75% !important; }
+.fiw-100 .field-image { max-width:100% !important; }
+
+/* ========================================================================== *\
+   FIELD IMAGE FLOAT HELPER CLASSES
+\* ========================================================================== */
+
+.fif-lt .field-image {
+  float: left;
+  margin-left: 0;
+  margin-right: 20px;
+}
+
+.fif-rt .field-image {
+  float: right;
+  margin-right: 0;
+  margin-left: 20px;
+}
+
+.fif-no .field-image {
+  float: none;
+  margin-left: 0;
+  margin-right: 0;
+}

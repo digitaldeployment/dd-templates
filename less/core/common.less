@@ -1,0 +1,161 @@
+/* ========================================================================== *\
+   COMMON ELEMENTS
+\* ========================================================================== */
+
+.channel, .subterm, .block, .node, .messages {
+  font-family: @F1;
+}
+
+/* FONT AND LINE HEIGHT SIZING */
+
+#page, #very-top, #closure-blocks {
+  font-size: 0.875em; /* 14px */
+  line-height: 1.5;   /* 21px */
+}
+
+.overview .node-header, .node-full .node-header {
+  &:extend(h1);
+
+  &, & a, & a:hover {
+    color: @C6;
+  }
+}
+
+.block-title {
+  &:extend(h2);
+  color: @C2;
+}
+
+h3.accordion-heading {
+  &:extend(h3);
+
+  a {
+    color: @C3;
+  }
+}
+
+h4.accordion-heading {
+  &:extend(h4);
+
+  a {
+    color: @C4;
+  }
+}
+
+.node-teaser {
+  padding-bottom: 0;
+}
+
+.node-header {
+  line-height: 1.2;
+
+  a {
+    color: @C2;
+  }
+
+  a:hover {
+    color: @C1;
+  }
+}
+
+.subtitle {
+  font-size: 0.667em;
+  color: @C4;
+}
+
+.node-image {
+  margin-top: 0;
+}
+
+.field-image {
+  margin-bottom: 1em;
+
+  a {
+    text-decoration: none;
+  }
+
+  img {
+    margin: 0;
+  }
+}
+
+.node-image .field-image, .node-image .gallery {
+  margin-top: 1em;
+}
+
+.node-image .gallery .field-image {
+  margin-top: 0;
+}
+
+// captions
+
+.caption {
+  font-size: 12px;
+  line-height: 1.333;
+}
+
+.field-image.has-caption {
+  a {
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+  }
+
+  .caption {
+    display: table-caption;
+    caption-side: bottom;
+  }
+}
+
+.node-meta {
+  display: none;
+}
+
+.meta .event-date {
+  display: inherit;
+}
+
+.node-content {
+  ul, ol {
+    margin: 1em 0;
+    overflow: visible;
+  }
+
+  li {
+    margin-bottom: 0;
+  }
+}
+/* ========================================================================== *\
+   EMBED IMAGES WITHIN NODE CONTENT
+\* ========================================================================== */
+
+.node-content .field-image {
+  clear: left;
+  float: left;
+  margin-right: 20px;
+  margin-left: 0;
+}
+
+.node-content img,
+.node-content .field-image img {
+  float: none;
+  max-width: 100%;
+  margin: 0;
+}
+
+/* ========================================================================== *\
+   Restricts email address from overflowing out of it's container
+\* ========================================================================== */
+
+.node-contact-wrapper {
+  width: 100%;
+  margin: 1em 0;
+}
+
+.node-contact .field-email {
+  display: inline-block;
+  max-width: 100%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

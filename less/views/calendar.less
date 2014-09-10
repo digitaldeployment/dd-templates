@@ -1,0 +1,162 @@
+/* ========================================================================== *\
+   CALENDAR
+\* ========================================================================== */
+
+#cal {
+  .view-content {
+    padding-top: 6px;
+  }
+
+  .cal-filters {
+    float: right;
+    border-bottom: none;
+    padding-bottom: 20px;
+
+    a.tab {
+      padding: 6px 10px;
+      cursor: pointer;
+      border-radius: 5px;
+      border-width: 1px;
+      border-style: solid;
+      font-size: 12px;
+      color: black;
+
+      &:hover,
+      &.active {
+        color: white !important;
+        background-color: black;
+        border-color: black;
+      }
+    }
+  }
+
+  .node {
+    padding: 2px 5px;
+    font-size: 12px;
+    line-height: 1.2em;
+    border-top: 5px solid black;
+  }
+
+  .calendar-calendar {
+    div.calendar {
+      width: 90%;
+      margin-left: 0;
+      margin-right: 0;
+      padding: 5%;
+    }
+
+    div.node-title {
+      margin-bottom: 5px;
+    }
+
+    ul.links {
+      float: left;
+      margin-bottom: 15px;
+
+      li {
+        float: left;
+        width: auto;
+        margin-right: 0;
+
+        a {
+          padding: 6px 10px;
+          border-style: solid;
+          border-color: @C9;
+          border-width: 1px 1px 1px 0;
+          background-color: @C1;
+          color: white;
+          text-decoration: none;
+          font-size: 12px;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+
+        &.first a {
+          border-width: 1px;
+          border-radius: 5px 0 0 5px;
+        }
+
+        &.last a {
+          border-radius: 0 5px 5px 0;
+        }
+      }
+    }
+
+    div.calendar {
+      background-color: transparent;
+    }
+
+    div.date-nav {
+      clear: both;
+      padding: 10px 15px;
+      margin: 0;
+      background-color: @C2;
+
+      h3 {
+        color: white;
+      }
+
+      a {
+        padding: 6px 10px;
+        background-color: rgba(255,255,255,0.2);
+        color: white;
+        text-decoration: none;
+        font-size: 12px;
+        border-radius: 5px;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+// Calendar tab generator
+
+.calendar_tabs_init(@eventTabs, @eventTabColors) {
+  .calendar_event_tab_theme(@index) {
+    @id: extract(@eventTabs, @index);
+    @color: extract(@eventTabColors, @index);
+
+    #cal {
+      .wt@{id} {
+        border-top-color: @color;
+
+        a {
+          color: @color;
+          border-color: @color;
+        }
+      }
+
+      .show-wt@{id} {
+        color: @color;
+        border-color: @color;
+      }
+
+      .cal-filters {
+        a.show-wt@{id} {
+          color: @color;
+
+          &:hover,
+          &.active {
+            border-color: @color;
+            background-color: @color;
+          }
+        }
+      }
+    }
+  }
+
+  // Loops through the calendar tabs list
+
+  .generate_calendar_tabs(@total, @index: 1) when (@index =< @total) {
+    .calendar_event_tab_theme(@index);
+    .generate_calendar_tabs(@total, (@index + 1));
+  }
+
+  // start the loop to create the calendar tabs
+  .generate_calendar_tabs(length(@eventTabs));
+}

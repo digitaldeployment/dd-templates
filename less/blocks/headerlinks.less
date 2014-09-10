@@ -1,0 +1,60 @@
+/* ========================================================================== *\
+   HEADERLINKS
+\* ========================================================================== */
+
+.headerlinks {
+  div&.block {
+    float: none;
+    position: absolute;
+    top: 20px;
+    left: 0;
+    width: 760px;
+    height: 24px;
+  }
+
+  .node {
+    float: right;
+    width: auto;
+    margin-bottom: 0;
+    margin-left: 10px;
+    padding-bottom: 0;
+  }
+
+  .node-item {
+    display: none;
+  }
+
+  .node-header,
+  .node-upper-image {
+    display: block;
+  }
+
+  .node-header {
+    font-size: 10px;
+    line-height: 24px;
+    font-weight: normal;
+
+    .has-image & {
+      display: none;
+    }
+
+    a {
+      color: #999;
+    }
+
+    a:hover {
+      color: #000;
+    }
+
+    .title {
+      white-space: nowrap;
+    }
+  }
+
+  .field-image {
+    float: right;
+    max-width: 24px !important;
+    margin: 0;
+    overflow: hidden;
+  }
+}

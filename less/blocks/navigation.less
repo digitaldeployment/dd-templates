@@ -1,0 +1,62 @@
+/* ========================================================================== *\
+   MAIN NAVIGATION
+\* ========================================================================== */
+
+#block-nice_menus-1 {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.nice-menu {
+  .navbar & {
+    clear: both;
+    height: 38px;
+    padding-left: 35px;
+    border-top: 1px solid #eee;
+  }
+
+  .navbar & a.first-visible {
+    padding-left: 0;
+  }
+
+  ul.depth-2 {
+    top: 38px;
+  }
+
+  ul.depth-3 {
+    left: 241px;
+  }
+
+  ul.depth-4 {
+    display: none !important;
+  }
+
+  a.menu-link {
+    margin-right: 0;
+    padding: 10px;
+    background-color: @C2;
+    color: #fff;
+  }
+
+  a.menu-link:hover,
+  .active-trail > a,
+  li:hover > a.menu-link {
+    background-color: @C1;
+    color: #fff;
+  }
+
+  a.menu-link.depth-1 {
+    color: @C2;
+    background-color: transparent;
+  }
+
+  .over a.menu-link.depth-1,
+  a.menu-link.depth-1:hover,
+  a.menu-link.depth-1.active,
+  .active-trail a.menu-link.depth-1 {
+    color: @C1;
+    background-color: transparent;
+  }
+}
