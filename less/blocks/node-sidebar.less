@@ -9,15 +9,11 @@
 
   .block-title {
     display: none;
-    font-size: 1.286em;     /* 18px */
-    line-height: 1.333;     /* 24px */
-    margin-bottom: 0.778em; /* 14px */
+    margin-bottom: 0.778em;
     padding-top: 10px;
     border-top: 1px solid @C8;
-  }
-
-  &.has-links .block-title {
-    display: block;
+    font-size: unit(18/@base_font_size, em);
+    line-height: 1.5;
   }
 
   .node-image,
@@ -48,10 +44,11 @@
     clear: both;
     display: none;
     margin-bottom: 0;
+  }
 
-    .has-links & {
-      display: block;
-    }
+  &.has-links .node-links,
+  &.has-links .block-title {
+    display: block;
   }
 }
 
@@ -73,7 +70,7 @@
         display: inline;
         padding-left: 4px;
         font-size: 10px;
-        vertical-align: bottom;
+        vertical-align: baseline;
       }
     }
   }
