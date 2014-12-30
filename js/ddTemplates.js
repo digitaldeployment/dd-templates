@@ -23,7 +23,7 @@ define(['jquery'], function($) {
     this.context = context;
     this._defaults = defaults;
     this.isNodeView = this.isNode(context);
-    this.settings = $.extend(defaults, options);
+    this.settings = $.extend(true, defaults, options);
     this.init();
   };
 
