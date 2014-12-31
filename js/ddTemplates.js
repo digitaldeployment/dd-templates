@@ -98,7 +98,7 @@ define(['jquery'], function($) {
           $relatedLinks = $nodeFull.find('.node-links'),
           $blockTitle = $nodeFields.find('.block-title'),
           $titleText = $blockTitle.find('.block-title-text'),
-          numLinks = $relatedLinks.find('.link-related, .link-file').length,
+          numLinks = $relatedLinks.find('.link-related, .link-file, .link-twitter').length,
           title = $titleText.text();
 
       // Set the default title if one doesn't exist already, if it does, use that
