@@ -122,46 +122,41 @@ define(['jquery'], function($) {
        * @example: global|block-digitaldcore-node_fields>expanding-links
        */
       if ($nodeFields.is('.expanding-links')) {
+        // Adds accordion style behavior to pages with little content and
+        // contain 3 or more links
+        if ($nodeFull.height() <= 600 || numLinks >= 3) {
+          var $bt = $nodeFields.find('.block-title'),
+              $nodeLinks = $nodeFields.find('.node-links'),
+              $link = $('<a href="#"></a>'),
+              $icon = $('<i class="icon"></i>'),
+              $text = $('<span class="link-text">' + title + '</span>'),
+              $numLink = $('<span class="num-links">(' + numLinks + ')</span>');
 
-        // Wait until images load before checking the height of the full node
-        $(window).bind('load.ddTemplatesFullNodeRelatedLinks', function(event) {
+          // Create an accordion heading instance to control the display of the
+          // related links
+          $text.append($numLink);
+          $link.append($icon, $text);
+          $bt.addClass('accordion-heading').html($link);
 
-          // Adds accordion style behavior to pages with little content and
-          // contain 3 or more links
-          if ($nodeFull.height() <= 600 || numLinks >= 3) {
-            var $bt = $nodeFields.find('.block-title'),
-                $nodeLinks = $nodeFields.find('.node-links'),
-                $link = $('<a href="#"></a>'),
-                $icon = $('<i class="icon"></i>'),
-                $text = $('<span class="link-text">' + title + '</span>'),
-                $numLink = $('<span class="num-links">(' + numLinks + ')</span>');
+          // hide the links to start things off
+          $nodeLinks.hide();
 
-            // Create an accordion heading instance to control the display of the
-            // related links
-            $text.append($numLink);
-            $link.append($icon, $text);
-            $bt.addClass('accordion-heading').html($link);
-
-            // hide the links to start things off
-            $nodeLinks.hide();
-
-            // Click handler to control the display of the related links
-            $bt.click(function(event) {
-              event.preventDefault();
-              var isActive = $blockTitle.is('.active');
-              // collapse links
-              if (isActive) {
-                $blockTitle.removeClass('active');
-                $nodeLinks.stop(true,true).animate({opacity: 'hide', height: 'hide'}, 250);
-              }
-              // expand links
-              else {
-                $blockTitle.addClass('active');
-                $nodeLinks.stop(true,true).animate({opacity: 'show', height: 'show'}, 500);
-              }
-            });
-          }
-        });
+          // Click handler to control the display of the related links
+          $bt.click(function(event) {
+            event.preventDefault();
+            var isActive = $blockTitle.is('.active');
+            // collapse links
+            if (isActive) {
+              $blockTitle.removeClass('active');
+              $nodeLinks.stop(true,true).animate({opacity: 'hide', height: 'hide'}, 250);
+            }
+            // expand links
+            else {
+              $blockTitle.addClass('active');
+              $nodeLinks.stop(true,true).animate({opacity: 'show', height: 'show'}, 500);
+            }
+          });
+        }
       }
     },
     /**
