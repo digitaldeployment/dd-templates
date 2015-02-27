@@ -42,7 +42,7 @@
 
 // Core Components
 
-@dd_templates_core: common, layout, elements, meta, tables, webforms, links, file-attachments, read-more-links, accordions, slideshow, pager, tab;
+@dd_templates_core: common, layout, elements, meta, tables, webforms, links, file-attachments, read-more-links, accordions, slideshow, pager, tab, glossary;
 
 @dd_templates_core_common: true;
 @dd_templates_core_layout: true;
@@ -57,6 +57,7 @@
 @dd_templates_core_slideshow: true;
 @dd_templates_core_pager: true;
 @dd_templates_core_tabs: true;
+@dd_templates_core_glossary: true;
 
 .dd_templates_core(common) when (@dd_templates_core_common = true) { @import 'core/common'; }
 .dd_templates_core(layout) when (@dd_templates_core_layout = true) { @import 'core/layout'; }
@@ -71,6 +72,7 @@
 .dd_templates_core(slideshow) when (@dd_templates_core_slideshow = true) { @import 'core/slideshow'; }
 .dd_templates_core(pager) when (@dd_templates_core_pager = true) { @import 'core/pager'; }
 .dd_templates_core(tab) when (@dd_templates_core_tabs = true) { @import 'core/tabs'; }
+.dd_templates_core(glossary) when (@dd_templates_core_glossary = true) { @import 'core/glossary'; }
 
 // Modules Components
 
