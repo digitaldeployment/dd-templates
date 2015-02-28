@@ -1,39 +1,61 @@
 /* ========================================================================== *\
+   ICONS AND INLINE FILE ATTACHMENTS
+\* ========================================================================== */
+
+.icon,
+.link-text {
+  &:before {
+    display: none;
+    .attachments-font();
+    color: @C1;
+
+    // Default link
+    .file & { content: @attachments-link; }
+    // Document
+    .file-text-html &,
+    .file-text-plain & { content: @attachments-file-html; }
+    // CSS
+    .file-text-css & { content: @attachments-file-css; }
+    // XML
+    .file-application-xml & { content: @attachments-file-xml; }
+    // ZIP
+    .file-application-zip & { content: @attachments-file-zip; color: #333; }
+    // MS Apps
+    .file-application-pdf & { content: @attachments-file-pdf; color: #F91916; }
+    .file-application-msword & { content: @attachments-file-word; color: #2A5699; }
+    .file-application-vnd-ms-excel & { content: @attachments-file-excel; color: #227547; }
+    .file-application-vnd-ms-powerpoint & { content: @attachments-file-powerpoint; color: #D14524; }
+    // Console
+    .file-application-x-msdos-program & { content: @attachments-console; color: black; }
+    // Image
+    .file-image-gif &,
+    .file-image-png &,
+    .file-image-jpeg & { content: @attachments-image; color: #6495ED; }
+    // Music
+    .file-audio-mpeg & { content: @attachments-music; color: black; }
+    // Movie
+    .file-video-mpg &,
+    .file-video-mpeg &,
+    .file-video-quicktime & { content: @attachments-film; color: #333; }
+  }
+}
+
+/* ========================================================================== *\
    INLINE FILE ATTACHMENTS
 \* ========================================================================== */
 
-.node-content span.file a {
-  text-decoration: none;
-  text-transform: none;
-}
+.node-content span.file {
+  a {
+    text-decoration: none;
+    text-transform: none;
+  }
 
-.node-content span.file .link-text:before {
-  display: inline-block;
-  content: "";
-  width: 14px;
-  height: 14px;
-  margin-right: 0.3em;
-  border: 1px solid @C1;
-  border-radius: 2px;
-  background: url('@{dd_templates_image_path}/icons/link.svg') no-repeat left top @C1;
-  background-size: 14px;
-  vertical-align: text-top;
-}
-
-/* No svg fallback support (eg. IE8) */
-html.no-svg .node-content span.file .link-text:before {
-  background-image: url('@{dd_templates_image_path}/icons/ie/link.png');
-}
-
-.node-content span.file-application-pdf .link-text:before {
-  border-color: #f91916 !important;
-  background-color: transparent;
-  background-image: url('@{dd_templates_image_path}/icons/pdf.svg');
-}
-
-/* No svg fallback support (eg. IE8) */
-html.no-svg .node-content span.file-application-pdf .link-text:before {
-  background-image: url('@{dd_templates_image_path}/icons/ie/pdf.png');
+  .link-text:before {
+    display: inline-block;
+    margin-right: 0.3em;
+    vertical-align: top;
+    font-size: unit(18/@base_font_size, em);
+  }
 }
 
 /* ========================================================================== *\
@@ -41,45 +63,29 @@ html.no-svg .node-content span.file-application-pdf .link-text:before {
 \* ========================================================================== */
 
 .icon {
-  float: left;
-  clear: left;
-  width: 24px;
-  height: 24px;
-  margin-right: 10px;
-  border: 1px solid @C1;
-  border-radius: 3px;
-  background: url('@{dd_templates_image_path}/icons/link.svg') no-repeat left top @C1;
+  &:before {
+    display: block;
+    float: left;
+    clear: left;
+    font-size: 24px;
+  }
 }
 
-/* No svg fallback support (eg. IE8) */
-html.no-svg .icon {
-  background-image: url('@{dd_templates_image_path}/icons/link.png');
-}
+.link {
+  .link-text-wrapper {
+    display: block;
+    padding-top: 6px;
+    margin-left: 30px;
+  }
 
-.link-file-application-pdf .icon {
-  border-color: #F91916 !important;
-  background-color: transparent;
-  background-image: url('@{dd_templates_image_path}/icons/pdf.svg');
-}
+  .ext span.link-text {
+    padding-right: 12px;
+    background: url('/sites/all/modules/extlink/extlink.png') no-repeat right top;
+  }
 
-/* No svg fallback support (eg. IE8) */
-html.no-svg .link-file-application-pdf .icon {
-  background-image: url('@{dd_templates_image_path}/icons/pdf.png');
-}
-
-.link .link-text-wrapper {
-  display: block;
-  padding-top: 6px;
-  margin-left: 36px;
-}
-
-.link .ext span.link-text {
-  padding-right: 12px;
-  background: url('/sites/all/modules/extlink/extlink.png') no-repeat right top;
-}
-
-.link span.ext {
-  display: none !important;
+  span.ext {
+    display: none !important;
+  }
 }
 
 /* Axe the table of contents icons */
