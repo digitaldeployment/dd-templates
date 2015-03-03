@@ -14,25 +14,20 @@
   a {
     cursor: pointer;
     text-decoration: none;
-    color: @C2;
   }
 
   &:first-child {
     margin-top: 10px;
   }
 
-  .icon {
-    margin-right: 0;
-    margin-left: -3px;
-    border: none;
-    background-color: @C2;
-    border-radius: 0;
-    background-image: url('@{dd_templates_image_path}/chevron-right.svg');
+  .icon:before {
+    display: block;
+    .chevron-font();
+    margin-top: -5px;
+    margin-left: -8px;
+    font-size: 32px;
+    content: @chevron-right-medium;
     .transition(all 0.3s ease-out);
-  }
-
-  &.active .icon {
-    .transform(rotate(90deg));
   }
 
   .link-text {
@@ -40,28 +35,11 @@
     margin-left: 24px;
   }
 
-  .toc-top-link {
-    margin-left: -72px;
-    margin-top: 3px;
-  }
-
-  .toc-top-link:hover {
-    margin-left: -72px;
-    background-color: transparent;
+  &.active .icon:before {
+    .transform(rotate(90deg));
   }
 }
 
 .accordion-content {
   margin-left: 24px;
-}
-
-// No SVG fallback support (eg. IE8)
-
-html.no-svg .accordion-heading {
-  .icon {
-    background-image: url('@{dd_templates_image_path}/chevron-right.png');
-  }
-  &.active .icon {
-    background-image: url('@{dd_templates_image_path}/chevron-down.png');
-  }
 }

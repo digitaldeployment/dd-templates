@@ -60,30 +60,22 @@
 
   .menu .collapsed > a:before,
   .menu .expanded > a:before {
-    content: "";
+    .chevron-font();
     position: absolute;
     top: 50%;
     left: -24px;
     width: 24px;
     height: 24px;
+    font-size: 24px;
     margin-top: -12px;
-    background-repeat: no-repeat;
-    background-color: transparent;
-    background-image: url('@{dd_templates_image_path}/chevrons/chevrons-normal.svg');
-    opacity: 0.5;
+    color: @C1;
   }
 
   .menu .collapsed > a:before {
-    background-position: 0 0;
+    content: @chevron-right-light;
   }
 
   .menu .expanded > a:before {
-    background-position: 33% 0;
+    content: @chevron-down-light;
   }
-}
-
-/* No svg fallback support (eg. IE8) */
-html.no-svg .term-nav .menu .collapsed > a:before,
-html.no-svg .term-nav .menu .expanded > a:before {
-  background-image: url('@{dd_templates_image_path}/chevrons/chevrons-normal.png');
 }
