@@ -3,11 +3,13 @@ define(['jquery'], function($) {
   var defaults = {
     photoGalleryPID: 107,
     behaviors: {
+      fullNodeRelatedLinks: true,
       bundledReferringContent: true,
       fullNodeRelocateContactInfo: true,
       lexiconGlossary: true,
       subtermOverviews: true,
       nodeMeta: true,
+      relatedLinks: true,
       imageCaptions: true,
       slideshowIcons: true,
       tableZebraStrips: true
@@ -65,6 +67,7 @@ define(['jquery'], function($) {
         ],
         global: [
           'nodeMeta',
+          'relatedLinks',
           'imageCaptions',
           'slideshowIcons',
           'tableZebraStrips'
@@ -89,7 +92,7 @@ define(['jquery'], function($) {
       var $relatedLinks = $nodeLinks.find('ul.links');
       var numLinks = $relatedLinks.find('.link-related, .link-file').length;
       // right sidebar related links
-      var $nodeFields = $('#block-digitaldcore-node_fields', _.context);
+      var $nodeFields = $('#block-digitaldcore-node_fields',context);
       var $blockTitle = $nodeFields.find('.block-title');
       var $titleText = $blockTitle.find('.block-title-text');
       var title = $titleText.text();
@@ -104,9 +107,8 @@ define(['jquery'], function($) {
       $nodeLinks.prepend($blockTitle);
 
       if (numLinks) {
-        // Add a helper class to the blocks to control block title display
+        // Add a helper class to the block to control the block title display
         $nodeFull.addClass('has-links');
-        $nodeFields.addClass('has-links');
       }
 
       /**
@@ -115,47 +117,41 @@ define(['jquery'], function($) {
        *        block on the admin/dd/dd_classes configuration page
        * @example: global|block-digitaldcore-node_fields>expanding-links
        */
-      if ($nodeFull.is('.expanding-links')) {
-        // Adds accordion style behavior to pages with little content and
-        // contain 3 or more links
-        if (numLinks >= 3) {
-          var $bt = $nodeLinks.find('.block-title'),
-            $link = $('<a href="#"></a>'),
-            $icon = $('<i class="icon"></i>'),
-            $text = $('<span class="link-text">' + title + '</span>'),
-            $numLink = $('<span class="num-links">(' + numLinks + ')</span>');
+      if ($nodeFull.is('.expanding-links') && numLinks >= 3) {
+        // Adds accordion style behavior to pages with 3 or more links
+        var $bt = $nodeLinks.find('.block-title'),
+          $link = $('<a href="#"></a>'),
+          $icon = $('<i class="icon"></i>'),
+          $text = $('<span class="link-text">' + title + '</span>'),
+          $numLink = $('<span class="num-links">(' + numLinks + ')</span>');
 
-          // Create an accordion heading instance to control the display of the
-          // related links
-          $text.append($numLink);
-          $link.append($icon, $text);
-          $bt.addClass('accordion-heading').html($link);
+        // Create an accordion heading instance to control the display of the
+        // related links
+        $text.append($numLink);
+        $link.append($icon, $text);
+        $bt.addClass('accordion-heading active').html($link);
 
-          // hide the links to start things off
-          $relatedLinks.hide();
-
-          // Click handler to control the display of the related links
-          $bt.click(function(event) {
-            event.preventDefault();
-            var isActive = $blockTitle.is('.active');
-            // collapse links
-            if (isActive) {
-              $blockTitle.removeClass('active');
-              $relatedLinks.stop(true, true).animate({
-                opacity: 'hide',
-                height: 'hide'
-              }, 250);
-            }
-            // expand links
-            else {
-              $blockTitle.addClass('active');
-              $relatedLinks.stop(true, true).animate({
-                opacity: 'show',
-                height: 'show'
-              }, 500);
-            }
-          });
-        }
+        // Click handler to control the display of the related links
+        $bt.click(function(event) {
+          event.preventDefault();
+          var isActive = $blockTitle.is('.active');
+          // collapse links
+          if (isActive) {
+            $blockTitle.removeClass('active');
+            $relatedLinks.stop(true, true).animate({
+              opacity: 'hide',
+              height: 'hide'
+            }, 250);
+          }
+          // expand links
+          else {
+            $blockTitle.addClass('active');
+            $relatedLinks.stop(true, true).animate({
+              opacity: 'show',
+              height: 'show'
+            }, 500);
+          }
+        });
       }
     },
     /**
@@ -200,6 +196,22 @@ define(['jquery'], function($) {
           $node.addClass('has-meta');
           $visible.filter(':last').addClass('last');
         }
+      });
+    },
+    /**
+     * Helper class for theming related links sitewide.
+     */
+    relatedLinks: function(context) {
+      var $nodes = $('.node', context);
+      $nodes.each(function() {
+        var $links = $(this).find('.link-related, .link-file');
+        $links.each(function() {
+          var $link = $(this).find('a');
+          // wrap contents within a container
+          $link.wrapInner('<span class="link-text-wrapper"></span>');
+          // add an icon
+          $link.prepend('<i class="icon"></i>');
+        });
       });
     },
     /**
