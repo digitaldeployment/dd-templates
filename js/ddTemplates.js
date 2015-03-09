@@ -10,8 +10,7 @@ define(['jquery'], function($) {
       nodeMeta: true,
       imageCaptions: true,
       slideshowIcons: true,
-      tableZebraStrips: true,
-      ieClearColumnRows: true
+      tableZebraStrips: true
     }
   };
 
@@ -68,8 +67,7 @@ define(['jquery'], function($) {
           'nodeMeta',
           'imageCaptions',
           'slideshowIcons',
-          'tableZebraStrips',
-          'ieClearColumnRows'
+          'tableZebraStrips'
         ]
       };
 
@@ -275,22 +273,6 @@ define(['jquery'], function($) {
         $table.find('tr:nth-child(odd)').addClass('odd');
         $table.find('tr:nth-child(even)').addClass('even');
       });
-    },
-    /**
-     * Adds IE specific classnames for clearing rows of various column grids which
-     * since the :nth-child() pseudo selector isn't available in IE 8
-     */
-    ieClearColumnRows: function(context) {
-      if ($(document).is('ie-8')) {
-        var selectors =
-          '.col-1 .views-row,' +
-            '.col-2 .views-row:nth-child(2n+1),' +
-            '.col-3 .views-row:nth-child(3n+1),' +
-            '.col-4 .views-row:nth-child(4n+1),' +
-            '.col-5 .views-row:nth-child(5n+1),' +
-            '.col-6 .views-row:nth-child(6n+1)';
-        $(selectors, context).addClass('clear-row');
-      }
     }
   };
 
