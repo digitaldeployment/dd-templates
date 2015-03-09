@@ -1,0 +1,33 @@
+/* ========================================================================== *\
+   PAGE
+\* ========================================================================== */
+
+.page {
+
+}
+
+.page-inner {
+  background-color: white;
+}
+
+.page-center {
+  position: relative;
+  padding: 0 35px; // TODO: Make this a variable
+  .box-sizing(border-box);
+}
+
+.page-right {
+  .page-sidebar {
+    .when-number-of-columns-increases-to(3, {
+      margin-left: 35px // TODO: Make this a variable
+    });
+  }
+}
+
+.page-left {
+  .page-sidebar {
+    .when-number-of-columns-increases-to(2, {
+      margin-right: 35px // TODO: Make this a variable
+    });
+  }
+}

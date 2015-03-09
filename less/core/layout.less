@@ -2,66 +2,73 @@
    CONTENT LAYOUT
 \* ========================================================================== */
 
-#content {
-  clear: both;
+// Responsive breakpoint container
+
+.layout {
+  position: relative;
+  margin: 0 auto;
+  font-size: 1em;
+  text-align: left;
+  .for-each-breakpoint({ width: @number-of-columns * @column-width + (@number-of-columns - 1) * @gutter-size; });
+
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+  }
 }
 
 // Set sitewide content layout
 
-#content, .no-sidebars #content {
-  width: 100%;
-  margin-left: 0;
-  margin-right: -100%;
+#content,
+#sidebar-left,
+#sidebar-right {
+  margin-bottom: 20px; // TODO: make this a variable
+  .when-number-of-columns-increases-to(3, {
+    float: left;
+  });
+}
+
+// Content with left sidebar
+
+#sidebar-left {
+  .when-number-of-columns-increases-to(2, {
+    float: left;
+    width: 35%; // TODO: make this a variable
+  });
+  .when-number-of-columns-increases-to(3, {
+    width: 25%; // TODO: make this a variable
+  });
 }
 
 .sidebar-left #content {
-  width: 100% - @sidebar-left-width;
-  margin-left: @sidebar-left-width;
-  margin-right: -100%;
+  .when-number-of-columns-increases-to(3, {
+    width: 75%; // TODO: make this a variable
+  });
+}
+
+// Content with right sidebar
+
+#sidebar-right {
+  .when-number-of-columns-increases-to(3, {
+    width: 25%; // TODO: make this a variable
+  });
 }
 
 .sidebar-right #content {
-  width: 100% - @sidebar-right-width;
-  margin-left: 0;
-  margin-right: -(100% - @sidebar-right-width);
+//  .when-number-of-columns-increases-to(3, {
+//    width: 75%; // TODO: make this a variable
+//  });
 }
+
+// Content with both sidebars
 
 .two-sidebars #content {
-  width: 100% - (@sidebar-left-width + @sidebar-right-width);
-  margin-left: @sidebar-left-width;
-  margin-right: -(100% - @sidebar-left-width);
-}
-
-#sidebar-left {
-  float: left;
-  width: @sidebar-left-width;
-  margin-left: 0;
-  margin-right: -@sidebar-left-width;
-}
-
-#sidebar-right {
-  float: left;
-  width: @sidebar-right-width;
-  margin-left: 100% - @sidebar-right-width;
-  margin-right: -100%;
-}
-
-// Set sitewide content gutters
-
-.region-content, .region-left, .region-right {
-  margin-top: @gutter-top-height;
-  margin-bottom: @gutter-bottom-height;
-}
-
-.region-left {
-  margin-left: @gutter-left-width;
-}
-
-.region-right {
-  margin-right: @gutter-right-width;
-}
-
-.region-content {
-  margin-left: @gutter-left-width;
-  margin-right: @gutter-right-width;
+  .when-number-of-columns-increases-to(3, {
+    width: 50%; // TODO: make this a variable
+  });
 }

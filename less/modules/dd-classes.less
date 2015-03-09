@@ -1,101 +1,191 @@
 /* ========================================================================== *\
-   FORCE A FULL WIDTH CONTENT AND NO SIDEBAR RIGHT
-   Useful for a full page photo gallery
+   COLUMN/GRID LAYOUTS
 \* ========================================================================== */
 
-.no-sidebar-right {
-  #content {
-    width: 80%;
-    margin-right: -100%;
+.col-1 .views-row { width: 100%; }
+
+.when-number-of-columns-increases-to(2, {
+  // engage the containers to allow for column layouts
+  .col-1,
+  .col-2,
+  .col-3,
+  .col-4,
+  .col-5,
+  .col-6 {
+    .view-content {
+      font-size: 0;
+    }
+
+    .views-row {
+      display: inline-block;
+      vertical-align: top;
+    }
+
+    .node {
+      font-size: @base_font_size;
+    }
   }
 
-  #sidebar-right {
+  // Force these all to be 2 columns
+  .col-2 .views-row,
+  .col-3 .views-row,
+  .col-4 .views-row,
+  .col-5 .views-row,
+  .col-6 .views-row {
+    width: 100%/2;
+  }
+});
+
+// Allow the intended column count
+.when-number-of-columns-increases-to(3, {
+  .col-3 .views-row { width: 100%/3; }
+  .col-4 .views-row { width: 100%/4; }
+  .col-5 .views-row { width: 100%/5; }
+  .col-6 .views-row { width: 100%/6; }
+});
+
+.node-full,
+.overview .node-teaser {
+  overflow: hidden;
+}
+
+.site-identity {
+  .site-logo {
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
+  .site-name,
+  .site-mission,
+  .site-slogan {
     display: none;
   }
-}
-
-/* ========================================================================== *\
-   COLUMN/GRID LAYOUTS
-\* ========================================================================== */
-
-.col-1 .node { width: 100.00%; }
-.col-2 .node { width:  50.00%; }
-.col-3 .node { width:  33.33%; }
-.col-4 .node { width:  25.00%; }
-.col-5 .node { width:  20.00%; }
-.col-6 .node { width:  16.66%; }
-
-/* Browsers that support :nth-child() pseudo class */
-
-.col-1 .views-row,
-.col-2 .views-row:nth-child(2n+1),
-.col-3 .views-row:nth-child(3n+1),
-.col-4 .views-row:nth-child(4n+1),
-.col-5 .views-row:nth-child(5n+1),
-.col-6 .views-row:nth-child(6n+1) {
-  clear: both;
-}
-
-/* ========================================================================== *\
-   HELPER CLASS GIVEN BY A DRUPAL JS BEHAVIOR FOR PROPER IE8 DISPLAY OF
-   COLUMN/GRID LAYOUTS
-   @see: ddTemplatesGridLayoutHelper();
-\* ========================================================================== */
-
-.clear-row {
-  clear: both;
 }
 
 /* ========================================================================== *\
    GUTTER LAYOUTS
 \* ========================================================================== */
 
-.gap-0 .view-content  { margin-left: 0; }
-.gap-0 .node-inner    { margin-left: 0; }
-.gap-10 .view-content { margin-left: -10px; }
-.gap-10 .node-inner   { margin-left:  10px; }
-.gap-15 .view-content { margin-left: -15px; }
-.gap-15 .node-inner   { margin-left:  15px; }
-.gap-20 .view-content { margin-left: -20px; }
-.gap-20 .node-inner   { margin-left:  20px; }
-.gap-25 .view-content { margin-left: -25px; }
-.gap-25 .node-inner   { margin-left:  25px; }
-.gap-30 .view-content { margin-left: -30px; }
-.gap-30 .node-inner   { margin-left:  30px; }
-.gap-35 .view-content { margin-left: -35px; }
-.gap-35 .node-inner   { margin-left:  35px; }
-.gap-40 .view-content { margin-left: -40px; }
-.gap-40 .node-inner   { margin-left:  40px; }
+.when-number-of-columns-increases-to(2, {
+  .gap-0 .view-content  { margin-left: 0; }
+  .gap-0 .node          { margin-left: 0; }
+  .gap-10 .view-content { margin-left: -10px; }
+  .gap-10 .node         { margin-left:  10px; }
+  .gap-15 .view-content { margin-left: -15px; }
+  .gap-15 .node         { margin-left:  15px; }
+  .gap-20 .view-content { margin-left: -20px; }
+  .gap-20 .node         { margin-left:  20px; }
+  .gap-25 .view-content { margin-left: -25px; }
+  .gap-25 .node         { margin-left:  25px; }
+  .gap-30 .view-content { margin-left: -30px; }
+  .gap-30 .node         { margin-left:  30px; }
+  .gap-35 .view-content { margin-left: -35px; }
+  .gap-35 .node         { margin-left:  35px; }
+  .gap-40 .view-content { margin-left: -40px; }
+  .gap-40 .node         { margin-left:  40px; }
+});
 
 /* ========================================================================== *\
    FIELD IMAGE WIDTH HELPER CLASSES
 \* ========================================================================== */
 
-.fiw-25 .field-image  { max-width: 25% !important; }
-.fiw-40 .field-image  { max-width: 40% !important; }
-.fiw-50 .field-image  { max-width: 50% !important; }
-.fiw-60 .field-image  { max-width: 60% !important; }
-.fiw-75 .field-image  { max-width: 75% !important; }
-.fiw-100 .field-image { max-width:100% !important; }
+.when-number-of-columns-increases-to(2, {
+  .fiw-25 .field-image { max-width: 25% !important; }
+  .fiw-30 .field-image { max-width: 30% !important; }
+  .fiw-35 .field-image { max-width: 35% !important; }
+});
+
+.when-number-of-columns-increases-to(3, {
+  .fiw-40 .field-image { max-width: 40% !important; }
+  .fiw-50 .field-image { max-width: 50% !important; }
+  .fiw-60 .field-image { max-width: 60% !important; }
+  .fiw-75 .field-image { max-width: 75% !important; }
+});
+
+.fiw-100 .field-image { max-width: 100% !important; }
 
 /* ========================================================================== *\
    FIELD IMAGE FLOAT HELPER CLASSES
 \* ========================================================================== */
 
-.fif-lt .field-image {
+.float-image-left() {
   float: left;
   margin-left: 0;
   margin-right: 20px;
 }
 
-.fif-rt .field-image {
+.float-image-right() {
   float: right;
   margin-right: 0;
   margin-left: 20px;
+}
+
+.fif-lt .field-image {
+  .when-number-of-columns-increases-to(3, {
+    float: left;
+    margin-left: 0;
+    margin-right: 20px;
+  });
+}
+
+.fif-rt .field-image {
+  .when-number-of-columns-increases-to(3, {
+    float: right;
+    margin-right: 0;
+    margin-left: 20px;
+  });
 }
 
 .fif-no .field-image {
   float: none;
   margin-left: 0;
   margin-right: 0;
+}
+
+.fif-lt {
+  &.fiw-25,
+  &.fiw-30,
+  &.fiw-35 {
+    .field-image {
+      .when-number-of-columns-increases-to(2, {
+        .float-image-left();
+      });
+    }
+  }
+
+  &.fiw-40,
+  &.fiw-50,
+  &.fiw-60,
+  &.fiw-75 {
+    .field-image {
+      .when-number-of-columns-increases-to(3, {
+        .float-image-left();
+      });
+    }
+  }
+}
+
+.fif-rt {
+  &.fiw-25,
+  &.fiw-30,
+  &.fiw-35 {
+    .field-image {
+      .when-number-of-columns-increases-to(2, {
+        .float-image-right();
+      });
+    }
+  }
+
+  &.fiw-40,
+  &.fiw-50,
+  &.fiw-60,
+  &.fiw-75 {
+    .field-image {
+      .when-number-of-columns-increases-to(3, {
+        .float-image-right();
+      });
+    }
+  }
 }

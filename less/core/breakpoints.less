@@ -1,0 +1,86 @@
+/**
+ * Expands the given rules for each of the responsive breakpoints, while making
+ * the following variables available to the ruleset:
+ *
+ * @number-of-columns
+ *   The number of columns in the layout.
+ * @column-width
+ *   The width of the each of the columns. (This is a global variable, actually.)
+ * @gutter-size
+ *   The width of the gutter between the columns.
+ *
+ * @param ruleset @rules
+ *   The rules to expand for each breakpoint.
+ */
+.for-each-breakpoint(@rules) {
+  // Start a new scope so our variables don't leak into the scope of the caller.
+  // (Which actually causes it to malfunction in rare cases, such as when
+  // nesting mixins that have rulesets as parameters.)
+  & {
+    // Defaults for all breakpoints.
+    @number-of-columns: 1;
+    @gutter-size: 40px;
+
+    // Special variable used by .when-number-of-columns-increases-to mixin.
+    @number-of-columns-increases-to: 0;
+
+    // Baseline.
+    & {
+      @gutter-size: 10px;
+      @number-of-columns-increases-to: 1;
+      @rules();
+    }
+
+    // Fit two columns with 12px gutter and 14px sides for landscape Samsung
+    // Galaxy S3/4/5.
+    @media (min-width: @breakpoint-1) {
+      @number-of-columns: 2;
+      @gutter-size: 12px;
+      @number-of-columns-increases-to: 2;
+      @rules();
+    }
+
+    // Fit two columns with the standard gutter.
+    @media (min-width: @breakpoint-2) {
+      @number-of-columns: 2;
+      @rules();
+    }
+
+    // Fit three columns with 30px gutter and 32px sides for landscape iPad.
+    @media (min-width: @breakpoint-3) {
+      @number-of-columns: 3;
+      @gutter-size: 30px;
+      @number-of-columns-increases-to: 3;
+      @rules();
+    }
+
+    // Fit three columns with the standard gutter.
+    @media (min-width: @breakpoint-4) {
+      @number-of-columns: 3;
+      @rules();
+    }
+  }
+}
+
+/**
+ * Wraps the given rules in the media query for the breakpoint at which the
+ * number of columns increases to the given number of columns.
+ *
+ * @param integer @number-of-columns
+ *   The number of columns for the breakpoint.
+ * @param ruleset @rules
+ *   The rules to wrap for the breakpoint.
+ */
+.when-number-of-columns-increases-to(@number-of-columns, @rules) {
+  .for-each-breakpoint({
+    & when (@number-of-columns-increases-to = @number-of-columns) {
+      // Sabotage some of the variables from .for-each-breakpoint, since they
+      // should not be used in these rules (since e.g. the gutter size may
+      // change if the number of columns stay the same.)
+      @gutter-size: "error";
+      @number-of-columns-increases-to: "error";
+
+      @rules();
+    }
+  });
+}

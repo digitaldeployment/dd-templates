@@ -10,12 +10,18 @@ html {
 body {
   width: 100%;
   font-size: 100%;
-  background-color: #CCC;
+  background-color: #eee;
   text-rendering: optimizeLegibility;
 }
 
 body, caption, th, td, input, textarea, select, option, legend, fieldset, button {
   font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
+}
+
+// For IE9+ and other older browsers, which don't support the recently added
+// main element yet. See http://www.sitepoint.com/html5-main-element/
+main {
+  display: block;
 }
 
 h1, h2, h3, h4, h5 {

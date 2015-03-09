@@ -2,13 +2,18 @@
    COMMON ELEMENTS
 \* ========================================================================== */
 
+.channel, .subterm, .node {
+  float: none;
+  width: auto;
+}
+
 .channel, .subterm, .block, .node, .messages {
   font-family: @F1;
 }
 
 /* FONT AND LINE HEIGHT SIZING */
 
-#page, #very-top, #closure-blocks {
+.page, .above-page, .below-page {
   font-size: unit(@base_font_size, px);
   line-height: 1.5;
 }

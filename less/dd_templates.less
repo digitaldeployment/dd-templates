@@ -1,14 +1,17 @@
 // Load Dependencies
-
 @import '../../includes/mixins';
 
-// Font Path
-
-@dd_templates_font_path: '/sites/default/themes/dtheme/dd_templates/fonts';
+// Core
+@import 'core/breakpoints-config';
+@import 'core/breakpoints';
 
 // Image Path
 
 @dd_templates_image_path: '/sites/default/themes/dtheme/dd_templates/images';
+
+// Font Path
+
+@dd_templates_font_path: '/sites/default/themes/dtheme/dd_templates/fonts';
 
 // Base Font Size
 
@@ -92,13 +95,15 @@
 
 // Regions Components
 
-@dd_templates_regions: header, footer;
+@dd_templates_regions: page, header, footer;
 
+@dd_templates_regions_page: true;
 @dd_templates_regions_header: true;
 @dd_templates_regions_footer: true;
 
-.dd_templates_regions(header) when (@dd_templates_regions_header = true) { @import 'regions/header'; }
-.dd_templates_regions(footer) when (@dd_templates_regions_footer = true) { @import 'regions/footer'; }
+.dd_templates_regions(page) when (@dd_templates_regions_page = true) { @import 'regions/page'; }
+.dd_templates_regions(header) when (@dd_templates_regions_header = true) { @import 'regions/page-header'; }
+.dd_templates_regions(footer) when (@dd_templates_regions_footer = true) { @import 'regions/page-footer'; }
 
 // Views Components
 

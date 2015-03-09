@@ -3,19 +3,15 @@ define(['jquery'], function($) {
   var defaults = {
     photoGalleryPID: 107,
     behaviors: {
-      fullNodeRelatedLinks: true,
       bundledReferringContent: true,
       fullNodeRelocateContactInfo: true,
       lexiconGlossary: true,
       subtermOverviews: true,
       nodeMeta: true,
-      relatedLinks: true,
       imageCaptions: true,
       slideshowIcons: true,
       tableZebraStrips: true,
-      ieClearColumnRows: true,
-      firstVisibleNavterm: true,
-      moveUpperMetaAboveUpperImage: true
+      ieClearColumnRows: true
     }
   };
 
@@ -70,13 +66,10 @@ define(['jquery'], function($) {
         ],
         global: [
           'nodeMeta',
-          'relatedLinks',
           'imageCaptions',
           'slideshowIcons',
           'tableZebraStrips',
-          'ieClearColumnRows',
-          'firstVisibleNavterm',
-          'moveUpperMetaAboveUpperImage'
+          'ieClearColumnRows'
         ]
       };
 
@@ -93,13 +86,15 @@ define(['jquery'], function($) {
      * appearing in the node-sidebar if certain conditions are met.
      */
     fullNodeRelatedLinks: function(context) {
-      var $nodeFull = $('#node-full', context),
-          $nodeFields = $('#block-digitaldcore-node_fields', context),
-          $relatedLinks = $nodeFull.find('.node-links'),
-          $blockTitle = $nodeFields.find('.block-title'),
-          $titleText = $blockTitle.find('.block-title-text'),
-          numLinks = $relatedLinks.find('.link-related, .link-file, .link-twitter').length,
-          title = $titleText.text();
+      var $nodeFull = $('#node-full', context);
+      var $nodeLinks = $nodeFull.find('.node-links');
+      var $relatedLinks = $nodeLinks.find('ul.links');
+      var numLinks = $relatedLinks.find('.link-related, .link-file').length;
+      // right sidebar related links
+      var $nodeFields = $('#block-digitaldcore-node_fields', _.context);
+      var $blockTitle = $nodeFields.find('.block-title');
+      var $titleText = $blockTitle.find('.block-title-text');
+      var title = $titleText.text();
 
       // Set the default title if one doesn't exist already, if it does, use that
       if (!title.length) {
@@ -107,7 +102,8 @@ define(['jquery'], function($) {
       }
 
       // Add a Related Links block title to the node links
-      $relatedLinks.prepend($blockTitle.clone());
+      $blockTitle = $blockTitle.clone();
+      $nodeLinks.prepend($blockTitle);
 
       if (numLinks) {
         // Add a helper class to the blocks to control block title display
@@ -121,16 +117,15 @@ define(['jquery'], function($) {
        *        block on the admin/dd/dd_classes configuration page
        * @example: global|block-digitaldcore-node_fields>expanding-links
        */
-      if ($nodeFields.is('.expanding-links')) {
+      if ($nodeFull.is('.expanding-links')) {
         // Adds accordion style behavior to pages with little content and
         // contain 3 or more links
-        if ($nodeFull.height() <= 600 || numLinks >= 3) {
-          var $bt = $nodeFields.find('.block-title'),
-              $nodeLinks = $nodeFields.find('.node-links'),
-              $link = $('<a href="#"></a>'),
-              $icon = $('<i class="icon"></i>'),
-              $text = $('<span class="link-text">' + title + '</span>'),
-              $numLink = $('<span class="num-links">(' + numLinks + ')</span>');
+        if (numLinks >= 3) {
+          var $bt = $nodeLinks.find('.block-title'),
+            $link = $('<a href="#"></a>'),
+            $icon = $('<i class="icon"></i>'),
+            $text = $('<span class="link-text">' + title + '</span>'),
+            $numLink = $('<span class="num-links">(' + numLinks + ')</span>');
 
           // Create an accordion heading instance to control the display of the
           // related links
@@ -139,7 +134,7 @@ define(['jquery'], function($) {
           $bt.addClass('accordion-heading').html($link);
 
           // hide the links to start things off
-          $nodeLinks.hide();
+          $relatedLinks.hide();
 
           // Click handler to control the display of the related links
           $bt.click(function(event) {
@@ -148,12 +143,18 @@ define(['jquery'], function($) {
             // collapse links
             if (isActive) {
               $blockTitle.removeClass('active');
-              $nodeLinks.stop(true,true).animate({opacity: 'hide', height: 'hide'}, 250);
+              $relatedLinks.stop(true, true).animate({
+                opacity: 'hide',
+                height: 'hide'
+              }, 250);
             }
             // expand links
             else {
               $blockTitle.addClass('active');
-              $nodeLinks.stop(true,true).animate({opacity: 'show', height: 'show'}, 500);
+              $relatedLinks.stop(true, true).animate({
+                opacity: 'show',
+                height: 'show'
+              }, 500);
             }
           });
         }
@@ -182,19 +183,6 @@ define(['jquery'], function($) {
       $contactInfo.insertAfter($nodeLinks);
     },
     /**
-     * Always have node upper meta at the very top of the node markup if node upper
-     * image position is used.
-     * TODO: Move this to a site setting controlling the node render of all teasers
-     */
-    moveUpperMetaAboveUpperImage: function(context) {
-      var $upperImages = $('.node .node-upper-image', context);
-      $upperImages.each(function() {
-        var $node = $(this).parents('.node'),
-            $upperMeta = $node.find('.node-upper-meta');
-        $(this).insertAfter($upperMeta);
-      });
-    },
-    /**
      * Finds the real last meta item and identifies node of visible meta info
      */
     nodeMeta: function(context) {
@@ -217,22 +205,6 @@ define(['jquery'], function($) {
       });
     },
     /**
-     * Helper class for theming related links sitewide.
-     */
-    relatedLinks: function(context) {
-      var $nodes = $('.node', context);
-      $nodes.each(function() {
-        var $links = $(this).find('.link-related, .link-file');
-        $links.each(function() {
-          var $link = $(this).find('a');
-          // wrap contents within a container
-          $link.wrapInner('<span class="link-text-wrapper"></span>');
-          // add an icon
-          $link.prepend('<i class="icon"></i>');
-        });
-      });
-    },
-    /**
      * Field image caption control
      */
     imageCaptions: function(context) {
@@ -249,10 +221,12 @@ define(['jquery'], function($) {
         $link.append('<span class="caption">' + $image.attr('title') + '</span>');
         // Sets the container link a maximum width so the caption doesn't expand
         // bigger than the image width
-        var imgWidth = $image.attr('width');
-        if (imgWidth && imgWidth > 0) {
-          $link.css('max-width', imgWidth + 'px');
-        }
+        // TODO: Work on if this is necessary or not anymore?
+        // Maybe do a IE only check instead if that's the only damn browser that doesn't display the caption correctly
+        //var imgWidth = $image.attr('width');
+        //if (imgWidth && imgWidth > 0) {
+        //  $link.css('max-width', imgWidth + 'px');
+        //}
       });
     },
     /**
@@ -279,14 +253,6 @@ define(['jquery'], function($) {
      */
     subtermOverviews: function(context) {
       $('.subterm-overview .node-teaser', context).removeClass('no-more').addClass('has-more');
-    },
-    /**
-     * Figure out first visible navigation term and add a classname for proper theme
-     */
-    firstVisibleNavterm: function(context) {
-      $('.navbar a.depth-1', context).not('.hidden').filter(':first').addClass(
-        'first-visible'
-      );
     },
     /**
      * Helper function to theme the category letters and seperate the sections
