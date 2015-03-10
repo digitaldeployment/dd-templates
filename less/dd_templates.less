@@ -121,10 +121,8 @@
 
 // Blocks Components
 
-@dd_templates_blocks: headerlinks, logo, search, navigation, breadcrumb, pods, overviews, bundled-content, related-profiles, term-navigation, appearing-navigation, dd-social, node-sidebar, node-contacts, footerlinks;
+@dd_templates_blocks: search, navigation, breadcrumb, pods, overviews, bundled-content, related-profiles, term-navigation, appearing-navigation, dd-social, node-sidebar, node-contacts;
 
-@dd_templates_blocks_headerlinks: true;
-@dd_templates_blocks_logo: true;
 @dd_templates_blocks_search: true;
 @dd_templates_blocks_navigation: true;
 @dd_templates_blocks_breadcrumb: true;
@@ -137,10 +135,7 @@
 @dd_templates_blocks_dd_social: true;
 @dd_templates_blocks_node_sidebar: true;
 @dd_templates_blocks_node_contacts: true;
-@dd_templates_blocks_footerlinks: true;
 
-.dd_templates_blocks(headerlinks) when (@dd_templates_blocks_headerlinks = true) { @import 'blocks/headerlinks'; }
-.dd_templates_blocks(logo) when (@dd_templates_blocks_logo = true) { @import 'blocks/logo'; }
 .dd_templates_blocks(search) when (@dd_templates_blocks_search = true) { @import 'blocks/search'; }
 .dd_templates_blocks(navigation) when (@dd_templates_blocks_navigation = true) { @import 'blocks/navigation'; }
 .dd_templates_blocks(breadcrumb) when (@dd_templates_blocks_breadcrumb = true) { @import 'blocks/breadcrumb'; }
@@ -153,7 +148,6 @@
 .dd_templates_blocks(dd-social) when (@dd_templates_blocks_dd_social = true) { @import 'blocks/dd-social'; }
 .dd_templates_blocks(node-sidebar) when (@dd_templates_blocks_node_sidebar = true) { @import 'blocks/node-sidebar'; }
 .dd_templates_blocks(node-contacts) when (@dd_templates_blocks_node_contacts = true) { @import 'blocks/node-contacts'; }
-.dd_templates_blocks(footerlinks) when (@dd_templates_blocks_footerlinks = true) { @import 'blocks/footerlinks'; }
 
 // A loop for loading each less file as part of a set
 .dd_templates_factory(@type, @components, @total, @index: 1) when (@index =< @total) {
