@@ -15,7 +15,7 @@ define(['jquery'], function($) {
       tableZebraStrips: true,
       ieClearColumnRows: true,
       firstVisibleNavterm: true,
-      moveUpperMetaAboveUpperImage: true
+      moveUpperMetaAboveUpperImage: false // [deprecated] changing node-post.tpl template instead
     }
   };
 
@@ -184,7 +184,6 @@ define(['jquery'], function($) {
     /**
      * Always have node upper meta at the very top of the node markup if node upper
      * image position is used.
-     * TODO: Move this to a site setting controlling the node render of all teasers
      */
     moveUpperMetaAboveUpperImage: function(context) {
       var $upperImages = $('.node .node-upper-image', context);
