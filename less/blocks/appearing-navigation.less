@@ -3,47 +3,16 @@
 \* ========================================================================== */
 
 .appearing-nav {
-  #nav-back a {
-    position: relative;
-    margin-left: -10px;
-    padding: 10px;
-    font-size: @base_font_size;
-    line-height: 1;
-    background-color: @C1;
-    color: white;
-    .transition(background-color 0.3s ease-out);
+  .block-title {
+    &:extend(.sidebar-title);
+  }
 
-    &:before {
-      content: '';
-      display: block;
-      position: absolute;
-      left: -12px;
-      top: 0;
-      width: 0;
-      height: 0;
-      margin-left: 0;
-      border-top: 17px solid transparent;
-      border-right: 12px solid @C1;
-      border-bottom: 17px solid transparent;
-      .transition(border-right 0.3s ease-out);
-    }
-
-    &:hover {
-      background-color: @C2;
-
-      &:before {
-        border-right-color: @C2;
-      }
-    }
+  #nav-back {
+    display: none;
   }
 
   .small {
-    padding-bottom: 5px;
-    border-bottom: 1px solid @C10;
-    font-size: 0.786em; /* 11px */
-    line-height: 1em; /* 11px */
-    text-transform: uppercase;
-    color: @C8;
+    display: none;
   }
 
   ul.links {
@@ -57,11 +26,12 @@
     }
 
     li a {
-      margin: 0 0 0 12px;
+      margin: 0;
       padding: 5px 0;
-      border-bottom: 1px solid @C10;
-      line-height: 1.214em;
-      color: @C8;
+      border-top: 1px solid #eee;
+      border-bottom: none;
+      line-height: 1.2;
+      color: @C6;
 
       &:hover {
         color: @C1;
