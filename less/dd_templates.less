@@ -53,7 +53,7 @@
 
 // Core Components
 
-@dd_templates_core: common, layout, elements, meta, tables, webforms, links, file-attachments, read-more-links, accordions, slideshow, pager, tab, glossary;
+@dd_templates_core: common, layout, elements, meta, tables, webforms, links, file-attachments, read-more-links, accordions, slideshow, site-identity, pager, tab, glossary;
 
 @dd_templates_core_common: true;
 @dd_templates_core_layout: true;
@@ -66,6 +66,7 @@
 @dd_templates_core_read_more_links: true;
 @dd_templates_core_accordions: true;
 @dd_templates_core_slideshow: true;
+@dd_templates_core_site_identity: true;
 @dd_templates_core_pager: true;
 @dd_templates_core_tabs: true;
 @dd_templates_core_glossary: true;
@@ -81,6 +82,7 @@
 .dd_templates_core(read-more-links) when (@dd_templates_core_read_more_links = true) { @import 'core/read-more-links'; }
 .dd_templates_core(accordions) when (@dd_templates_core_accordions = true) { @import 'core/accordions'; }
 .dd_templates_core(slideshow) when (@dd_templates_core_slideshow = true) { @import 'core/slideshow'; }
+.dd_templates_core(site-identity) when (@dd_templates_core_site_identity = true) { @import 'core/site-identity'; }
 .dd_templates_core(pager) when (@dd_templates_core_pager = true) { @import 'core/pager'; }
 .dd_templates_core(tab) when (@dd_templates_core_tabs = true) { @import 'core/tabs'; }
 .dd_templates_core(glossary) when (@dd_templates_core_glossary = true) { @import 'core/glossary'; }
