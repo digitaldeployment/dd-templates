@@ -97,15 +97,11 @@
 
 // Regions Components
 
-@dd_templates_regions: page, header, footer;
+@dd_templates_regions: page;
 
 @dd_templates_regions_page: true;
-@dd_templates_regions_header: true;
-@dd_templates_regions_footer: true;
 
 .dd_templates_regions(page) when (@dd_templates_regions_page = true) { @import 'regions/page'; }
-.dd_templates_regions(header) when (@dd_templates_regions_header = true) { @import 'regions/page-header'; }
-.dd_templates_regions(footer) when (@dd_templates_regions_footer = true) { @import 'regions/page-footer'; }
 
 // Views Components
 
