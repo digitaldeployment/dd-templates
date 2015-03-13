@@ -3,13 +3,12 @@ define(['jquery'], function($) {
   var defaults = {
     photoGalleryPID: 107,
     behaviors: {
+      relatedLinks: true,
       fullNodeRelatedLinks: true,
       bundledReferringContent: true,
-      fullNodeRelocateContactInfo: true,
       lexiconGlossary: true,
       subtermOverviews: true,
       nodeMeta: true,
-      relatedLinks: true,
       imageCaptions: true,
       slideshowIcons: true,
       tableZebraStrips: true
@@ -58,8 +57,7 @@ define(['jquery'], function($) {
       var behaviors = {
         node: [
           'fullNodeRelatedLinks',
-          'bundledReferringContent',
-          'fullNodeRelocateContactInfo'
+          'bundledReferringContent'
         ],
         term: [
           'lexiconGlossary',
@@ -82,76 +80,31 @@ define(['jquery'], function($) {
       return true;
     },
     /**
-     * Creates a header for the node full related links section if there are related
-     * links present. This behavior also adds accordion type functionality to links
-     * appearing in the node-sidebar if certain conditions are met.
+     * Helper class for theming related links sitewide.
+     */
+    relatedLinks: function(context) {
+      var $nodes = $('.node', context);
+      $nodes.each(function() {
+        var $links = $(this).find('.link-related, .link-file');
+        $links.each(function() {
+          var $link = $(this).find('a');
+          // wrap contents within a container
+          $link.wrapInner('<span class="link-text-wrapper"></span>');
+          // add an icon
+          $link.prepend('<i class="icon"></i>');
+        });
+      });
+    },
+    /**
+     * Sets the block to show if one or more links are found
      */
     fullNodeRelatedLinks: function(context) {
-      var $nodeFull = $('#node-full', context);
-      var $nodeLinks = $nodeFull.find('.node-links');
-      var $relatedLinks = $nodeLinks.find('ul.links');
-      var numLinks = $relatedLinks.find('.link-related, .link-file').length;
-      // right sidebar related links
       var $nodeFields = $('#block-digitaldcore-node_fields',context);
-      var $blockTitle = $nodeFields.find('.block-title');
-      var $titleText = $blockTitle.find('.block-title-text');
-      var title = $titleText.text();
-
-      // Set the default title if one doesn't exist already, if it does, use that
-      if (!title.length) {
-        $titleText.text('Related Links');
-      }
-
-      // Add a Related Links block title to the node links
-      $blockTitle = $blockTitle.clone();
-      $nodeLinks.prepend($blockTitle);
+      var $relatedLinks = $nodeFields.find('.node-links');
+      var numLinks = $relatedLinks.find('.link-related, .link-file').length;
 
       if (numLinks) {
-        // Add a helper class to the block to control the block title display
-        $nodeFull.addClass('has-links');
-      }
-
-      /**
-       * Enable expanding links only if the classname has been passed to the block
-       * @info: Manually add this classname to the #block-digitaldcore-node_fields
-       *        block on the admin/dd/dd_classes configuration page
-       * @example: global|block-digitaldcore-node_fields>expanding-links
-       */
-      if ($nodeFull.is('.expanding-links') && numLinks >= 3) {
-        // Adds accordion style behavior to pages with 3 or more links
-        var $bt = $nodeLinks.find('.block-title'),
-          $link = $('<a href="#"></a>'),
-          $icon = $('<i class="icon"></i>'),
-          $text = $('<span class="link-text">' + title + '</span>'),
-          $numLink = $('<span class="num-links">(' + numLinks + ')</span>');
-
-        // Create an accordion heading instance to control the display of the
-        // related links
-        $text.append($numLink);
-        $link.append($icon, $text);
-        $bt.addClass('accordion-heading active').html($link);
-
-        // Click handler to control the display of the related links
-        $bt.click(function(event) {
-          event.preventDefault();
-          var isActive = $blockTitle.is('.active');
-          // collapse links
-          if (isActive) {
-            $blockTitle.removeClass('active');
-            $relatedLinks.stop(true, true).animate({
-              opacity: 'hide',
-              height: 'hide'
-            }, 250);
-          }
-          // expand links
-          else {
-            $blockTitle.addClass('active');
-            $relatedLinks.stop(true, true).animate({
-              opacity: 'show',
-              height: 'show'
-            }, 500);
-          }
-        });
+        $relatedLinks.addClass('has-links');
       }
     },
     /**
@@ -166,15 +119,6 @@ define(['jquery'], function($) {
           $block.addClass('placeholder-block');
         }
       });
-    },
-    /**
-     * Reposition contact information appearing in the node-sidebar to be below the
-     * related links.
-     */
-    fullNodeRelocateContactInfo: function(context) {
-      var $contactInfo = $('#node-sidebar .node-contact', context),
-          $nodeLinks = $('#node-sidebar .node-links', context);
-      $contactInfo.insertAfter($nodeLinks);
     },
     /**
      * Finds the real last meta item and identifies node of visible meta info
@@ -196,22 +140,6 @@ define(['jquery'], function($) {
           $node.addClass('has-meta');
           $visible.filter(':last').addClass('last');
         }
-      });
-    },
-    /**
-     * Helper class for theming related links sitewide.
-     */
-    relatedLinks: function(context) {
-      var $nodes = $('.node', context);
-      $nodes.each(function() {
-        var $links = $(this).find('.link-related, .link-file');
-        $links.each(function() {
-          var $link = $(this).find('a');
-          // wrap contents within a container
-          $link.wrapInner('<span class="link-text-wrapper"></span>');
-          // add an icon
-          $link.prepend('<i class="icon"></i>');
-        });
       });
     },
     /**
