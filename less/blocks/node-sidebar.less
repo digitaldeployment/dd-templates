@@ -7,15 +7,6 @@
     display: none;
   }
 
-  .block-title {
-    display: none;
-    margin-bottom: 0.778em;
-    padding-top: 10px;
-    border-top: 1px solid @C8;
-    font-size: unit(18/@base_font_size, em);
-    line-height: 1.5;
-  }
-
   .node-image,
   .node-upper-meta {
     display: none;
@@ -31,8 +22,7 @@
   .node-contact {
     margin-top: 10px;
     margin-bottom: 0;
-    border-bottom: none;
-    border-top: 1px solid @C8;
+    border: none;
   }
 
   .node-contact-wrapper {
@@ -42,35 +32,11 @@
 
   .node-links {
     clear: both;
-    display: none;
     margin-bottom: 0;
-  }
+    display: none;
 
-  &.has-links .node-links,
-  &.has-links .block-title {
-    display: block;
-  }
-}
-
-.expanding-links {
-  .block-title {
-    overflow: visible;
-
-    a {
-      color: @C1;
-      text-decoration: none;
-    }
-
-    .link-text {
-      margin-left: 24px;
-      white-space: nowrap;
-      font-size: 16px;
-
-      .num-links {
-        display: inline;
-        padding-left: 0.3em;
-        font-size: 0.8em;
-      }
+    &.has-links {
+      display: block;
     }
   }
 }
