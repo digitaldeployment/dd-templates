@@ -5,10 +5,10 @@
 // Responsive breakpoint container
 
 .layout {
-  position: relative;
-  margin: 0 auto;
-  font-size: 1em;
-  text-align: left;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: @gutter-left-width;
+  padding-right: @gutter-right-width;
   .for-each-breakpoint({ width: @number-of-columns * @column-width + (@number-of-columns - 1) * @gutter-size; });
 
   &:before,
@@ -20,55 +20,4 @@
   &:after {
     clear: both;
   }
-}
-
-// Set sitewide content layout
-
-#content,
-#sidebar-left,
-#sidebar-right {
-  margin-bottom: 20px; // TODO: make this a variable
-  .when-number-of-columns-increases-to(3, {
-    float: left;
-  });
-}
-
-// Content with left sidebar
-
-#sidebar-left {
-  .when-number-of-columns-increases-to(2, {
-    float: left;
-    width: 35%; // TODO: make this a variable
-  });
-  .when-number-of-columns-increases-to(3, {
-    width: 25%; // TODO: make this a variable
-  });
-}
-
-.sidebar-left #content {
-  .when-number-of-columns-increases-to(3, {
-    width: 75%; // TODO: make this a variable
-  });
-}
-
-// Content with right sidebar
-
-#sidebar-right {
-  .when-number-of-columns-increases-to(3, {
-    width: 25%; // TODO: make this a variable
-  });
-}
-
-.sidebar-right #content {
-//  .when-number-of-columns-increases-to(3, {
-//    width: 75%; // TODO: make this a variable
-//  });
-}
-
-// Content with both sidebars
-
-.two-sidebars #content {
-  .when-number-of-columns-increases-to(3, {
-    width: 50%; // TODO: make this a variable
-  });
 }

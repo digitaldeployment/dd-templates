@@ -1,33 +1,135 @@
 /* ========================================================================== *\
-   PAGE
+   PAGE MARKUP SCAFFOLD
+   ==========================================================================
+   .above-page
+   .page
+     - .page-header
+     - .page-main
+       - .page-top
+       - .page-center
+         - .page-left
+         - .page-content
+         - .page-right
+       - .page-bottom
+     - .page-footer
+   .below-page
 \* ========================================================================== */
 
-.page {
+// PAGE, ABOVE, & BELOW
 
-}
-
-.page-inner {
-  background-color: white;
-}
-
-.page-center {
+.page,
+.above-page,
+.below-page {
   position: relative;
-  padding: 0 35px; // TODO: Make this a variable
-  .box-sizing(border-box);
 }
 
-.page-right {
-  .page-sidebar {
-    .when-number-of-columns-increases-to(3, {
-      margin-left: 35px // TODO: Make this a variable
-    });
-  }
+// PAGE HEADER, MAIN, & FOOTER
+
+.page-header,
+.page-main,
+.page-footer {
+  position: relative;
 }
+
+.page-header { z-index: 3; }
+.page-main   { z-index: 2; }
+.page-footer { z-index: 1; }
+
+// PAGE TOP, CENTER, & BOTTOM
+
+.page-top,
+.page-center,
+.page-bottom {
+  position: relative;
+}
+
+.page-top    { z-index: 3; }
+.page-center { z-index: 2; }
+.page-bottom { z-index: 1; }
+
+// PAGE LEFT, CONTENT, & RIGHT
+
+.page-left,
+.page-content,
+.page-right {
+  position: relative;
+}
+
+.page-left    { z-index: 3; }
+.page-content { z-index: 2; }
+.page-right   { z-index: 1; }
+
+// PAGE LAYOUT
+
+.page-content,
+.page-left,
+.page-right {
+  width: 100%;
+  margin-top: @gutter-top-height;
+  margin-bottom: @gutter-bottom-height;
+
+  .when-number-of-columns-increases-to(3, {
+    float: left;
+  });
+}
+
+// Content with left sidebar
 
 .page-left {
+  z-index: 2;
+
+  .when-number-of-columns-increases-to(2, {
+    float: left;
+    width: @sidebar-left-width-at-2-columns;
+  });
+
+  .when-number-of-columns-increases-to(3, {
+    width: @sidebar-left-width-at-3-columns;
+  });
+
   .page-sidebar {
     .when-number-of-columns-increases-to(2, {
-      margin-right: 35px // TODO: Make this a variable
+      margin-right: @gutter-left-width;
     });
   }
+}
+
+.sidebar-left .page-content {
+  .when-number-of-columns-increases-to(3, {
+    width: 100% - @sidebar-left-width-at-3-columns;
+  });
+}
+
+// Content with right sidebar
+
+.page-right {
+  .when-number-of-columns-increases-to(3, {
+    width: @sidebar-right-width;
+  });
+
+  .page-sidebar {
+    .when-number-of-columns-increases-to(3, {
+      margin-left: @gutter-right-width;
+    });
+  }
+}
+
+.sidebar-right .page-content {
+  .when-number-of-columns-increases-to(3, {
+    width: 100% - @sidebar-right-width;
+  });
+}
+
+// Content with both sidebars
+
+.two-sidebars .page-content {
+  .when-number-of-columns-increases-to(3, {
+    width: 100% - (@sidebar-right-width + @sidebar-left-width-at-3-columns);
+  });
+}
+
+// Since we float the left, content, and right regions we need to clear them here
+
+.page-center {
+  .clearfix();
 }
