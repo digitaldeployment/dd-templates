@@ -4,6 +4,7 @@ define(['jquery'], function($) {
     photoGalleryPID: 107,
     behaviors: {
       relatedLinks: true,
+      itemAppearsIn: true,
       fullNodeRelatedLinks: true,
       bundledReferringContent: true,
       lexiconGlossary: true,
@@ -56,6 +57,7 @@ define(['jquery'], function($) {
       var self = this;
       var behaviors = {
         node: [
+          'itemAppearsIn',
           'fullNodeRelatedLinks',
           'bundledReferringContent'
         ],
@@ -94,6 +96,16 @@ define(['jquery'], function($) {
           $link.prepend('<i class="icon"></i>');
         });
       });
+    },
+    /**
+     * Helper class for theming the appearing navigation block
+     */
+    itemAppearsIn: function(context) {
+      var $appearingNav = $('.appearing-nav', context);
+      var $links = $appearingNav.find('ul.links li');
+      if ($links.length) {
+        $appearingNav.addClass('has-links');
+      }
     },
     /**
      * Sets the block to show if one or more links are found
