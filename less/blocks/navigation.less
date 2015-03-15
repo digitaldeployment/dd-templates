@@ -73,11 +73,20 @@ ul.nice-menu {
     display: block;
     position: relative;
     padding: 10px;
+    border-top: 1px solid #eee;
+    background-color: transparent;
     color: @C2;
+    .transition(background-color 0.3s ease-out);
 
     &:hover {
-      color: @C1;
+      background-color: @C1;
+      color: white;
     }
+  }
+
+  a.menu-link.active {
+    background-color: darken(@C1, 10%);
+    color: white;
   }
 
   // dmodel.css override
@@ -102,7 +111,8 @@ ul.nice-menu {
 
     ul ul {
       top: 0;
-      left: 241px;
+      left: 240px;
+      border-left: 1px solid lighten(@C2, 10%);
     }
 
     ul.depth-3 {
@@ -131,14 +141,21 @@ ul.nice-menu {
       background-color: @C2;
       color: white;
       .transition(background-color 0.3s ease-out);
-
-      &:hover {
-        background-color: @C1;
-        color: white;
-      }
     }
 
-    a.menu-link.depth-1 {
+    a.menu-link.active,
+    li.active-trail > a.menu-link {
+      background-color: darken(@C1, 10%);
+      color: white;
+    }
+
+    li:hover > a,
+    a.menu-link:hover {
+      background-color: @C1;
+      color: white;
+    }
+
+    li a.menu-link.depth-1 {
       margin: 10px 0;
       padding: 0 10px;
       border-top: none;
