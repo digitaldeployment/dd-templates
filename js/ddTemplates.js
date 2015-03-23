@@ -285,7 +285,7 @@ define(['jquery'], function($) {
     firstVisibleNavterm: function(context) {
       $('.navbar a.depth-1', context).not('.hidden').filter(':first').addClass(
         'first-visible'
-      );
+      ).parents('.navbar').addClass('ready');
     },
     /**
      * Helper function to theme the category letters and seperate the sections
