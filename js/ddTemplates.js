@@ -161,22 +161,24 @@ define(['jquery'], function($) {
       // Identifies an image that should have a caption added
       $('.field-image img[title]', context).each(function() {
         var $image = $(this);
-        var $field = $image.parents('.field-image');
-        var $link = $field.find('a');
-        // delete the existing caption if it exists
-        $field.find('.caption').remove();
-        // Add a helper class for theming
-        $field.addClass('has-caption');
-        // Add the caption to the link
-        $link.append('<span class="caption">' + $image.attr('title') + '</span>');
-        // Sets the container link a maximum width so the caption doesn't expand
-        // bigger than the image width
-        // TODO: Work on if this is necessary or not anymore?
-        // Maybe do a IE only check instead if that's the only damn browser that doesn't display the caption correctly
-        //var imgWidth = $image.attr('width');
-        //if (imgWidth && imgWidth > 0) {
-        //  $link.css('max-width', imgWidth + 'px');
-        //}
+        var caption = $image.attr('title');
+        // Continue processing this title isn't an empty string
+        if (caption.length) {
+          var $field = $image.parents('.field-image');
+          var $link = $field.find('a');
+          // delete the existing caption if it exists
+          $field.find('.caption').remove();
+          // Add a helper class for theming
+          $field.addClass('has-caption');
+          // Add the caption to the link
+          $link.append('<span class="caption">' + caption + '</span>');
+          // Sets the container link a maximum width so the caption doesn't expand
+          // bigger than the image width
+          //var imgWidth = $image.attr('width');
+          //if (imgWidth && imgWidth > 0) {
+          //  $link.css('max-width', imgWidth + 'px');
+          //}
+        }
       });
     },
     /**
