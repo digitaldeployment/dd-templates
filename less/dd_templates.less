@@ -1,9 +1,8 @@
 // Load Dependencies
-@import '../../includes/mixins';
+@import 'tools/mixins';
+@import 'tools/easing';
 
 // Core
-@import 'core/breakpoints-config';
-@import 'core/breakpoints';
 @import 'core/resets';
 @import 'core/oop';
 
@@ -56,8 +55,10 @@
 
 // Core Components
 
-@dd_templates_core: common, layout, elements, meta, tables, webforms, links, file-attachments, read-more-links, accordions, slideshow, site-identity, pager, tab, glossary;
+@dd_templates_core: breakpoints, breakpoints-config, common, layout, elements, meta, tables, webforms, links, file-attachments, read-more-links, accordions, slideshow, site-identity, pager, tab, glossary;
 
+@dd_templates_core_breakpoints: true;
+@dd_templates_core_breakpoints_config: true;
 @dd_templates_core_common: true;
 @dd_templates_core_layout: true;
 @dd_templates_core_elements: true;
@@ -74,6 +75,8 @@
 @dd_templates_core_tabs: true;
 @dd_templates_core_glossary: true;
 
+.dd_templates_core(breakpoints) when (@dd_templates_core_breakpoints = true) { @import 'core/breakpoints'; }
+.dd_templates_core(breakpoints-config) when (@dd_templates_core_breakpoints_config = true) { @import 'core/breakpoints-config'; }
 .dd_templates_core(common) when (@dd_templates_core_common = true) { @import 'core/common'; }
 .dd_templates_core(layout) when (@dd_templates_core_layout = true) { @import 'core/layout'; }
 .dd_templates_core(elements) when (@dd_templates_core_elements = true) { @import 'core/elements'; }
