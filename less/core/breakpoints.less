@@ -1,4 +1,34 @@
 /**
+ * Breakpoints configuration
+ */
+
+// All columns are 300px wide, always, due to standard ad sizes.
+@column-width: 300px;
+
+// Standard content gutter (this is the area that separates the columns,
+// not the edges) The idea here is the container is centered using margins and
+// creates a width combining the number of columns width and the needed spacing
+// between them.
+@standard-gutter: 40px;
+
+// Fit two columns with 12px gutter and 14px sides for landscape Samsung
+// Galaxy S3/4/5.
+@breakpoint-1: 640px;
+@breakpoint-gutter-1: 12px;
+
+// Fit two columns with the standard gutter.
+@breakpoint-2: 720px;
+@breakpoint-gutter-2: 40px;
+
+// Fit three columns with 30px gutter and 32px sides for landscape iPad.
+@breakpoint-3: 1024px;
+@breakpoint-gutter-3: 30px;
+
+// Fit three columns with the standard gutter.
+@breakpoint-4: 1060px;
+@breakpoint-gutter-4: 40px;
+
+/**
  * Expands the given rules for each of the responsive breakpoints, while making
  * the following variables available to the ruleset:
  * 
@@ -19,7 +49,7 @@
   & {
     // Defaults for all breakpoints.
     @number-of-columns: 1;
-    @gutter-size: 40px;
+    @gutter-size: @standard-gutter;
 
     // Special variable used by .when-number-of-columns-increases-to mixin.
     @number-of-columns-increases-to: 0;
@@ -35,7 +65,7 @@
     // Galaxy S3/4/5.
     @media (min-width: @breakpoint-1) {
       @number-of-columns: 2;
-      @gutter-size: 12px;
+      @gutter-size: @breakpoint-gutter-1;
       @number-of-columns-increases-to: 2;
       @rules();
     }
@@ -43,13 +73,14 @@
     // Fit two columns with the standard gutter.
     @media (min-width: @breakpoint-2) {
       @number-of-columns: 2;
+      @gutter-size: @breakpoint-gutter-2;
       @rules();
     }
 
     // Fit three columns with 30px gutter and 32px sides for landscape iPad.
     @media (min-width: @breakpoint-3) {
       @number-of-columns: 3;
-      @gutter-size: 30px;
+      @gutter-size: @breakpoint-gutter-3;
       @number-of-columns-increases-to: 3;
       @rules();
     }
@@ -57,6 +88,7 @@
     // Fit three columns with the standard gutter.
     @media (min-width: @breakpoint-4) {
       @number-of-columns: 3;
+      @gutter-size: @breakpoint-4;
       @rules();
     }
   }

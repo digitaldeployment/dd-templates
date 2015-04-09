@@ -7,18 +7,10 @@
 .layout {
   margin-left: auto;
   margin-right: auto;
-  padding-left: 10px;
-  padding-right: 10px;
 
   .for-each-breakpoint({
     width: @number-of-columns * @column-width + (@number-of-columns - 1) * @gutter-size;
   });
-
-  .when-number-of-columns-increases-to(3, {
-    padding-left: @gutter-left-width;
-    padding-right: @gutter-right-width;
-  });
-
 
   &:before,
   &:after {
