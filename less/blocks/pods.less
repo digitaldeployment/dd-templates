@@ -5,30 +5,30 @@
 .pods {
   margin-bottom: 40px;
 
-  .views-row-odd {
-    .node {
-      background-color: @C1;
-      .transition(background-color 0.3s ease-out);
+  .views-row {
+    margin-bottom: 20px;
+  }
 
-      &:hover {
-        background-color: lighten(@C1, 7%);
-      }
+  .views-row-odd {
+    background-color: @C1;
+    .transition(background-color 0.3s ease-out);
+
+    &:hover {
+      background-color: lighten(@C1, 7%);
     }
   }
 
   .views-row-even {
-    .node {
-      background-color: @C2;
-      .transition(background-color 0.3s ease-out);
+    background-color: @C2;
+    .transition(background-color 0.3s ease-out);
 
-      &:hover {
-        background-color: lighten(@C2, 7%);
-      }
+    &:hover {
+      background-color: lighten(@C2, 7%);
     }
   }
 
   .node {
-    margin-bottom: 20px;
+    margin-bottom: 0;
   }
 
   .node-inner {
@@ -117,23 +117,20 @@
 .when-number-of-columns-increases-to(2, {
   .pods {
     .view-content {
-      margin-left: -30px;
+      margin-left: -10%/3;
       font-size: 0;
       // Flex options
       .flexbox(); // sets the display to flex
+      .flex-flow(wrap row); // sets the orientation to a row and has the items wrap accordingly
+      .justify-content(center); // centers the content within the block
     }
 
     .views-row {
       display: inline-block;
-      width: 100%/3;
-      max-width: 50%; // prevents a single pod from taking up the entire width
-      padding-left: 30px;
-      .box-sizing(border-box);
+      width: 30%;
+      margin-left: 10%/3;
       vertical-align: top;
       font-size: @base_font_size;
-      // Flex options
-      .flexbox(); // sets the display to flex
-      .flex(1);   // sets the proper width for the items
     }
   }
 
@@ -153,9 +150,7 @@
     .views-row {
       display: block;
       width: 100%;
-      max-width: inherit;
-      padding-left: inherit;
-      .flex(none);
+      margin-left: inherit;
     }
   }
 });
