@@ -3,30 +3,23 @@
 .opacity(@opacity) {
   @ieo: @opacity * 100;
   opacity: @opacity;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=@{ieo})";
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=@{ieo})"; // IE 8 Support
 }
 
 .transform(@arguments) {
   -webkit-transform: @arguments;
-     -moz-transform: @arguments;
-      -ms-transform: @arguments;
+      -ms-transform: @arguments; // IE 9 Support
           transform: @arguments;
 }
 
 .transition(@arguments) {
   -webkit-transition: @arguments;
-     -moz-transition: @arguments;
           transition: @arguments;
 }
 
 .box-sizing(@type: border-box) {
   -webkit-box-sizing: @type;
-     -moz-box-sizing: @type;
           box-sizing: @type;
-}
-
-.box-shadow(@arguments) {
-  box-shadow: @arguments;
 }
 
 // FLEXBOX HELPERS
@@ -34,16 +27,14 @@
 // @ref: https://css-tricks.com/snippets/css/a-guide-to-flexbox/
 
 .flexbox() {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
+  display: -webkit-box;  // OLD - iOS 6-, Safari 3.1-6
+  display: -ms-flexbox;  // TWEENER - IE 10
+  display: -webkit-flex; // NEW - Chrome
+  display: flex;         // NEW, Spec - Opera 12.1, Firefox 20+
 }
 
 .flex(@values) {
   -webkit-box-flex: @values;
-  -moz-box-flex: @values;
   -webkit-flex: @values;
   -ms-flex: @values;
   flex: @values;
@@ -51,10 +42,27 @@
 
 .order(@val) {
   -webkit-box-ordinal-group: @val;
-  -moz-box-ordinal-group: @val;
   -ms-flex-order: @val;
   -webkit-order: @val;
   order: @val;
+}
+
+.flex-flow(@values) {
+  -webkit-flex-flow: @values;
+  -ms-flex-flow: @values;
+  flex-flow: @values;
+}
+
+.justify-content(@value) {
+  -webkit-justify-content: @value;
+  -ms-justify-content: @value;
+  justify-content: @value;
+}
+
+.align-items(@value) {
+  -webkit-align-items: @value;
+  -ms-align-items: @value;
+  align-items: @value;
 }
 
 // MIXIN CLASSES
