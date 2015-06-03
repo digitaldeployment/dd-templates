@@ -7,7 +7,6 @@
   &:before {
     display: none;
     .attachments-font();
-    color: @C1;
 
     // Default link
     .link &,
@@ -20,7 +19,7 @@
     // XML
     .file-application-xml & { content: @attachments-file-xml; }
     // ZIP
-    .file-application-zip & { content: @attachments-file-zip; color: #333; }
+    .file-application-zip & { content: @attachments-file-zip; }
     // MS Apps
     .file-application-pdf & { content: @attachments-file-pdf; color: #F91916; }
     .file-application-msword & { content: @attachments-file-word; color: #2A5699; }
@@ -31,13 +30,13 @@
     // Image
     .file-image-gif &,
     .file-image-png &,
-    .file-image-jpeg & { content: @attachments-image; color: #6495ED; }
+    .file-image-jpeg & { content: @attachments-image; }
     // Music
-    .file-audio-mpeg & { content: @attachments-music; color: black; }
+    .file-audio-mpeg & { content: @attachments-music; }
     // Movie
     .file-video-mpg &,
     .file-video-mpeg &,
-    .file-video-quicktime & { content: @attachments-film; color: #333; }
+    .file-video-quicktime & { content: @attachments-film; }
   }
 }
 
