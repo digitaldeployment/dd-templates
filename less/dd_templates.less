@@ -107,17 +107,19 @@
 
 // Views Components
 
-@dd_templates_views: full, terms, subterms, calendar;
+@dd_templates_views: full, terms, subterms, calendar, search;
 
 @dd_templates_views_full: true;
 @dd_templates_views_terms: true;
 @dd_templates_views_subterms: true;
 @dd_templates_views_calendar: true;
+@dd_templates_views_search: true;
 
 .dd_templates_views(full) when (@dd_templates_views_full = true) { @import 'views/full'; }
 .dd_templates_views(terms) when (@dd_templates_views_terms = true) { @import 'views/terms'; }
 .dd_templates_views(subterms) when (@dd_templates_views_subterms = true) { @import 'views/subterms'; }
 .dd_templates_views(calendar) when (@dd_templates_views_calendar = true) { @import 'views/calendar'; }
+.dd_templates_views(search) when (@dd_templates_views_search = true) { @import 'views/search'; }
 
 // Blocks Components
 
