@@ -2,6 +2,15 @@
    COMMON ELEMENTS
 \* ========================================================================== */
 
+// This class is used to hide items offscreen eg. Skip to main content link for
+// website accessibility.
+
+.offscreen {
+  position: absolute;
+  top: -9999px;
+  left: 0;
+}
+
 .channel, .subterm, .node {
   float: none;
   width: auto;
