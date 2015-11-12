@@ -1,11 +1,5 @@
 // CSS3 MIXINS: for cross browser compatibility
 
-.opacity(@opacity) {
-  @ieo: @opacity * 100;
-  opacity: @opacity;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=@{ieo})"; // IE 8 Support
-}
-
 .transform(@arguments) {
   -webkit-transform: @arguments;
       -ms-transform: @arguments; // IE 9 Support
