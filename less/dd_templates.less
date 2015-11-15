@@ -2,9 +2,6 @@
 @import 'tools/mixins';
 @import 'tools/easing';
 
-// Core
-@import 'core/resets';
-
 // Image Path
 
 @dd_templates_image_path: '/sites/default/themes/dtheme/dd_templates/images';
@@ -52,8 +49,9 @@
 
 // Core Components
 
-@dd_templates_core: breakpoints, common, layout, elements, meta, tables, webforms, links, file-attachments, read-more-links, accordions, slideshow, site-identity, pager, tab, glossary;
+@dd_templates_core: resets, breakpoints, common, layout, elements, meta, tables, webforms, links, file-attachments, read-more-links, accordions, slideshow, gallery, site-identity, pager, tab, glossary;
 
+@dd_templates_core_resets: true;
 @dd_templates_core_breakpoints: true;
 @dd_templates_core_common: true;
 @dd_templates_core_layout: true;
@@ -71,6 +69,7 @@
 @dd_templates_core_tabs: true;
 @dd_templates_core_glossary: true;
 
+.dd_templates_core(resets) when (@dd_templates_core_resets = true) { @import 'core/resets'; }
 .dd_templates_core(breakpoints) when (@dd_templates_core_breakpoints = true) { @import 'core/breakpoints'; }
 .dd_templates_core(common) when (@dd_templates_core_common = true) { @import 'core/common'; }
 .dd_templates_core(layout) when (@dd_templates_core_layout = true) { @import 'core/layout'; }
