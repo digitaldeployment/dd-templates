@@ -1,5 +1,7 @@
 define(['jquery'], function($) {
 
+  'use strict';
+
   var defaults = {
     photoGalleryPID: 107,
     behaviors: {
@@ -11,8 +13,7 @@ define(['jquery'], function($) {
       subtermOverviews: true,
       nodeMeta: true,
       imageCaptions: true,
-      slideshowIcons: true,
-      tableZebraStrips: true
+      slideshowIcons: true
     }
   };
 
@@ -69,8 +70,7 @@ define(['jquery'], function($) {
           'nodeMeta',
           'relatedLinks',
           'imageCaptions',
-          'slideshowIcons',
-          'tableZebraStrips'
+          'slideshowIcons'
         ]
       };
 
@@ -213,19 +213,6 @@ define(['jquery'], function($) {
       $('#glossary', context).find('.lexicon-list > a').each(function() {
         var letter = $(this).attr('id').replace('letter_', '');
         $(this).html(letter.toUpperCase());
-      });
-    },
-    /**
-     * Adds odd and even row classes to tables paving the way for proper theming in
-     * addition to adding cross browser support since the :nth-child() pseudo
-     * selector isn't available in IE 8
-     */
-    tableZebraStrips: function(context) {
-      $('.node-content table', context).each(function() {
-        var $table = $(this);
-        $table.find('tr').removeClass('odd even');
-        $table.find('tr:nth-child(odd)').addClass('odd');
-        $table.find('tr:nth-child(even)').addClass('even');
       });
     }
   };
