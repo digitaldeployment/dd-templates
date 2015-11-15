@@ -66,28 +66,25 @@
 .page-left,
 .page-right {
   width: 100%;
-  margin-top: @gutter-top-height;
-  margin-bottom: @gutter-bottom-height;
+  margin-top: 20px;
+  margin-bottom: 20px;
 
   .when-number-of-columns-increases-to(3, {
     float: left;
+    margin-top: @gutter-top-height;
+    margin-bottom: @gutter-bottom-height;
   });
 }
 
 // Content with left sidebar
 
 .page-left {
-  .when-number-of-columns-increases-to(2, {
-    float: left;
-    width: @sidebar-left-width-at-2-columns;
-  });
-
   .when-number-of-columns-increases-to(3, {
-    width: @sidebar-left-width-at-3-columns;
+    width: @sidebar-left-width;
   });
 
   .page-sidebar {
-    .when-number-of-columns-increases-to(2, {
+    .when-number-of-columns-increases-to(3, {
       margin-right: @standard-gutter;
     });
   }
@@ -95,7 +92,7 @@
 
 .sidebar-left .page-content {
   .when-number-of-columns-increases-to(3, {
-    width: 100% - @sidebar-left-width-at-3-columns;
+    width: 100% - @sidebar-left-width;
   });
 }
 
