@@ -1,89 +1,251 @@
 /* ========================================================================== *\
-   TERM NAVIGATION
+   TERM NAVIGATION MENU: MOBILE & TABLET VERSION
 \* ========================================================================== */
 
-.term-nav {
-  margin-left: 0;
-
-  ul,
-  li {
-    overflow: visible;
-  }
-
-  .menu-block-2 > ul {
-    margin-left: 18px;
-
-    .when-number-of-columns-increases-to(3, {
-      margin-left: 0;
-    });
-  }
-
-  ul ul a       { margin-left: 18px; }
-  ul ul ul a    { margin-left: 36px; }
-  ul ul ul ul a { margin-left: 54px; }
-
-  .block-title {
-    font-size: 1em;
-  }
-
-  .block-title a,
-  .block-title a.depth-2,
-  .block-title a.depth-3 {
-    padding: 0 0 5px;
-    border-bottom: 1px solid #eee;
-    font-size: 1em;
-    line-height: 1.5em;
-    text-transform: uppercase;
-    letter-spacing: normal;
-    color: @C6;
-  }
-
-  .block-title a:hover,
-  .block-title a.depth-2:hover,
-  .block-title a.depth-3:hover {
-    color: @C1;
-  }
-
-  .block-title a.active {
-    color: @C2;
-    font-weight: bold;
-  }
-
-  .menu a {
+@media (max-width: 1023px) {
+  .term-nav {
     position: relative;
-    padding: 5px 0;
-    border-bottom: 1px solid @C9;
-    line-height: 1.214em;
-    color: @C6;
-  }
+    z-index: 1;
+    margin-left: 0;
+    text-align: center;
 
-  .menu a:hover {
-    color: @C1;
-  }
+    ul {
+      margin: 0;
+      padding: 0;
+    }
 
-  .menu a.active {
-    color: @C2;
-    font-weight: bold;
-  }
+    li {
+      list-style: none;
+    }
 
-  .menu .collapsed > a:before,
-  .menu .expanded > a:before {
-    .chevron-font();
-    position: absolute;
-    top: 50%;
-    left: -24px;
-    width: 24px;
-    height: 24px;
-    font-size: 24px;
-    margin-top: -12px;
-    color: @C1;
-  }
+    .block-inner {
+      position: relative;
+      z-index: 1;
+      display: block;
+    }
 
-  .menu .collapsed > a:before {
-    content: @chevron-right-light;
-  }
+    // LIST ITEM DROPDOWN TRIGGER/BUTTON
+    .block-title {
+      margin-bottom: 0;
 
-  .menu .expanded > a:before {
-    content: @chevron-down-light;
+      a {
+        position: relative;
+        display: block;
+        padding: 5px 10px 5px 45px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        font-size: 15px;
+        line-height: 21px;
+        text-align: left;
+        letter-spacing: normal;
+        cursor: pointer;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+
+        &:before {
+          .chevron-font();
+          content: @chevron-down-normal;
+          position: absolute;
+          top: 6px;
+          left: 0;
+          bottom: 5px;
+          width: 32px;
+          height: auto;
+          font-size: 32px;
+          line-height: 18px;
+          border-right: 1px solid #ccc;
+        }
+
+        &:after {
+          content: ' Menu';
+        }
+
+        // We need to show this even if it's a hidden term because it controls
+        // the dropdown menu.
+
+        &.hidden {
+          display: block !important;
+        }
+
+        // Dynamically created element to control the dropdown menu functionality
+
+        .hotspot {
+          position: absolute;
+          display: block;
+          z-index: 1;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+        }
+      }
+
+      span {
+        display: inline;
+      }
+    }
+
+    // DROPDOWN MENU
+
+    .menu-name-primary-links > .menu {
+      position: absolute;
+      z-index: 1000;
+      top: 32px;
+      left: 0;
+      width: 100%;
+      max-height: 0;
+      overflow: hidden;
+      border-radius: 0 0 3px 3px;
+      background-color: #777;
+      .box-sizing(border-box);
+      .transition(all 0.5s ease-out);
+
+      a {
+        display: block;
+        margin: 0;
+        padding: 8px 10px;
+        text-align: left;
+        font-size: 16px;
+        line-height: 1;
+        border-top: 1px solid #777;
+        border-bottom: 0;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        background-color: grey;
+        color: white;
+      }
+
+      a.active {
+        background-color: @C2;
+      }
+
+      a:active {
+        color: @C2;
+      }
+
+      .active-trail > a:not(.active) {
+        color: @C2;
+      }
+
+      ul a {
+        padding-left: 20px;
+      }
+
+      ul ul a {
+        padding-left: 40px;
+      }
+
+      ul ul ul a {
+        padding-left: 60px;
+      }
+    }
+
+    // EXPANDED STYLING
+
+    &.expanded {
+      .block-title a {
+        border-radius: 3px 3px 0 0;
+      }
+
+      .menu-name-primary-links > .menu {
+        max-height: 1000px;
+      }
+    }
+  }
+}
+
+/* ========================================================================== *\
+   TERM NAVIGATION MENU: DESKTOP VERSION
+\* ========================================================================== */
+
+@media (min-width: 1024px) {
+  .term-nav {
+    margin-left: 0;
+
+    ul,
+    li {
+      overflow: visible;
+    }
+
+    .menu-block-2 > ul {
+      margin-left: 18px;
+      .when-number-of-columns-increases-to(3, { margin-left: 0; });
+    }
+
+    ul ul a       { margin-left: 18px; }
+    ul ul ul a    { margin-left: 36px; }
+    ul ul ul ul a { margin-left: 54px; }
+
+    .block-title {
+      margin-bottom: 0;
+      padding-top: 0;
+      border-top: 0;
+      font-size: 1em;
+    }
+
+    .block-title a,
+    .block-title a.depth-2,
+    .block-title a.depth-3 {
+      padding: 0 0 5px;
+      border-bottom: 1px solid #eee;
+      font-size: 1em;
+      font-weight: normal;
+      line-height: 1.5em;
+      text-transform: uppercase;
+      letter-spacing: normal;
+      color: grey;
+    }
+
+    .block-title a:hover,
+    .block-title a.depth-2:hover,
+    .block-title a.depth-3:hover {
+      color: @C1;
+    }
+
+    .block-title a.active {
+      color: @C2;
+      font-weight: bold;
+    }
+
+    .menu a {
+      position: relative;
+      padding: 5px 0;
+      border-bottom: 1px solid #eee;
+      font-weight: normal;
+      line-height: 1.214em;
+      color: grey;
+    }
+
+    .menu a:hover {
+      color: @C1;
+    }
+
+    .menu a.active {
+      color: @C2;
+      font-weight: bold;
+    }
+
+    .menu .collapsed > a:before,
+    .menu .expanded > a:before {
+      .chevron-font();
+      position: absolute;
+      top: 50%;
+      left: -24px;
+      width: 24px;
+      height: 24px;
+      font-size: 24px;
+      margin-top: -12px;
+      color: grey;
+    }
+
+    .menu .collapsed > a:before {
+      content: @chevron-right-light;
+    }
+
+    .menu .expanded > a:before {
+      content: @chevron-down-light;
+    }
   }
 }
