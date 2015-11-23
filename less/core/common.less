@@ -121,6 +121,10 @@ body.n .page-right {
 
 .node-meta {
   display: none;
+  // Show on full post view since we're moving the meta down below the header
+  .node-full & {
+    display: block;
+  }
 }
 
 .meta .event-date {
