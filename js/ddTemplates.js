@@ -141,16 +141,20 @@ define(['jquery'], function($) {
         // Create a meta object
         var $node = $(this),
             $meta = $node.find('.node-upper-meta'),
-            $items = $meta.find('.meta-item'),
-            $visible = $items.filter(':visible');
+            $items = $meta.find('.meta-item');
 
         // Clean up last classname
         $items.removeClass('last');
 
+        // Get all visible meta items
+        var $visible = $items.map(function() {
+          return $(this).css('display') !== 'none' ? this : null;
+        });
+
         // Correctly identify last meta item and label node with the has-meta flag
         if ($visible.length) {
           $node.addClass('has-meta');
-          $visible.filter(':last').addClass('last');
+          $visible.filter(':last').addClass('last new-dd-templates-functionality');
         }
       });
     },
