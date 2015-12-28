@@ -169,11 +169,7 @@
       overflow: visible;
     }
 
-    .menu-block-2 > ul {
-      margin-left: 18px;
-      .when-number-of-columns-increases-to(3, { margin-left: 0; });
-    }
-
+    ul            { margin-left:    0; }
     ul ul a       { margin-left: 18px; }
     ul ul ul a    { margin-left: 36px; }
     ul ul ul ul a { margin-left: 54px; }
@@ -227,24 +223,27 @@
       font-weight: bold;
     }
 
-    .menu .collapsed > a:before,
-    .menu .expanded > a:before {
-      .chevron-font();
-      position: absolute;
-      top: 50%;
-      left: -24px;
-      width: 24px;
-      height: 24px;
-      font-size: 24px;
-      margin-top: -12px;
-      color: grey;
+    .menu .expanded > a,
+    .menu .collapsed > a {
+      padding-right: 24px;
+      &:after {
+        .chevron-font();
+        position: absolute;
+        top: 50%;
+        right: 0;
+        width: 24px;
+        height: 24px;
+        font-size: 24px;
+        margin-top: -12px;
+        color: grey;
+      }
     }
 
-    .menu .collapsed > a:before {
+    .menu .collapsed > a:after {
       content: @chevron-right-light;
     }
 
-    .menu .expanded > a:before {
+    .menu .expanded > a:after {
       content: @chevron-down-light;
     }
   }
