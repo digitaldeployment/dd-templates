@@ -11,6 +11,11 @@ body {
   width: 100%;
   font-size: 100%;
   text-rendering: optimizeLegibility;
+
+  // Set the WYSIWYG editor to display the default font the site is using
+  &.node-content {
+    font-family: @F1;
+  }
 }
 
 body, caption, th, td, input, textarea, select, option, legend, fieldset, button {
