@@ -1,0 +1,46 @@
+/* ========================================================================== *\
+   EXPANDING DATES
+\* ========================================================================== */
+
+// dynamically created show all dates activation link
+
+.all-dates-link {
+  position: relative;
+  text-decoration: underline;
+  color: @C1;
+
+  &.meta-item {
+    padding-right: 30px;
+  }
+
+  &:after {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    content: '+';
+    font-size: 1.5em;
+    .transition(all 0.3s linear);
+
+    .show-all-dates & {
+      .transform(rotate(45deg));
+    }
+  }
+}
+
+// dynamically created dates wrapper
+
+.all-dates {
+  height: 0;
+  overflow: hidden;
+
+  .show-all-dates & {
+    height: auto;
+  }
+
+  .meta-item {
+    display: block;
+    margin: 10px 0;
+    padding: 0;
+    border: 0;
+  }
+}

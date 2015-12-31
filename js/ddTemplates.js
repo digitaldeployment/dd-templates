@@ -13,7 +13,8 @@ define(['jquery'], function($) {
       subtermOverviews: true,
       nodeMeta: true,
       imageCaptions: true,
-      slideshowIcons: true
+      slideshowIcons: true,
+      expandingDates: true
     }
   };
 
@@ -70,7 +71,8 @@ define(['jquery'], function($) {
           'nodeMeta',
           'relatedLinks',
           'imageCaptions',
-          'slideshowIcons'
+          'slideshowIcons',
+          'expandingDates'
         ]
       };
 
@@ -156,6 +158,44 @@ define(['jquery'], function($) {
           $node.addClass('has-meta');
           $visible.filter(':last').addClass('last new-dd-templates-functionality');
         }
+      });
+    },
+    /**
+     * If there is more than two event dates, functionality is added to show and
+     * hide all events within one container.
+     *
+     * Helps cleans up the look of meta data.
+     *
+     * @note:
+     *   This is only enabled for blocks with the 'posts' classname and all
+     *   full post views
+     */
+    expandingDates: function(context) {
+      $('.posts .node, .node-full', context).each(function(i, node) {
+        var $meta = $('.node-meta, .node-upper-meta', node);
+        $meta.each(function(i, meta) {
+          var $meta = $(meta);
+          var $dates = $('.event-date', node);
+          if ($dates.length > 2) {
+            // Create and add functionality to display all other dates
+            var $link = $('<a class="meta-item all-dates-link" href="#">Show all dates</a>');
+            $link.bind('click', function(event) {
+              event.preventDefault();
+              $meta.toggleClass('show-all-dates');
+              $(this).text(
+                $meta.is('.show-all-dates')
+                  ? 'Hide all dates'
+                  : 'Show all dates'
+              );
+            });
+            $link.insertBefore($dates.eq(0));
+
+            // Move all other dates
+            var $container = $('<div class="all-dates"></div>');
+            $dates.appendTo($container);
+            $meta.append($container);
+          }
+        });
       });
     },
     /**
