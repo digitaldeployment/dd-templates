@@ -52,7 +52,7 @@
 
 // Core Components
 
-@dd_templates_core: resets, breakpoints, common, layout, elements, meta, tables, webforms, links, file-attachments, read-more-links, expanding-dates, accordions, slideshow, gallery, site-identity, pager, tab, glossary;
+@dd_templates_core: resets, breakpoints, common, layout, elements, meta, tables, webforms, links, file-attachments, read-more-links, expanding-dates, accordions, slideshow, gallery, site-identity, pager, tab, glossary, lightbox;
 
 @dd_templates_core_resets: true;
 @dd_templates_core_breakpoints: true;
@@ -73,6 +73,7 @@
 @dd_templates_core_pager: true;
 @dd_templates_core_tabs: true;
 @dd_templates_core_glossary: true;
+@dd_templates_core_lightbox: true;
 
 .dd_templates_core(resets) when (@dd_templates_core_resets = true) { @import 'core/resets'; }
 .dd_templates_core(breakpoints) when (@dd_templates_core_breakpoints = true) { @import 'core/breakpoints'; }
@@ -93,6 +94,7 @@
 .dd_templates_core(pager) when (@dd_templates_core_pager = true) { @import 'core/pager'; }
 .dd_templates_core(tab) when (@dd_templates_core_tabs = true) { @import 'core/tabs'; }
 .dd_templates_core(glossary) when (@dd_templates_core_glossary = true) { @import 'core/glossary'; }
+.dd_templates_core(lightbox) when (@dd_templates_core_lightbox = true) { @import 'core/lightbox'; }
 
 // Modules Components
 
