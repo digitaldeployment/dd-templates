@@ -38,6 +38,7 @@
   // Node Image or Upper Image
 
   .slick-slider {
+    margin-top: 20px;
     margin-bottom: 20px;
   }
 
@@ -82,12 +83,14 @@
 
   .slick-next,
   .slick-prev {
-    top: 0;
+    z-index: 1;
     width: 32px;
     height: 100%;
     margin-top: 0;
-    opacity: 0;
+    top: 0;
+    .transform(translate(0,0));
     .transition(opacity 0.2s linear);
+    opacity: 0;
 
     &:before,
     &:after {
