@@ -78,18 +78,50 @@
 }
 
 // Icons
-@attachments-console: "\e600";
-@attachments-earth: "\e601";
+@attachments-link: "\e600";
+@attachments-file-html: "\e601";
 @attachments-file-css: "\e602";
-@attachments-file-excel: "\e603";
-@attachments-file-html: "\e604";
-@attachments-file-pdf: "\e605";
-@attachments-file-powerpoint: "\e606";
-@attachments-file-word: "\e607";
-@attachments-file-xml: "\e608";
-@attachments-file-zip: "\e609";
-@attachments-film: "\e60a";
-@attachments-globe: "\e60b";
-@attachments-image: "\e60c";
-@attachments-link: "\e60d";
-@attachments-music: "\e60e";
+@attachments-file-xml: "\e603";
+@attachments-file-pdf: "\e604";
+@attachments-file-word: "\e605";
+@attachments-file-excel: "\e606";
+@attachments-file-powerpoint: "\e607";
+@attachments-image: "\e608";
+@attachments-film: "\e609";
+@attachments-music: "\e60a";
+@attachments-file-zip: "\e60b";
+@attachments-console: "\e60c";
+@attachments-speaker: "\e60d";
+
+/* ========================================================================== *\
+   SOCIAL SHARE FONT
+\* ========================================================================== */
+
+@font-face {
+  font-family: 'social-share';
+  src: url('@{dd_templates_font_path}/social-share.eot?z1g2f4');
+  src: url('@{dd_templates_font_path}/social-share.eot?z1g2f4#iefix') format('embedded-opentype'),
+       url('@{dd_templates_font_path}/social-share.woff2?z1g2f4') format('woff2'),
+       url('@{dd_templates_font_path}/social-share.ttf?z1g2f4') format('truetype'),
+       url('@{dd_templates_font_path}/social-share.woff?z1g2f4') format('woff'),
+       url('@{dd_templates_font_path}/social-share.svg?z1g2f4#social-share') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.social-share-font() {
+  font-family: 'social-share';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@social-share-facebook: "\66";
+@social-share-twitter: "\74";
+@social-share-linkedin: "\69";
+@social-share-googleplus: "\67";

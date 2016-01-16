@@ -3,6 +3,38 @@
 \* ========================================================================== */
 
 .pods {
+  margin-bottom: 40px;
+
+  .views-row {
+    margin-bottom: 20px;
+  }
+
+  .views-row-odd {
+    background-color: @C1;
+    .transition(background-color 0.3s ease-out);
+
+    &:hover {
+      background-color: lighten(@C1, 7%);
+    }
+  }
+
+  .views-row-even {
+    background-color: @C2;
+    .transition(background-color 0.3s ease-out);
+
+    &:hover {
+      background-color: lighten(@C2, 7%);
+    }
+  }
+
+  .node {
+    margin-bottom: 0;
+  }
+
+  .node-inner {
+    padding: 15px;
+  }
+
   .node-item {
     display: none;
   }
@@ -14,12 +46,21 @@
     display: block;
   }
 
+  .node-upper-image {
+    margin: -15px -15px 0 -15px;
+  }
+
+  .field-image {
+    margin-bottom: 15px;
+  }
+
   .node-header {
     font-size: 1.286em; /* 18px */
     line-height: 1.333; /* 24px */
 
     .title {
       color: #fff;
+      font-weight: bold;
     }
 
     .subtitle {
@@ -30,11 +71,11 @@
   }
 
   .link a {
-    color: #fff;
+    color: white;
   }
 
   .link a:hover {
-    color: #000;
+    color: black;
   }
 
   .node-links {
@@ -42,42 +83,21 @@
       display: none;
     }
   }
+
+  .node-webform {
+    label {
+      color: #333;
+    }
+  }
 }
-  /* ========================================================================== *\
-     PODS RIGHT
-  \* ========================================================================== */
+
+/* ========================================================================== *\
+   PODS RIGHT
+\* ========================================================================== */
 
 .pods-right {
   .node {
-    margin-bottom: 20px;
     padding-bottom: 0;
-  }
-
-  .views-row-odd {
-    .node-inner {
-      background-color: @C1;
-      &:hover {
-        background-color: darken(@C1, 10%);
-      }
-    }
-  }
-
-  .views-row-even {
-    .node-inner {
-      background-color: @C2;
-      &:hover {
-        background-color: darken(@C2, 10%);
-      }
-    }
-  }
-
-  .node-inner {
-    padding: 15px;
-    .transition(background-color 0.3s ease-out);
-  }
-
-  .node-upper-image {
-    margin: -15px -15px 0 -15px;
   }
 
   .node-header {
@@ -88,24 +108,49 @@
       font-size: 0.875em; /* 14px */
     }
   }
-
-  .field-image {
-    margin-bottom: 15px;
-  }
 }
 
 /* ========================================================================== *\
-   PODS BELOW
+   PODS
 \* ========================================================================== */
 
-.pods-below {
-  background-color: @C1;
+.when-number-of-columns-increases-to(2, {
+  .pods {
+    .view-content {
+      margin-left: -10%/3;
+      font-size: 0;
+      // Flex options
+      .flexbox(); // sets the display to flex
+      .flex-flow(wrap row); // sets the orientation to a row and has the items wrap accordingly
+      .justify-content(center); // centers the content within the block
+    }
 
-  .block-inner {
-    margin-top: 30px;
+    .views-row {
+      display: inline-block;
+      width: 30%;
+      margin-left: 10%/3;
+      vertical-align: top;
+      font-size: @base_font_size;
+    }
   }
 
-  .node {
-    margin-bottom: 30px;
+  .pods-right {
+    margin-bottom: 0;
   }
-}
+});
+
+.when-number-of-columns-increases-to(3, {
+  .pods-right {
+    .view-content {
+      display: inherit;
+      margin-left: inherit;
+      font-size: inherit;
+    }
+
+    .views-row {
+      display: block;
+      width: 100%;
+      margin-left: inherit;
+    }
+  }
+});

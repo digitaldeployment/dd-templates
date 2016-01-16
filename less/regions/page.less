@@ -1,0 +1,131 @@
+/* ========================================================================== *\
+   PAGE MARKUP SCAFFOLD
+   ==========================================================================
+   .above-page
+   .page
+     - .page-header
+     - .page-main
+       - .page-top
+       - .page-center
+         - .page-left
+         - .page-content
+         - .page-right
+       - .page-bottom
+     - .page-footer
+   .below-page
+\* ========================================================================== */
+
+// PAGE, ABOVE, & BELOW
+
+.page,
+.above-page,
+.below-page {
+  position: relative;
+}
+
+// PAGE HEADER, MAIN, & FOOTER
+
+.page-header,
+.page-main,
+.page-footer {
+  position: relative;
+  clear: both;
+}
+
+.page-header { z-index: 3; }
+.page-main   { z-index: 2; }
+.page-footer { z-index: 1; }
+
+// PAGE TOP, CENTER, & BOTTOM
+
+.page-top,
+.page-center,
+.page-bottom {
+  position: relative;
+}
+
+.page-top    { z-index: 3; }
+.page-center { z-index: 2; }
+.page-bottom { z-index: 1; }
+
+// PAGE LEFT, CONTENT, & RIGHT
+
+.page-left,
+.page-content,
+.page-right {
+  position: relative;
+}
+
+.page-left    { z-index: 3; }
+.page-content { z-index: 2; }
+.page-right   { z-index: 1; }
+
+// PAGE LAYOUT
+
+.page-content,
+.page-left,
+.page-right {
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  .when-number-of-columns-increases-to(3, {
+    float: left;
+    margin-top: @gutter-top-height;
+    margin-bottom: @gutter-bottom-height;
+  });
+}
+
+// Content with left sidebar
+
+.page-left {
+  .when-number-of-columns-increases-to(3, {
+    width: @sidebar-left-width;
+  });
+
+  .page-sidebar {
+    .when-number-of-columns-increases-to(3, {
+      margin-right: @standard-gutter;
+    });
+  }
+}
+
+.sidebar-left .page-content {
+  .when-number-of-columns-increases-to(3, {
+    width: 100% - @sidebar-left-width;
+  });
+}
+
+// Content with right sidebar
+
+.page-right {
+  .when-number-of-columns-increases-to(3, {
+    width: @sidebar-right-width;
+  });
+
+  .page-sidebar {
+    .when-number-of-columns-increases-to(3, {
+      margin-left: @standard-gutter;
+    });
+  }
+}
+
+.sidebar-right .page-content {
+  .when-number-of-columns-increases-to(3, {
+    width: 100% - @sidebar-right-width;
+  });
+}
+
+// Content with both sidebars
+
+.two-sidebars .page-content {
+  .when-number-of-columns-increases-to(3, {
+    width: 100% - (@sidebar-right-width + @sidebar-left-width-at-3-columns);
+  });
+}
+
+// Since we float the left, content, and right regions we need to clear them here
+
+.page-center {
+  .clearfix();
+}

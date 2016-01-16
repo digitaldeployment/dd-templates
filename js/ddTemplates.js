@@ -1,21 +1,20 @@
 define(['jquery'], function($) {
 
+  'use strict';
+
   var defaults = {
     photoGalleryPID: 107,
     behaviors: {
+      relatedLinks: true,
+      itemAppearsIn: true,
       fullNodeRelatedLinks: true,
       bundledReferringContent: true,
-      fullNodeRelocateContactInfo: true,
       lexiconGlossary: true,
       subtermOverviews: true,
       nodeMeta: true,
-      relatedLinks: true,
       imageCaptions: true,
       slideshowIcons: true,
-      tableZebraStrips: true,
-      ieClearColumnRows: true,
-      firstVisibleNavterm: true,
-      moveUpperMetaAboveUpperImage: false // [deprecated] changing node-post.tpl template instead
+      expandingDates: true
     }
   };
 
@@ -60,9 +59,9 @@ define(['jquery'], function($) {
       var self = this;
       var behaviors = {
         node: [
+          'itemAppearsIn',
           'fullNodeRelatedLinks',
-          'bundledReferringContent',
-          'fullNodeRelocateContactInfo'
+          'bundledReferringContent'
         ],
         term: [
           'lexiconGlossary',
@@ -73,10 +72,7 @@ define(['jquery'], function($) {
           'relatedLinks',
           'imageCaptions',
           'slideshowIcons',
-          'tableZebraStrips',
-          'ieClearColumnRows',
-          'firstVisibleNavterm',
-          'moveUpperMetaAboveUpperImage'
+          'expandingDates'
         ]
       };
 
@@ -88,75 +84,41 @@ define(['jquery'], function($) {
       return true;
     },
     /**
-     * Creates a header for the node full related links section if there are related
-     * links present. This behavior also adds accordion type functionality to links
-     * appearing in the node-sidebar if certain conditions are met.
+     * Helper class for theming related links sitewide.
+     */
+    relatedLinks: function(context) {
+      var $nodes = $('.node', context);
+      $nodes.each(function() {
+        var $links = $(this).find('.link-related, .link-file');
+        $links.each(function() {
+          var $link = $(this).find('a');
+          // wrap contents within a container
+          $link.wrapInner('<span class="link-text-wrapper"></span>');
+          // add an icon
+          $link.prepend('<i class="icon"></i>');
+        });
+      });
+    },
+    /**
+     * Helper class for theming the appearing navigation block
+     */
+    itemAppearsIn: function(context) {
+      var $appearingNav = $('.appearing-nav', context);
+      var $links = $appearingNav.find('ul.links li');
+      if ($links.length) {
+        $appearingNav.addClass('has-links');
+      }
+    },
+    /**
+     * Sets the block to show if one or more links are found
      */
     fullNodeRelatedLinks: function(context) {
-      var $nodeFull = $('#node-full', context),
-          $nodeFields = $('#block-digitaldcore-node_fields', context),
-          $relatedLinks = $nodeFull.find('.node-links'),
-          $blockTitle = $nodeFields.find('.block-title'),
-          $titleText = $blockTitle.find('.block-title-text'),
-          numLinks = $relatedLinks.find('.link-related, .link-file, .link-twitter').length,
-          title = $titleText.text();
-
-      // Set the default title if one doesn't exist already, if it does, use that
-      if (!title.length) {
-        $titleText.text('Related Links');
-      }
-
-      // Add a Related Links block title to the node links
-      $relatedLinks.prepend($blockTitle.clone());
+      var $nodeFields = $('#block-digitaldcore-node_fields',context);
+      var $relatedLinks = $nodeFields.find('.node-links');
+      var numLinks = $relatedLinks.find('.link-related, .link-file').length;
 
       if (numLinks) {
-        // Add a helper class to the blocks to control block title display
-        $nodeFull.addClass('has-links');
-        $nodeFields.addClass('has-links');
-      }
-
-      /**
-       * Enable expanding links only if the classname has been passed to the block
-       * @info: Manually add this classname to the #block-digitaldcore-node_fields
-       *        block on the admin/dd/dd_classes configuration page
-       * @example: global|block-digitaldcore-node_fields>expanding-links
-       */
-      if ($nodeFields.is('.expanding-links')) {
-        // Adds accordion style behavior to pages with little content and
-        // contain 3 or more links
-        if ($nodeFull.height() <= 600 || numLinks >= 3) {
-          var $bt = $nodeFields.find('.block-title'),
-              $nodeLinks = $nodeFields.find('.node-links'),
-              $link = $('<a href="#"></a>'),
-              $icon = $('<i class="icon"></i>'),
-              $text = $('<span class="link-text">' + title + '</span>'),
-              $numLink = $('<span class="num-links">(' + numLinks + ')</span>');
-
-          // Create an accordion heading instance to control the display of the
-          // related links
-          $text.append($numLink);
-          $link.append($icon, $text);
-          $bt.addClass('accordion-heading').html($link);
-
-          // hide the links to start things off
-          $nodeLinks.hide();
-
-          // Click handler to control the display of the related links
-          $bt.click(function(event) {
-            event.preventDefault();
-            var isActive = $blockTitle.is('.active');
-            // collapse links
-            if (isActive) {
-              $blockTitle.removeClass('active');
-              $nodeLinks.stop(true,true).animate({opacity: 'hide', height: 'hide'}, 250);
-            }
-            // expand links
-            else {
-              $blockTitle.addClass('active');
-              $nodeLinks.stop(true,true).animate({opacity: 'show', height: 'show'}, 500);
-            }
-          });
-        }
+        $relatedLinks.addClass('has-links');
       }
     },
     /**
@@ -173,27 +135,6 @@ define(['jquery'], function($) {
       });
     },
     /**
-     * Reposition contact information appearing in the node-sidebar to be below the
-     * related links.
-     */
-    fullNodeRelocateContactInfo: function(context) {
-      var $contactInfo = $('#node-sidebar .node-contact', context),
-          $nodeLinks = $('#node-sidebar .node-links', context);
-      $contactInfo.insertAfter($nodeLinks);
-    },
-    /**
-     * Always have node upper meta at the very top of the node markup if node upper
-     * image position is used.
-     */
-    moveUpperMetaAboveUpperImage: function(context) {
-      var $upperImages = $('.node .node-upper-image', context);
-      $upperImages.each(function() {
-        var $node = $(this).parents('.node'),
-            $upperMeta = $node.find('.node-upper-meta');
-        $(this).insertAfter($upperMeta);
-      });
-    },
-    /**
      * Finds the real last meta item and identifies node of visible meta info
      */
     nodeMeta: function(context) {
@@ -202,32 +143,58 @@ define(['jquery'], function($) {
         // Create a meta object
         var $node = $(this),
             $meta = $node.find('.node-upper-meta'),
-            $items = $meta.find('.meta-item'),
-            $visible = $items.filter(':visible');
+            $items = $meta.find('.meta-item');
 
         // Clean up last classname
         $items.removeClass('last');
 
+        // Get all visible meta items
+        var $visible = $items.map(function() {
+          return $(this).css('display') !== 'none' ? this : null;
+        });
+
         // Correctly identify last meta item and label node with the has-meta flag
         if ($visible.length) {
           $node.addClass('has-meta');
-          $visible.filter(':last').addClass('last');
+          $visible.filter(':last').addClass('last new-dd-templates-functionality');
         }
       });
     },
     /**
-     * Helper class for theming related links sitewide.
+     * If there is more than two event dates, functionality is added to show and
+     * hide all events within one container.
+     *
+     * Helps cleans up the look of meta data.
+     *
+     * @note:
+     *   This is only enabled for blocks with the 'posts' classname and all
+     *   full post views
      */
-    relatedLinks: function(context) {
-      var $nodes = $('.node', context);
-      $nodes.each(function() {
-        var $links = $(this).find('.link-related, .link-file');
-        $links.each(function() {
-          var $link = $(this).find('a');
-          // wrap contents within a container
-          $link.wrapInner('<span class="link-text-wrapper"></span>');
-          // add an icon
-          $link.prepend('<i class="icon"></i>');
+    expandingDates: function(context) {
+      $('.posts .node, .node-full', context).each(function(i, node) {
+        var $meta = $('.node-meta, .node-upper-meta', node);
+        $meta.each(function(i, meta) {
+          var $meta = $(meta);
+          var $dates = $('.event-date', node);
+          if ($dates.length > 2) {
+            // Create and add functionality to display all other dates
+            var $link = $('<a class="meta-item all-dates-link" href="#">Show all dates</a>');
+            $link.bind('click', function(event) {
+              event.preventDefault();
+              $meta.toggleClass('show-all-dates');
+              $(this).text(
+                $meta.is('.show-all-dates')
+                  ? 'Hide all dates'
+                  : 'Show all dates'
+              );
+            });
+            $link.insertBefore($dates.eq(0));
+
+            // Move all other dates
+            var $container = $('<div class="all-dates"></div>');
+            $dates.appendTo($container);
+            $meta.append($container);
+          }
         });
       });
     },
@@ -251,10 +218,10 @@ define(['jquery'], function($) {
           $link.append('<span class="caption">' + caption + '</span>');
           // Sets the container link a maximum width so the caption doesn't expand
           // bigger than the image width
-          var imgWidth = $image.attr('width');
-          if (imgWidth && imgWidth > 0) {
-            $link.css('max-width', imgWidth + 'px');
-          }
+          //var imgWidth = $image.attr('width');
+          //if (imgWidth && imgWidth > 0) {
+          //  $link.css('max-width', imgWidth + 'px');
+          //}
         }
       });
     },
@@ -284,14 +251,6 @@ define(['jquery'], function($) {
       $('.subterm-overview .node-teaser', context).removeClass('no-more').addClass('has-more');
     },
     /**
-     * Figure out first visible navigation term and add a classname for proper theme
-     */
-    firstVisibleNavterm: function(context) {
-      $('.navbar a.depth-1', context).not('.hidden').filter(':first').addClass(
-        'first-visible'
-      ).parents('.navbar').addClass('ready');
-    },
-    /**
      * Helper function to theme the category letters and seperate the sections
      */
     lexiconGlossary: function(context) {
@@ -299,35 +258,6 @@ define(['jquery'], function($) {
         var letter = $(this).attr('id').replace('letter_', '');
         $(this).html(letter.toUpperCase());
       });
-    },
-    /**
-     * Adds odd and even row classes to tables paving the way for proper theming in
-     * addition to adding cross browser support since the :nth-child() pseudo
-     * selector isn't available in IE 8
-     */
-    tableZebraStrips: function(context) {
-      $('.node-content table', context).each(function() {
-        var $table = $(this);
-        $table.find('tr').removeClass('odd even');
-        $table.find('tr:nth-child(odd)').addClass('odd');
-        $table.find('tr:nth-child(even)').addClass('even');
-      });
-    },
-    /**
-     * Adds IE specific classnames for clearing rows of various column grids which
-     * since the :nth-child() pseudo selector isn't available in IE 8
-     */
-    ieClearColumnRows: function(context) {
-      if ($(document).is('ie-8')) {
-        var selectors =
-          '.col-1 .views-row,' +
-            '.col-2 .views-row:nth-child(2n+1),' +
-            '.col-3 .views-row:nth-child(3n+1),' +
-            '.col-4 .views-row:nth-child(4n+1),' +
-            '.col-5 .views-row:nth-child(5n+1),' +
-            '.col-6 .views-row:nth-child(6n+1)';
-        $(selectors, context).addClass('clear-row');
-      }
     }
   };
 

@@ -1,0 +1,88 @@
+// CSS3 MIXINS: for cross browser compatibility
+
+.transform(@arguments) {
+  -webkit-transform: @arguments;
+      -ms-transform: @arguments; // IE 9 Support
+          transform: @arguments;
+}
+
+.transition(@arguments) {
+  -webkit-transition: @arguments;
+          transition: @arguments;
+}
+
+.box-sizing(@type: border-box) {
+  -webkit-box-sizing: @type;
+          box-sizing: @type;
+}
+
+// FLEXBOX HELPERS
+// converted from SCSS originals
+// @ref: https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+
+.flexbox() {
+  display: -webkit-box;  // OLD - iOS 6-, Safari 3.1-6
+  display: -ms-flexbox;  // TWEENER - IE 10
+  display: -webkit-flex; // NEW - Chrome
+  display: flex;         // NEW, Spec - Opera 12.1, Firefox 20+
+}
+
+.flex(@values) {
+  -webkit-box-flex: @values;
+  -webkit-flex: @values;
+  -ms-flex: @values;
+  flex: @values;
+}
+
+.order(@val) {
+  -webkit-box-ordinal-group: @val;
+  -ms-flex-order: @val;
+  -webkit-order: @val;
+  order: @val;
+}
+
+.flex-flow(@values) {
+  -webkit-flex-flow: @values;
+  -ms-flex-flow: @values;
+  flex-flow: @values;
+}
+
+.justify-content(@value) {
+  -webkit-justify-content: @value;
+  -ms-justify-content: @value;
+  justify-content: @value;
+}
+
+.align-items(@value) {
+  -webkit-align-items: @value;
+  -ms-align-items: @value;
+  align-items: @value;
+}
+
+// MIXIN CLASSES
+
+.center-block(@width: 980px) {
+  position: relative;
+  float: none;
+  width: @width;
+  margin: 0 auto;
+  clear: both;
+}
+
+.no-wrap() {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.clearfix() {
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+  }
+}

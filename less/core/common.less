@@ -11,15 +11,24 @@
   left: 0;
 }
 
+.channel, .subterm, .node {
+  float: none;
+  width: auto;
+}
+
 .channel, .subterm, .block, .node, .messages {
   font-family: @F1;
 }
 
 /* FONT AND LINE HEIGHT SIZING */
 
-#page, #very-top, #closure-blocks {
-  font-size: unit(@base_font_size, px);
+.page, .above-page, .below-page {
+  font-size:  14px;
   line-height: 1.5;
+}
+
+.node-content {
+  font-size: unit(@base_font_size, px);
 }
 
 .overview .node-header, .node-full .node-header {
@@ -30,13 +39,9 @@
   }
 }
 
-.block-title {
-  &:extend(h2);
-  color: @C2;
-}
-
 .node-teaser {
   padding-bottom: 0;
+  clear: both; // mainly to clear floated images
 }
 
 .node-header {
@@ -56,6 +61,25 @@
   color: @C4;
 }
 
+body.n .page-right {
+  .block-title,
+  .sidebar-title {
+    padding-top: 10px;
+    margin-bottom: 5px;
+    border-top: 1px solid #ccc;
+    font-size: 16px;
+
+    &:before {
+      float: left;
+      .chevron-font;
+      content: @chevron-down-normal;
+      font-size: 24px;
+      margin-top: -2px;
+      margin-left: -6px;
+    }
+  }
+}
+
 .node-image {
   margin-top: 0;
 }
@@ -67,7 +91,8 @@
     text-decoration: none;
   }
 
-  img {
+  img,
+  .node-teaser & img {
     margin: 0;
   }
 }
@@ -102,6 +127,10 @@
 
 .node-meta {
   display: none;
+  // Show on full post view since we're moving the meta down below the header
+  .node-full & {
+    display: block;
+  }
 }
 
 .meta .event-date {
@@ -112,6 +141,7 @@
   ul, ol {
     clear: both;
     margin: 1em 0;
+    padding-left: 3em;
     overflow: visible;
   }
 
@@ -119,6 +149,7 @@
     margin-bottom: 0;
   }
 }
+
 /* ========================================================================== *\
    EMBED IMAGES WITHIN NODE CONTENT
 \* ========================================================================== */
@@ -138,6 +169,32 @@
 }
 
 /* ========================================================================== *\
+   VIDEO PLAY BUTTON
+\* ========================================================================== */
+
+.video-play {
+  background-image: url('@{dd_templates_image_path}/play.svg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-color: transparent;
+  background-size: 20%;
+  opacity: 0.5;
+  .transition(opacity 0.3s ease-out);
+}
+
+.field-video .video-lightframe {
+  // Contains the parent link container to only be as wide as the image. This
+  // prevents the video play button from extending to the full width of the
+  // content area it's displayed in.
+  display: inline-block;
+}
+
+a.video-lightframe:hover .video-play {
+  background-color: transparent;
+  opacity: 0.9;
+}
+
+/* ========================================================================== *\
    Restricts email address from overflowing out of it's container
 \* ========================================================================== */
 
@@ -152,4 +209,17 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+}
+
+// Allow the thumbnail images to display bigger on the manage content page
+
+.admin-content .views-field-field-image-fid img {
+  max-width: none;
+}
+
+// Force menu admin controls to be layered above positioned elements
+
+.add-term,
+.edit-term {
+  z-index: 1;
 }

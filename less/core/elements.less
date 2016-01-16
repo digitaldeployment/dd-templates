@@ -10,16 +10,47 @@ html {
 body {
   width: 100%;
   font-size: 100%;
-  background-color: #CCC;
   text-rendering: optimizeLegibility;
+  color: @base_text_color;
+
+  // Set the WYSIWYG editor to display the default font the site is using
+  &.node-content {
+    font-family: @F1;
+  }
 }
 
 body, caption, th, td, input, textarea, select, option, legend, fieldset, button {
   font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
+// For IE9+ and other older browsers, which don't support the recently added
+// main element yet. See http://www.sitepoint.com/html5-main-element/
+main {
+  display: block;
+}
+
 h1, h2, h3, h4, h5 {
   font-family: @F1;
+}
+
+h1 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+h2 {
+  margin-top: 0.667em;
+  margin-bottom: 0.667em;
+}
+
+h3 {
+  margin-top: 0.769em;
+  margin-bottom: 0.769em;
+}
+
+h4, h5, h6 {
+  margin-top: 0.909em;
+  margin-bottom: 0.909em;
 }
 
 p, ul, ol, dl, pre, table, address, fieldset, blockquote {
@@ -71,4 +102,14 @@ h6 {
   text-transform: uppercase;
   font-weight: normal;
   font-family: @F2;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+ul, li {
+  margin: 0;
+  padding: 0;
 }

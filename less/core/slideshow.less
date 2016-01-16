@@ -19,17 +19,11 @@
   right: 0;
   bottom: 0;
   background: url('@{dd_templates_image_path}/slideshow.svg') no-repeat 95% 95% transparent;
-  .opacity(.7);
+  opacity: 0.7;
   -webkit-transition: opacity 0.2s ease-out;
   transition: opacity 0.2s ease-out;
 
   &:hover {
-    .opacity(1);
+    opacity: 1;
   }
-}
-
-// No SVG fallback support (eg. IE8)
-
-html.no-svg .slideshow-icon {
-  background-image: url('@{dd_templates_image_path}/slideshow.png');
 }
