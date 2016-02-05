@@ -1,0 +1,156 @@
+
+// =============================================================================
+//  ALIGNMENT
+// =============================================================================
+
+.align-left {
+  text-align: left;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.align-right {
+  text-align: right;
+}
+
+// =============================================================================
+//  COLUMNS CLASS LIBRARY
+// =============================================================================
+
+.two-columns,
+.three-columns,
+.four-columns {
+  clear: both;
+}
+
+.when-number-of-columns-increases-to(2, {
+  .two-columns,
+  .three-columns,
+  .four-columns {
+    position: relative;
+    margin-left: -10px;
+    margin-right: -10px;
+    font-size: 0;
+  }
+
+  .two-columns > *,
+  .three-columns > *,
+  .four-columns > * {
+    display: inline-block;
+    padding-left: 10px;
+    padding-right: 10px;
+    box-sizing: border-box;
+    vertical-align: top;
+    font-size: 16px;
+  }
+
+  .two-columns > * {
+    width: 50%;
+  }
+
+  .three-columns > * {
+    width: 100%/3;
+  }
+
+  .four-columns > * {
+    width: 100%/4;
+  }
+
+  // Columns with lines
+
+  .two-columns,
+  .three-columns,
+  .four-columns {
+    &.lines {
+      margin-left: -20px;
+      margin-right: -20px;
+    }
+
+    &.lines > * {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    &.lines > *:after {
+      content: ' ';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background-color: #ccc;
+    }
+
+    &.lines > *:last-child:after {
+      display: none;
+    }
+  }
+
+  // Two Columns with a line
+  .lines.two-columns > *:nth-child(1):after { left: 50%; }
+
+  // Three Columns with a lines
+  .lines.three-columns > *:nth-child(1):after { left:  100%/3; }
+  .lines.three-columns > *:nth-child(2):after { right: 100%/3; }
+
+  // Four Columns with a lines
+  .lines.four-columns > *:nth-child(1):after { left:  25%; }
+  .lines.four-columns > *:nth-child(2):after { left:  50%; }
+  .lines.four-columns > *:nth-child(3):after { right: 25%; }
+});
+
+// =============================================================================
+//  BLOCK AND PULL QUOTES
+// =============================================================================
+
+blockquote {
+  .when-number-of-columns-increases-to(2, {
+    &.left,
+    &.right {
+      width: 25%;
+    }
+
+    &.left {
+      float: left;
+      margin-left: 0;
+      margin-right: 40px;
+    }
+
+    &.right {
+      float: right;
+      margin-right: 0;
+      margin-left: 40px;
+    }
+  });
+}
+
+// =============================================================================
+//  TABLES
+// =============================================================================
+
+.node-content table {
+  // Remove the stripes if they're not needed
+  &.no-stripes tbody {
+    td {
+      padding: 6px 0;
+    }
+
+    tr.odd, tr:nth-child(odd),
+    tr.even, tr:nth-child(even) {
+      background-color: transparent;
+    }
+  }
+
+  // Properly aligning a simple key/value data table
+  &.key-value-data {
+    tbody {
+      td:first-child {
+        text-align: left;
+      }
+      td:last-child {
+        text-align: right;
+      }
+    }
+  }
+}

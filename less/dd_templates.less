@@ -154,14 +154,25 @@
 .dd_templates_blocks(node-sidebar) when (@dd_templates_blocks_node_sidebar = true) { @import 'blocks/node-sidebar'; }
 .dd_templates_blocks(node-contacts) when (@dd_templates_blocks_node_contacts = true) { @import 'blocks/node-contacts'; }
 
+// Content Layout Libraries/Helpers
+
+@dd_templates_libraries: image-position, content-control;
+
+@dd_templates_libraries_image_position: true;
+@dd_templates_libraries_content_control: true;
+
+.dd_templates_libraries(image-position) when (@dd_templates_libraries_image_position = true) { @import 'libraries/image-position'; }
+.dd_templates_libraries(content-control) when (@dd_templates_libraries_content_control = true) { @import 'libraries/content-control'; }
+
 // A loop for loading each less file as part of a set
 .dd_templates_factory(@type, @components, @total, @index: 1) when (@index =< @total) {
   @component: extract(@components, @index);
-  .factory(core)    { .dd_templates_core(@component);    }
-  .factory(modules) { .dd_templates_modules(@component); }
-  .factory(regions) { .dd_templates_regions(@component); }
-  .factory(views)   { .dd_templates_views(@component);   }
-  .factory(blocks)  { .dd_templates_blocks(@component);  }
+  .factory(core)      { .dd_templates_core(@component);      }
+  .factory(modules)   { .dd_templates_modules(@component);   }
+  .factory(regions)   { .dd_templates_regions(@component);   }
+  .factory(views)     { .dd_templates_views(@component);     }
+  .factory(blocks)    { .dd_templates_blocks(@component);    }
+  .factory(libraries) { .dd_templates_libraries(@component); }
   // load the component
   .factory(@type);
   // continue the loop as long as there is another component in the set
@@ -176,4 +187,5 @@
   .dd_templates_factory(regions, @dd_templates_regions, length(@dd_templates_regions));
   .dd_templates_factory(views, @dd_templates_views, length(@dd_templates_views));
   .dd_templates_factory(blocks, @dd_templates_blocks, length(@dd_templates_blocks));
+  .dd_templates_factory(libraries, @dd_templates_libraries, length(@dd_templates_libraries));
 }

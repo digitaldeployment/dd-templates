@@ -1,0 +1,120 @@
+
+// =============================================================================
+//  IMAGE POSITION CLASS LIBRARY
+// =============================================================================
+
+.node-content .image {
+  &.circle {
+    img {
+      border-radius: 100%;
+    }
+  }
+
+  // FLOAT THEM TO EITHER SIDE
+
+  .when-number-of-columns-increases-to(2, {
+    &.right {
+      float: right;
+      width: 35%;
+      margin-right: 0;
+      margin-left: 1em;
+      margin-bottom: 1em;
+    }
+
+    &.left {
+      float: left;
+      width: 35%;
+      margin-left: 0;
+      margin-right: 1em;
+      margin-bottom: 1em;
+    }
+  });
+
+  .when-number-of-columns-increases-to(3, {
+    &.right {
+      width: 50%;
+    }
+
+    &.left {
+      width: 50%;
+    }
+  });
+
+  // FIELD IMAGE WIDTH HELPER CLASSES
+
+  .when-number-of-columns-increases-to(2, {
+    &.w25 { width: 25%; }
+    &.w30 { width: 30%; }
+    &.w35, &.w40, &.w45, &.w50 { width: 35%; }
+  });
+
+  .when-number-of-columns-increases-to(3, {
+    &.w40  { width:  40%; }
+    &.w45  { width:  45%; }
+    &.w50  { width:  50%; }
+    &.w55  { width:  55%; }
+    &.w60  { width:  60%; }
+    &.w65  { width:  65%; }
+    &.w70  { width:  70%; }
+    &.w75  { width:  75%; }
+    &.w80  { width:  80%; }
+    &.w85  { width:  85%; }
+    &.w90  { width:  90%; }
+    &.w95  { width:  95%; }
+    &.w100 { width: 100%; }
+  });
+}
+
+// IMAGES WITH CAPTIONS OFF TO THE SIDES
+
+.when-number-of-columns-increases-to(2, {
+  .node-content .has-caption {
+    &.caption-left,
+    &.caption-right {
+      .clearfix();
+
+      a {
+        width: 100%;
+        display: block;
+        table-layout: inherit;
+      }
+
+      img {
+        max-width: 76% !important;
+      }
+
+      .caption {
+        margin-top: 0;
+        display: inline-block;
+        caption-side: inherit;
+        width: 21%;
+        padding-top: 10px;
+        border-top: 1px solid #ccc;
+      }
+    }
+
+    &.caption-left {
+      img {
+        float: right;
+      }
+
+      .caption {
+        margin-left: 0;
+        margin-right: 3%;
+        text-align: right;
+      }
+    }
+
+    &.caption-right {
+      img {
+        float: left;
+      }
+
+      .caption {
+        margin-right: 0;
+        margin-left: 3%;
+        text-align: left;
+      }
+    }
+  }
+});
