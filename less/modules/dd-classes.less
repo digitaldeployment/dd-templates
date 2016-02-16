@@ -82,19 +82,19 @@
 \* ========================================================================== */
 
 .when-number-of-columns-increases-to(2, {
-  .fiw-25 .field-image { max-width: 25% !important; }
-  .fiw-30 .field-image { max-width: 30% !important; }
-  .fiw-35 .field-image { max-width: 35% !important; }
+  .fiw-25 .node-item:not(.node-content) .field-image { max-width: 25% !important; }
+  .fiw-30 .node-item:not(.node-content) .field-image { max-width: 30% !important; }
+  .fiw-35 .node-item:not(.node-content) .field-image { max-width: 35% !important; }
 });
 
 .when-number-of-columns-increases-to(3, {
-  .fiw-40 .field-image { max-width: 40% !important; }
-  .fiw-50 .field-image { max-width: 50% !important; }
-  .fiw-60 .field-image { max-width: 60% !important; }
-  .fiw-75 .field-image { max-width: 75% !important; }
+  .fiw-40 .node-item:not(.node-content) .field-image { max-width: 40% !important; }
+  .fiw-50 .node-item:not(.node-content) .field-image { max-width: 50% !important; }
+  .fiw-60 .node-item:not(.node-content) .field-image { max-width: 60% !important; }
+  .fiw-75 .node-item:not(.node-content) .field-image { max-width: 75% !important; }
 });
 
-.fiw-100 .field-image { max-width: 100% !important; }
+.fiw-100 .node-item:not(.node-content) .field-image { max-width: 100% !important; }
 
 /* ========================================================================== *\
    FIELD IMAGE FLOAT HELPER CLASSES
@@ -112,7 +112,7 @@
   margin-left: 20px;
 }
 
-.fif-lt .field-image {
+.fif-lt .node-item:not(.node-content) .field-image {
   .when-number-of-columns-increases-to(3, {
     float: left;
     margin-left: 0;
@@ -120,7 +120,7 @@
   });
 }
 
-.fif-rt .field-image {
+.fif-rt .node-item:not(.node-content) .field-image {
   .when-number-of-columns-increases-to(3, {
     float: right;
     margin-right: 0;
@@ -128,16 +128,16 @@
   });
 }
 
-.fif-no .field-image {
+.fif-no .node-item:not(.node-content) .field-image {
   float: none;
   margin-left: 0;
   margin-right: 0;
 }
 
 .fif-lt {
-  &.fiw-25,
-  &.fiw-30,
-  &.fiw-35 {
+  &.fiw-25 .node-item:not(.node-content),
+  &.fiw-30 .node-item:not(.node-content),
+  &.fiw-35 .node-item:not(.node-content) {
     .field-image {
       .when-number-of-columns-increases-to(2, {
         .float-image-left();
@@ -145,10 +145,10 @@
     }
   }
 
-  &.fiw-40,
-  &.fiw-50,
-  &.fiw-60,
-  &.fiw-75 {
+  &.fiw-40 .node-item:not(.node-content),
+  &.fiw-50 .node-item:not(.node-content),
+  &.fiw-60 .node-item:not(.node-content),
+  &.fiw-75 .node-item:not(.node-content) {
     .field-image {
       .when-number-of-columns-increases-to(3, {
         .float-image-left();
@@ -158,9 +158,9 @@
 }
 
 .fif-rt {
-  &.fiw-25,
-  &.fiw-30,
-  &.fiw-35 {
+  &.fiw-25 .node-item:not(.node-content),
+  &.fiw-30 .node-item:not(.node-content),
+  &.fiw-35 .node-item:not(.node-content) {
     .field-image {
       .when-number-of-columns-increases-to(2, {
         .float-image-right();
@@ -168,10 +168,10 @@
     }
   }
 
-  &.fiw-40,
-  &.fiw-50,
-  &.fiw-60,
-  &.fiw-75 {
+  &.fiw-40 .node-item:not(.node-content),
+  &.fiw-50 .node-item:not(.node-content),
+  &.fiw-60 .node-item:not(.node-content),
+  &.fiw-75 .node-item:not(.node-content) {
     .field-image {
       .when-number-of-columns-increases-to(3, {
         .float-image-right();
