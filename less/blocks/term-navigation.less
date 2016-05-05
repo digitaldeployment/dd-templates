@@ -28,7 +28,9 @@
     .block-title {
       margin-bottom: 0;
 
-      a {
+      a,
+      a.depth-2,
+      a.depth-3 {
         position: relative;
         display: block;
         padding: 5px 10px 5px 45px;
@@ -179,30 +181,28 @@
       padding-top: 0;
       border-top: 0;
       font-size: 1em;
-    }
 
-    .block-title a,
-    .block-title a.depth-2,
-    .block-title a.depth-3 {
-      padding: 0 0 5px;
-      border-bottom: 1px solid #eee;
-      font-size: 1em;
-      font-weight: normal;
-      line-height: 1.5em;
-      text-transform: uppercase;
-      letter-spacing: normal;
-      color: grey;
-    }
+      a,
+      a.depth-2,
+      a.depth-3 {
+        padding: 0 0 5px;
+        border-bottom: 1px solid #eee;
+        font-size: 1em;
+        font-weight: normal;
+        line-height: 1.5em;
+        text-transform: uppercase;
+        letter-spacing: normal;
+        color: grey;
 
-    .block-title a:hover,
-    .block-title a.depth-2:hover,
-    .block-title a.depth-3:hover {
-      color: @C1;
-    }
+        &:hover {
+          color: @C1;
+        }
 
-    .block-title a.active {
-      color: @C2;
-      font-weight: bold;
+        &.active {
+          color: @C2;
+          font-weight: bold;
+        }
+      }
     }
 
     .menu a {
