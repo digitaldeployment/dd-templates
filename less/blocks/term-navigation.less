@@ -26,6 +26,8 @@
 
     // LIST ITEM DROPDOWN TRIGGER/BUTTON
     .block-title {
+      position: relative;
+      z-index: 2;
       margin-bottom: 0;
 
       a,
@@ -43,6 +45,7 @@
         letter-spacing: normal;
         cursor: pointer;
         border: 1px solid #ccc;
+        background-color: white;
         border-radius: 3px;
 
         &:before {
@@ -92,16 +95,17 @@
 
     .menu-name-primary-links > .menu {
       position: absolute;
-      z-index: 1000;
-      top: 32px;
+      z-index: 1;
+      top: 0;
       left: 0;
       width: 100%;
-      max-height: 0;
+      height: 0;
+      opacity: 0;
       overflow: hidden;
       border-radius: 0 0 3px 3px;
       background-color: #777;
       .box-sizing(border-box);
-      .transition(all 0.5s ease-out);
+      .transition(all 0.2s ease-out);
 
       a {
         display: block;
@@ -152,7 +156,9 @@
       }
 
       .menu-name-primary-links > .menu {
-        max-height: 1000px;
+        top: 100%;
+        height: auto;
+        opacity: 1;
       }
     }
   }
