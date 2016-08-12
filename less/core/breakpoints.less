@@ -1,6 +1,6 @@
-/**
- * Breakpoints configuration
- */
+// =============================================================================
+// Breakpoints configuration
+// =============================================================================
 
 // All columns are 300px wide, always, due to standard ad sizes.
 @column-width: 300px;
@@ -28,20 +28,20 @@
 @breakpoint-4: 1060px;
 @breakpoint-gutter-4: 40px;
 
-/**
- * Expands the given rules for each of the responsive breakpoints, while making
- * the following variables available to the ruleset:
- * 
- * @number-of-columns
- *   The number of columns in the layout.
- * @column-width
- *   The width of the each of the columns. (This is a global variable, actually.)
- * @gutter-size
- *   The width of the gutter between the columns.
- *
- * @param ruleset @rules
- *   The rules to expand for each breakpoint.
- */
+// =============================================================================
+// Expands the given rules for each of the responsive breakpoints, while making
+// the following variables available to the ruleset:
+// =============================================================================
+// @number-of-columns
+//   The number of columns in the layout.
+// @column-width
+//   The width of the each of the columns. (This is a global variable, actually.)
+// @gutter-size
+//   The width of the gutter between the columns.
+// @param ruleset @rules
+//   The rules to expand for each breakpoint.
+// =============================================================================
+
 .for-each-breakpoint(@rules) {
   // Start a new scope so our variables don't leak into the scope of the caller.
   // (Which actually causes it to malfunction in rare cases, such as when
@@ -94,15 +94,16 @@
   }
 }
 
-/**
- * Wraps the given rules in the media query for the breakpoint at which the
- * number of columns increases to the given number of columns.
- *
- * @param integer @number-of-columns
- *   The number of columns for the breakpoint.
- * @param ruleset @rules
- *   The rules to wrap for the breakpoint.
- */
+// =============================================================================
+// Wraps the given rules in the media query for the breakpoint at which the
+// number of columns increases to the given number of columns.
+// =============================================================================
+// @param integer @number-of-columns
+//   The number of columns for the breakpoint.
+// @param ruleset @rules
+//   The rules to wrap for the breakpoint.
+// =============================================================================
+
 .when-number-of-columns-increases-to(@number-of-columns, @rules) {
   .for-each-breakpoint({
     & when (@number-of-columns-increases-to = @number-of-columns) {

@@ -1,4 +1,6 @@
+// =============================================================================
 // CSS3 MIXINS: for cross browser compatibility
+// =============================================================================
 
 .transform(@arguments) {
   -webkit-transform: @arguments;
@@ -16,9 +18,11 @@
           box-sizing: @type;
 }
 
+// =============================================================================
 // FLEXBOX HELPERS
 // converted from SCSS originals
 // @ref: https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+// =============================================================================
 
 .flexbox() {
   display: -webkit-box;  // OLD - iOS 6-, Safari 3.1-6
@@ -59,7 +63,9 @@
   align-items: @value;
 }
 
+// =============================================================================
 // MIXIN CLASSES
+// =============================================================================
 
 .center-block(@width: 980px) {
   position: relative;
