@@ -3,45 +3,72 @@
 \* ========================================================================== */
 
 .node-content {
+  table, thead, tbody, tr, th, td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+
   table {
-    width: 100%;
+    display: inline-block;
+    width: auto !important;
+    max-width: 100%;
+    overflow: auto;
+    border: 1px solid #eee;
+    border-spacing: 0;
+    background-color: white;
     .box-sizing(border-box);
   }
 
   th, td {
+    padding: 10px;
     font-family: @F1;
-  }
-
-  table, tbody {
-    border: 1px solid #ccc;
-  }
-
-  thead {
-    border: 1px solid @C5;
-  }
-
-  th {
-    border: 1px solid @C5;
-    background-color: @C1;
-    color: #fff;
-  }
-
-  tr {
-    border: 1px solid #ddd;
+    text-align: left;
   }
 
   td {
+    text-align: center;
     vertical-align: top;
-    border: 1px solid #ccc;
   }
 
-  tbody {
-    tr.odd {
-      background-color: transparent;
+  th {
+    line-height: 1.2;
+    vertical-align: bottom;
+    background-color: @C1;
+    color: white;
+  }
+
+  tbody tr {
+    .transition(all 0.2s ease-out);
+
+    &:nth-child(even) {
+      background-color: #f2f2f2;
     }
 
-    tr.even {
-      background-color: #d9d7ce;
+    &:nth-child(odd) td:before {
+      background-color: #f2f2f2;
+    }
+
+    &:nth-child(even) td:before {
+      background-color: #e9e9e9;
+    }
+
+    &:hover {
+      background-color: #ddd;
+    }
+  }
+
+  tbody td {
+    position: relative;
+    vertical-align: middle;
+
+    &:not(:first-child):before {
+      content: '';
+      position: absolute;
+      top: 5px;
+      left: 0;
+      bottom: 5px;
+      width: 1px;
     }
   }
 }
