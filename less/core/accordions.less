@@ -3,6 +3,7 @@
 // =============================================================================
 
 .accordion-heading {
+  position: relative;
   clear: both;
   margin: 0;
   padding-top: 5px;
@@ -20,11 +21,12 @@
     margin-top: 10px;
   }
 
-  .icon:before {
+  &:before {
+    position: absolute;
+    top: 0;
+    left: -5px;
     display: block;
     .chevron-font();
-    margin-top: -5px;
-    margin-left: -8px;
     font-size: 32px;
     content: @chevron-right-medium;
     .transition(all 0.3s ease-out);
@@ -35,7 +37,7 @@
     margin-left: 24px;
   }
 
-  &.active .icon:before {
+  &.active:before {
     .transform(rotate(90deg));
   }
 }
