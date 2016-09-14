@@ -85,20 +85,9 @@ define(['jquery'], function($) {
     },
     /**
      * Helper class for theming related links sitewide.
+     * @status DEPRECATED
      */
-    relatedLinks: function(context) {
-      var $nodes = $('.node', context);
-      $nodes.each(function() {
-        var $links = $(this).find('.link-related, .link-file');
-        $links.each(function() {
-          var $link = $(this).find('a');
-          // wrap contents within a container
-          $link.wrapInner('<span class="link-text-wrapper"></span>');
-          // add an icon
-          $link.prepend('<i class="icon"></i>');
-        });
-      });
-    },
+    relatedLinks: function(context) {},
     /**
      * Helper class for theming the appearing navigation block
      */

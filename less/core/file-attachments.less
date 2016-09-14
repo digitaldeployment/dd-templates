@@ -1,13 +1,11 @@
-// =============================================================================
-// ICONS AND INLINE FILE ATTACHMENTS
-// =============================================================================
+/* ========================================================================== *\
+   ICONS AND INLINE FILE ATTACHMENTS
+\* ========================================================================== */
 
-.icon,
 .link-text {
   &:before {
-    display: none;
     .attachments-font();
-
+    line-height: inherit;
     // Default link
     .link &,
     .file & { content: @attachments-link; }
@@ -45,56 +43,14 @@
   }
 }
 
-// =============================================================================
-// INLINE FILE ATTACHMENTS
-// =============================================================================
-
-.node-content span.file {
+.file {
   a {
     text-decoration: none;
     text-transform: none;
   }
 
   .link-text:before {
-    display: inline-block;
-    margin-right: 0.3em;
+    padding-right: 0.3em;
     vertical-align: top;
-    font-size: unit(18/@base_font_size, em);
   }
-}
-
-// =============================================================================
-// ICONS
-// =============================================================================
-
-.icon {
-  &:before {
-    display: block;
-    float: left;
-    clear: left;
-    font-size: 24px;
-  }
-}
-
-.link {
-  .link-text-wrapper {
-    display: block;
-    padding-top: 6px;
-    margin-left: 30px;
-  }
-
-  .ext span.link-text {
-    padding-right: 12px;
-    background: url('/sites/all/modules/extlink/extlink.png') no-repeat right top;
-  }
-
-  span.ext {
-    display: none !important;
-  }
-}
-
-// Axe the table of contents icons
-
-#toc .icon {
-  display: none;
 }

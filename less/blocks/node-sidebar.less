@@ -40,5 +40,22 @@
     &.has-links {
       display: block;
     }
+
+    .link-text {
+      position: relative;
+      display: block;
+      margin-left: 1.2em;
+      line-height: inherit;
+
+      &:before {
+        position: absolute;
+        left: -1.2em;
+        top: 0;
+      }
+    }
+
+    span.ext {
+      display: none;
+    }
   }
 }

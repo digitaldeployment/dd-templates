@@ -151,6 +151,24 @@ body.n .page-right {
 }
 
 // =============================================================================
+// Improve the external link theme
+// =============================================================================
+
+span.ext {
+  background: none;
+  padding-right: 0;
+  padding-left: 0.1em;
+
+  &:after {
+    .attachments-font();
+    content: @attachments-external;
+    line-height: inherit;
+    vertical-align: middle;
+    opacity: 0.5;
+  }
+}
+
+// =============================================================================
 // EMBED IMAGES WITHIN NODE CONTENT
 // =============================================================================
 
