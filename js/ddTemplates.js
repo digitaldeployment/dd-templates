@@ -94,8 +94,8 @@ define(['jquery'], function($) {
     itemAppearsIn: function(context) {
       var $appearingNav = $('.appearing-nav', context);
       var $links = $appearingNav.find('ul.links li');
-      if ($links.length) {
-        $appearingNav.addClass('has-links');
+      if (!$links.length) {
+        $appearingNav.addClass('placeholder-block');
       }
     },
     /**
@@ -106,8 +106,8 @@ define(['jquery'], function($) {
       var $relatedLinks = $nodeFields.find('.node-links');
       var numLinks = $relatedLinks.find('.link-related, .link-file').length;
 
-      if (numLinks) {
-        $relatedLinks.addClass('has-links');
+      if (!numLinks) {
+        $relatedLinks.addClass('placeholder-block');
       }
     },
     /**
