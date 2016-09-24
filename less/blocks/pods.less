@@ -117,16 +117,11 @@
   }
 }
 
-// =============================================================================
-// PODS ON TABLET
-// =============================================================================
-
-@media (min-width: 720px) {
-  .pods {
+@media (min-width: 540px) and (max-width: 719px) {
+  .pods-right {
     .view-content {
-      margin-left: -10%/3;
+      margin-left: -3%;
       font-size: 0;
-      // Flex options
       .flexbox();
       .flex-flow(wrap row);
       .justify-content(center);
@@ -134,34 +129,47 @@
 
     .views-row {
       display: inline-block;
-      width: 30%;
-      margin-left: 10%/3;
+      width: 47%;
+      margin-left: 3%;
       vertical-align: top;
       font-size: @base_font_size;
     }
   }
-
-  .pods-right {
-    margin-bottom: 0;
-  }
 }
 
 // =============================================================================
-// PODS ON DESKTOP
+// PODS BELOW
 // =============================================================================
 
-@media (min-width: @desktop-breakpoint) {
-  .pods-right {
+@media (min-width: 540px) {
+  .pods-below {
     .view-content {
-      display: inherit;
-      margin-left: inherit;
-      font-size: inherit;
+      margin-left: -3%;
+      font-size: 0;
+      .flexbox();
+      .flex-flow(wrap row);
+      .justify-content(center);
     }
 
     .views-row {
-      display: block;
-      width: 100%;
-      margin-left: inherit;
+      display: inline-block;
+      width: 47%;
+      margin-left: 3%;
+      vertical-align: top;
+      font-size: @base_font_size;
+    }
+  }
+}
+
+@media (min-width: 720px) {
+  .pods-below {
+    .view-content {
+      margin-left: -10%/3;
+    }
+
+    .views-row {
+      width: 30%;
+      margin-left: 10%/3;
     }
   }
 }

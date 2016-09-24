@@ -68,6 +68,10 @@
 // Content with left sidebar
 
 .page-left {
+  @media (min-width: 720px) {
+    margin-bottom: 0;
+  }
+
   @media (min-width: @desktop-breakpoint) {
     width: @sidebar-left-width;
   }
@@ -88,18 +92,28 @@
 // Content with right sidebar
 
 .page-right {
+  @media (min-width: 720px) {
+    float: left;
+    width: @sidebar-right-width + 5%;
+  }
+
   @media (min-width: @desktop-breakpoint) {
     width: @sidebar-right-width;
   }
 
   .page-sidebar {
-    @media (min-width: @desktop-breakpoint) {
+    @media (min-width: 720px) {
       margin-left: @standard-gutter;
     }
   }
 }
 
 .sidebar-right .page-content {
+  @media (min-width: 720px) {
+    float: left;
+    width: 100% - @sidebar-right-width - 5%;
+  }
+
   @media (min-width: @desktop-breakpoint) {
     width: 100% - @sidebar-right-width;
   }
@@ -108,6 +122,11 @@
 // Content with both sidebars
 
 .two-sidebars .page-content {
+  @media (min-width: 720px) {
+    float: left;
+    width: 100% - @sidebar-right-width - 5%;
+  }
+
   @media (min-width: @desktop-breakpoint) {
     width: 100% - (@sidebar-right-width + @sidebar-left-width-at-3-columns);
   }
