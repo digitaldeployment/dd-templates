@@ -31,12 +31,9 @@
   font-size: unit(@base_font_size, px);
 }
 
-.overview .node-header, .node-full .node-header {
+.overview .node-header,
+.node-full .node-header {
   &:extend(h1);
-
-  &, & a, & a:hover {
-    color: @C6;
-  }
 }
 
 .node-teaser {
@@ -46,19 +43,10 @@
 
 .node-header {
   line-height: 1.2;
-
-  a {
-    color: @C2;
-  }
-
-  a:hover {
-    color: @C1;
-  }
 }
 
 .subtitle {
   font-size: 0.667em;
-  color: @C4;
 }
 
 .page-right {
