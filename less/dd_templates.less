@@ -18,6 +18,9 @@
 
 @base_border_color: #ccc;
 
+// Standard Gutter
+@standard-gutter: 40px;
+
 // Icon Fonts
 
 @import 'core/fonts';
@@ -47,10 +50,9 @@
 
 // Core Components
 
-@dd_templates_core: resets, breakpoints, common, layout, elements, meta, tables, webforms, links, file-attachments, read-more-links, expanding-dates, accordions, slideshow, gallery, site-identity, pager, tab, glossary, lightbox;
+@dd_templates_core: resets, common, layout, elements, meta, tables, webforms, links, file-attachments, read-more-links, expanding-dates, accordions, slideshow, gallery, site-identity, pager, tab, glossary, lightbox;
 
 @dd_templates_core_resets: true;
-@dd_templates_core_breakpoints: true;
 @dd_templates_core_common: true;
 @dd_templates_core_layout: true;
 @dd_templates_core_elements: true;
@@ -71,7 +73,6 @@
 @dd_templates_core_lightbox: true;
 
 .dd_templates_core(resets) when (@dd_templates_core_resets = true) { @import 'core/resets'; }
-.dd_templates_core(breakpoints) when (@dd_templates_core_breakpoints = true) { @import 'core/breakpoints'; }
 .dd_templates_core(common) when (@dd_templates_core_common = true) { @import 'core/common'; }
 .dd_templates_core(layout) when (@dd_templates_core_layout = true) { @import 'core/layout'; }
 .dd_templates_core(elements) when (@dd_templates_core_elements = true) { @import 'core/elements'; }

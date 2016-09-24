@@ -6,8 +6,8 @@
   td {
     display: block;
 
-    .when-number-of-columns-increases-to(3, {
+    @media (min-width: @desktop-breakpoint) {
       display: table-cell;
-    });
+    }
   }
 }

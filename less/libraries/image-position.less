@@ -19,7 +19,7 @@
 
   // FLOAT THEM TO EITHER SIDE
 
-  .when-number-of-columns-increases-to(2, {
+  @media (min-width: 720px) {
     &.right {
       float: right;
       max-width: 35% !important;
@@ -35,9 +35,9 @@
       margin-right: 1em;
       margin-bottom: 1em;
     }
-  });
+  }
 
-  .when-number-of-columns-increases-to(3, {
+  @media (min-width: @desktop-breakpoint) {
     &.right {
       max-width: 50% !important;
     }
@@ -45,17 +45,17 @@
     &.left {
       max-width: 50% !important;
     }
-  });
+  }
 
   // FIELD IMAGE WIDTH HELPER CLASSES
 
-  .when-number-of-columns-increases-to(2, {
+  @media (min-width: 720px) {
     &.w25 { max-width: 25% !important; }
     &.w30 { max-width: 30% !important; }
     &.w35, &.w40, &.w45, &.w50 { max-width: 35% !important; }
-  });
+  }
 
-  .when-number-of-columns-increases-to(3, {
+  @media (min-width: @desktop-breakpoint) {
     &.w40  { max-width:  40% !important; }
     &.w45  { max-width:  45% !important; }
     &.w50  { max-width:  50% !important; }
@@ -69,12 +69,12 @@
     &.w90  { max-width:  90% !important; }
     &.w95  { max-width:  95% !important; }
     &.w100 { max-width: 100% !important; }
-  });
+  }
 }
 
 // IMAGES WITH CAPTIONS OFF TO THE SIDES
 
-.when-number-of-columns-increases-to(2, {
+@media (min-width: 720px) {
   .node-content .has-caption {
     &.caption-left,
     &.caption-right {
@@ -124,4 +124,4 @@
       }
     }
   }
-});
+}

@@ -58,59 +58,59 @@
   margin-top: 20px;
   margin-bottom: 20px;
 
-  .when-number-of-columns-increases-to(3, {
+  @media (min-width: @desktop-breakpoint) {
     float: left;
     margin-top: @gutter-top-height;
     margin-bottom: @gutter-bottom-height;
-  });
+  }
 }
 
 // Content with left sidebar
 
 .page-left {
-  .when-number-of-columns-increases-to(3, {
+  @media (min-width: @desktop-breakpoint) {
     width: @sidebar-left-width;
-  });
+  }
 
   .page-sidebar {
-    .when-number-of-columns-increases-to(3, {
+    @media (min-width: @desktop-breakpoint) {
       margin-right: @standard-gutter;
-    });
+    }
   }
 }
 
 .sidebar-left .page-content {
-  .when-number-of-columns-increases-to(3, {
+  @media (min-width: @desktop-breakpoint) {
     width: 100% - @sidebar-left-width;
-  });
+  }
 }
 
 // Content with right sidebar
 
 .page-right {
-  .when-number-of-columns-increases-to(3, {
+  @media (min-width: @desktop-breakpoint) {
     width: @sidebar-right-width;
-  });
+  }
 
   .page-sidebar {
-    .when-number-of-columns-increases-to(3, {
+    @media (min-width: @desktop-breakpoint) {
       margin-left: @standard-gutter;
-    });
+    }
   }
 }
 
 .sidebar-right .page-content {
-  .when-number-of-columns-increases-to(3, {
+  @media (min-width: @desktop-breakpoint) {
     width: 100% - @sidebar-right-width;
-  });
+  }
 }
 
 // Content with both sidebars
 
 .two-sidebars .page-content {
-  .when-number-of-columns-increases-to(3, {
+  @media (min-width: @desktop-breakpoint) {
     width: 100% - (@sidebar-right-width + @sidebar-left-width-at-3-columns);
-  });
+  }
 }
 
 // Since we float the left, content, and right regions we need to clear them here

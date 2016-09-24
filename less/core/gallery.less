@@ -25,7 +25,6 @@
 
     .caption {
       display: none;
-      .when-number-of-columns-increases-to(2, { display: block });
       position: absolute;
       bottom: 0;
       left: 0;
@@ -34,6 +33,10 @@
       padding: 20px;
       font-size: 14px;
       color: white;
+
+      @media (min-width: 720px) {
+        display: block;
+      }
     }
 
     // Fix FOUC issue with the photo gallery prior to it being built

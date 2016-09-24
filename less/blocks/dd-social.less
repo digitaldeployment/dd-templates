@@ -19,7 +19,9 @@
 
   li {
     display: inline-block;
-    .when-number-of-columns-increases-to(3, { width: 25%; });
+    @media (min-width: @desktop-breakpoint) {
+      width: 25%;
+    }
   }
 
   span.ext {

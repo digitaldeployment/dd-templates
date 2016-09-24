@@ -24,7 +24,7 @@
   clear: both;
 }
 
-.when-number-of-columns-increases-to(2, {
+@media (min-width: 720px) {
   .two-columns,
   .three-columns,
   .four-columns {
@@ -97,14 +97,14 @@
   .lines.four-columns > *:nth-child(1):after { left:  25%; }
   .lines.four-columns > *:nth-child(2):after { left:  50%; }
   .lines.four-columns > *:nth-child(3):after { right: 25%; }
-});
+}
 
 // =============================================================================
 // BLOCK AND PULL QUOTES
 // =============================================================================
 
 blockquote {
-  .when-number-of-columns-increases-to(2, {
+  @media (min-width: 720px) {
     &.left,
     &.right {
       width: 25%;
@@ -121,7 +121,7 @@ blockquote {
       margin-right: 0;
       margin-left: 40px;
     }
-  });
+  }
 }
 
 // =============================================================================
