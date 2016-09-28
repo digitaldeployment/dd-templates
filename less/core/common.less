@@ -214,6 +214,15 @@ a.video-lightframe:hover .video-play {
   max-width: none;
 }
 
+// Better control images appearing on a reorder page.
+
+form[action*='/tblock/order'] .views-field-field-image-fid a.imagecache {
+  display: block;
+  overflow: hidden;
+  max-width: 75px;
+  max-height: 75px;
+}
+
 // Force menu admin controls to be layered above positioned elements
 
 .add-term,
