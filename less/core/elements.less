@@ -4,14 +4,11 @@
 
 html {
   height: 100%;
-  overflow: hidden;
-  -webkit-font-smoothing: antialiased;
 }
 
 body {
   width: 100%;
   height: 100%;
-  overflow: auto;
   font-size: 100%;
   text-rendering: optimizeLegibility;
   color: @base_text_color;
@@ -25,6 +22,16 @@ body {
   // Set the WYSIWYG editor to display the default font the site is using
   &.node-content {
     font-family: @F1;
+  }
+}
+
+@media (min-width: @desktop-breakpoint) {
+  html {
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    overflow: auto;
   }
 }
 
