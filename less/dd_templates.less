@@ -1,7 +1,3 @@
-// Load Dependencies
-@import 'tools/mixins';
-@import 'tools/easing';
-
 // Image Path
 
 @dd_templates_image_path: '/sites/default/themes/dtheme/dd_templates/images';
@@ -20,10 +16,6 @@
 
 // Standard Gutter
 @standard-gutter: 40px;
-
-// Icon Fonts
-
-@import 'core/fonts';
 
 // Default Fonts
 
@@ -48,10 +40,21 @@
 @gutter-top-height: 35px;
 @gutter-bottom-height: 35px;
 
+// Tool Components
+
+@dd_templates_tools: mixins, easing;
+
+@dd_templates_tools_mixins: true;
+@dd_templates_tools_easing: true;
+
+.dd_templates_tools(mixins) when (@dd_templates_tools_mixins = true) { @import 'tools/mixins'; }
+.dd_templates_tools(easing) when (@dd_templates_tools_easing = true) { @import 'tools/easing'; }
+
 // Core Components
 
-@dd_templates_core: resets, common, layout, elements, meta, tables, webforms, links, file-attachments, read-more-links, expanding-dates, accordions, slideshow, gallery, site-identity, pager, tab, glossary, lightbox;
+@dd_templates_core: fonts, resets, common, layout, elements, meta, tables, webforms, links, file-attachments, read-more-links, expanding-dates, accordions, slideshow, gallery, site-identity, pager, tab, glossary, lightbox;
 
+@dd_templates_core_fonts: true;
 @dd_templates_core_resets: true;
 @dd_templates_core_common: true;
 @dd_templates_core_layout: true;
@@ -72,6 +75,7 @@
 @dd_templates_core_glossary: true;
 @dd_templates_core_lightbox: true;
 
+.dd_templates_core(fonts) when (@dd_templates_core_fonts = true) { @import 'core/fonts'; }
 .dd_templates_core(resets) when (@dd_templates_core_resets = true) { @import 'core/resets'; }
 .dd_templates_core(common) when (@dd_templates_core_common = true) { @import 'core/common'; }
 .dd_templates_core(layout) when (@dd_templates_core_layout = true) { @import 'core/layout'; }
@@ -163,7 +167,8 @@
 // A loop for loading each less file as part of a set
 .dd_templates_factory(@type, @components, @total, @index: 1) when (@index =< @total) {
   @component: extract(@components, @index);
-  .factory(core)      { .dd_templates_core(@component);      }
+  .factory(tools)     { .dd_templates_tools(@component); }
+  .factory(core)      { .dd_templates_core(@component); }
   .factory(modules)   { .dd_templates_modules(@component);   }
   .factory(regions)   { .dd_templates_regions(@component);   }
   .factory(views)     { .dd_templates_views(@component);     }
@@ -178,6 +183,7 @@
 // Initialization of DD Templates. All variables that need to be changed from
 // default would need to be set before calling this function.
 .dd_templates_init() {
+  .dd_templates_factory(tools, @dd_templates_tools, length(@dd_templates_tools));
   .dd_templates_factory(core, @dd_templates_core, length(@dd_templates_core));
   .dd_templates_factory(modules, @dd_templates_modules, length(@dd_templates_modules));
   .dd_templates_factory(regions, @dd_templates_regions, length(@dd_templates_regions));
