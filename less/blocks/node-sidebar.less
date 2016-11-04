@@ -42,7 +42,8 @@
 
     .link-text {
       position: relative;
-      display: block;
+      display: inline-block;
+      vertical-align: middle;
       margin-left: 1.2em;
       line-height: inherit;
 
@@ -53,8 +54,10 @@
       }
     }
 
-    span.ext {
-      display: none;
+    .link-related {
+      .link-text {
+        margin-left: 0;
+      }
     }
   }
 }
