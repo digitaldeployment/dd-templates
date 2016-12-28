@@ -68,15 +68,15 @@
 // Core Components
 // -----------------------------------------------------------------------------
 
-@dd_templates_core: fonts, resets, common, layout, elements, meta, tables, webforms, links, file-attachments, read-more-links, expanding-dates, accordions, slideshow, gallery, site-identity, pager, tab, glossary, lightbox;
+@dd_templates_core: elements, fonts, common, layout, resets, tables, meta, webforms, links, file-attachments, read-more-links, expanding-dates, accordions, slideshow, gallery, site-identity, pager, tab, glossary, lightbox;
 
+@dd_templates_core_elements: true;
 @dd_templates_core_fonts: true;
-@dd_templates_core_resets: true;
 @dd_templates_core_common: true;
 @dd_templates_core_layout: true;
-@dd_templates_core_elements: true;
-@dd_templates_core_meta: true;
+@dd_templates_core_resets: true;
 @dd_templates_core_tables: true;
+@dd_templates_core_meta: true;
 @dd_templates_core_webforms: true;
 @dd_templates_core_links: true;
 @dd_templates_core_file_attachments: true;
@@ -93,13 +93,13 @@
 
 // default
 
+.dd_templates_core(elements) when (@dd_templates_core_elements = true) { @import 'core/elements'; }
 .dd_templates_core(fonts) when (@dd_templates_core_fonts = true) { @import 'core/fonts'; }
-.dd_templates_core(resets) when (@dd_templates_core_resets = true) { @import 'core/resets'; }
 .dd_templates_core(common) when (@dd_templates_core_common = true) { @import 'core/common'; }
 .dd_templates_core(layout) when (@dd_templates_core_layout = true) { @import 'core/layout'; }
-.dd_templates_core(elements) when (@dd_templates_core_elements = true) { @import 'core/elements'; }
-.dd_templates_core(meta) when (@dd_templates_core_meta = true) { @import 'core/meta'; }
+.dd_templates_core(resets) when (@dd_templates_core_resets = true) { @import 'core/resets'; }
 .dd_templates_core(tables) when (@dd_templates_core_tables = true) { @import 'core/tables'; }
+.dd_templates_core(meta) when (@dd_templates_core_meta = true) { @import 'core/meta'; }
 .dd_templates_core(webforms) when (@dd_templates_core_webforms = true) { @import 'core/webforms'; }
 .dd_templates_core(links) when (@dd_templates_core_links = true) { @import 'core/links'; }
 .dd_templates_core(file-attachments) when (@dd_templates_core_file_attachments = true) { @import 'core/file-attachments'; }
