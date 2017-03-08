@@ -12,15 +12,18 @@
     "amd"
   ],
   "keywords": [
+    "ui",
     "base",
+    "style",
     "theme",
     "templates",
-    "standards",
-    "Digital Deployment"
+    "standardization"
   ],
-  "authors": [
-    "Jason McWhorter <jason@digitaldeployment.com>"
-  ],
+  "authors": [{
+    "name": "Digital Deployment",
+    "email": "",
+    "url": "https://bitbucket.org/digitaldeployment"
+  }],
   "repository": {
     "type": "git",
     "url": "https://bitbucket.org/digitaldeployment/dd-templates"
