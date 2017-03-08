@@ -5,7 +5,7 @@
     "js/ddTemplates.js",
     "less/dd_templates.less"
   ],
-  "version": "0.2.0",
+  "version": "1.0.1",
   "dependencies": {
     "jquery": "^1.2.6",
     "requirejs": "2.1.18"
