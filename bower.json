@@ -5,9 +5,14 @@
     "js/ddTemplates.js",
     "less/dd_templates.less"
   ],
-  "version": "0.1.0",
-  "dependencies": {},
-  "devDependencies": {},
+  "version": "0.2.0",
+  "dependencies": {
+    "jquery": "^1.2.6",
+    "requirejs": "2.1.18"
+  },
+  "devDependencies": {
+    "less": "2.7.1"
+  },
   "moduleType": [
     "amd"
   ],
