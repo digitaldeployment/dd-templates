@@ -1,0 +1,34 @@
+{
+  "name": "dd-templates",
+  "description": "A less library which can serve as a great starting point for all Digital Deployment project themes.",
+  "main": [
+    "js/ddTemplates.js",
+    "less/dd_templates.less"
+  ],
+  "version": "0.1.0",
+  "dependencies": {},
+  "devDependencies": {},
+  "moduleType": [
+    "amd"
+  ],
+  "keywords": [
+    "base",
+    "theme",
+    "templates",
+    "standards",
+    "Digital Deployment"
+  ],
+  "authors": [
+    "Jason McWhorter <jason@digitaldeployment.com>"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://bitbucket.org/digitaldeployment/dd-templates"
+  },
+  "license": "GPL-2.0 <https://spdx.org/licenses/GPL-2.0.html>",
+  "ignore": [
+    "node_modules",
+    "bower_components"
+  ],
+  "private": true
+}
