@@ -6,7 +6,7 @@
   margin-bottom: 20px;
 
   ul {
-    margin: 0 -4px;
+    margin: 0;
     padding: 0;
     font-size: 0;
     list-style: none;
@@ -19,9 +19,6 @@
 
   li {
     display: inline-block;
-    @media (min-width: @desktop-breakpoint) {
-      width: 25%;
-    }
   }
 
   span.ext {
@@ -30,20 +27,21 @@
 
   .social {
     display: block;
+    width: 32px;
     height: 32px;
-    margin: 0 4px;
-    border-radius: 4px;
+    line-height: 32px;
+    margin-right: 5px;
+    border-radius: 100%;
     text-align: center;
     text-decoration: none;
     background-color: @base_border_color;
     .transition(background-color 0.3s ease-out);
 
     &:after {
-      .social-share-font;
+      .dd-templates-font();
       display: inline-block;
-      width: 32px;
-      height: 32px;
-      font-size: 32px;
+      vertical-align: middle;
+      font-size: 14px;
       color: white;
     }
   }
