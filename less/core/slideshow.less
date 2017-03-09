@@ -18,12 +18,20 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: url('@{dd_templates_image_path}/slideshow.svg') no-repeat 95% 95% transparent;
   opacity: 0.7;
-  -webkit-transition: opacity 0.2s ease-out;
   transition: opacity 0.2s ease-out;
+  color: white;
+
+  &:after {
+    position: absolute;
+    right: 6%;
+    bottom: 0;
+    .dd-templates-font();
+    content: @dd-templates-slideshow;
+    font-size: 48px;
+  }
 
   &:hover {
-    opacity: 1;
+    opacity: 0.9;
   }
 }

@@ -172,13 +172,22 @@ span.ext {
 // =============================================================================
 
 .video-play {
-  background-image: url('@{dd_templates_image_path}/play.svg');
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-color: transparent;
-  background-size: 20%;
   opacity: 0.5;
+  background: none;
   .transition(opacity 0.3s ease-out);
+
+  &:before {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -24px;
+    margin-left: -24px;
+    font-size: 48px;
+    .dd-templates-font();
+    content: @dd-templates-play;
+    color: white;
+  }
 }
 
 .field-video .video-lightframe {
@@ -189,7 +198,7 @@ span.ext {
 }
 
 a.video-lightframe:hover .video-play {
-  background-color: transparent;
+  background: transparent;
   opacity: 0.9;
 }
 
