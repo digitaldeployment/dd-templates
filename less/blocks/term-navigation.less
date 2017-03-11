@@ -2,6 +2,25 @@
 // TERM NAVIGATION MENU: MOBILE & TABLET VERSION
 // =============================================================================
 
+.term-nav {
+  .block-title {
+    a,
+    a.depth-2,
+    a.depth-3 {
+      &:before {
+        &:extend(.dd-templates-font);
+      }
+    }
+  }
+
+  .menu .expanded > a,
+  .menu .collapsed > a {
+    &:after {
+      &:extend(.dd-templates-font);
+    }
+  }
+}
+
 @media (max-width: 1023px) {
   .term-nav {
     position: relative;
@@ -49,7 +68,6 @@
         border-radius: 3px;
 
         &:before {
-          .dd-templates-font();
           content: @chevron-down-normal;
           position: absolute;
           top: 6px;
@@ -234,7 +252,6 @@
     .menu .collapsed > a {
       padding-right: 24px;
       &:after {
-        .dd-templates-font();
         position: absolute;
         top: 50%;
         right: 0;
