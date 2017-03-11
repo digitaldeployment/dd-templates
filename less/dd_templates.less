@@ -45,29 +45,27 @@
 // Tool Components
 // -----------------------------------------------------------------------------
 
-@dd_templates_tools: easing, clearfix;
+@dd_templates_tools: easing;
 
 @dd_templates_tools_easing: true;
-@dd_templates_tools_clearfix: true;
 
 // default
 
 .dd_templates_tools(easing) when (@dd_templates_tools_easing = true) { @import 'tools/easing'; }
-.dd_templates_tools(clearfix) when (@dd_templates_tools_clearfix = true) { @import 'tools/clearfix'; }
 
 // alternate
 
 .dd_templates_tools(easing) when (@dd_templates_tools_easing = alternate) { @import (optional) '@{theme_path}/tools/easing'; }
-.dd_templates_tools(clearfix) when (@dd_templates_tools_clearfix = alternate) { @import (optional) '@{theme_path}/tools/clearfix'; }
 
 // -----------------------------------------------------------------------------
 // Core Components
 // -----------------------------------------------------------------------------
 
-@dd_templates_core: elements, fonts, common, layout, resets, tables, meta, webforms, links, file-attachments, read-more-links, expanding-dates, accordions, slideshow, gallery, site-identity, pager, tab, glossary, lightbox;
+@dd_templates_core: elements, fonts, clearfix, common, layout, resets, tables, meta, webforms, links, file-attachments, read-more-links, expanding-dates, accordions, slideshow, gallery, site-identity, pager, tab, glossary, lightbox;
 
 @dd_templates_core_elements: true;
 @dd_templates_core_fonts: true;
+@dd_templates_core_clearfix: true;
 @dd_templates_core_common: true;
 @dd_templates_core_layout: true;
 @dd_templates_core_resets: true;
@@ -91,6 +89,7 @@
 
 .dd_templates_core(elements) when (@dd_templates_core_elements = true) { @import 'core/elements'; }
 .dd_templates_core(fonts) when (@dd_templates_core_fonts = true) { @import 'core/fonts'; }
+.dd_templates_core(clearfix) when (@dd_templates_core_clearfix = true) { @import 'core/clearfix'; }
 .dd_templates_core(common) when (@dd_templates_core_common = true) { @import 'core/common'; }
 .dd_templates_core(layout) when (@dd_templates_core_layout = true) { @import 'core/layout'; }
 .dd_templates_core(resets) when (@dd_templates_core_resets = true) { @import 'core/resets'; }
@@ -112,13 +111,14 @@
 
 // alternate
 
+.dd_templates_core(elements) when (@dd_templates_core_elements = alternate) { @import (optional) '@{theme_path}/core/elements'; }
 .dd_templates_core(fonts) when (@dd_templates_core_fonts = alternate) { @import (optional) '@{theme_path}/core/fonts'; }
-.dd_templates_core(resets) when (@dd_templates_core_resets = alternate) { @import (optional) '@{theme_path}/core/resets'; }
+.dd_templates_core(clearfix) when (@dd_templates_core_clearfix = alternate) { @import (optional) '@{theme_path}/core/clearfix'; }
 .dd_templates_core(common) when (@dd_templates_core_common = alternate) { @import (optional) '@{theme_path}/core/common'; }
 .dd_templates_core(layout) when (@dd_templates_core_layout = alternate) { @import (optional) '@{theme_path}/core/layout'; }
-.dd_templates_core(elements) when (@dd_templates_core_elements = alternate) { @import (optional) '@{theme_path}/core/elements'; }
-.dd_templates_core(meta) when (@dd_templates_core_meta = alternate) { @import (optional) '@{theme_path}/core/meta'; }
+.dd_templates_core(resets) when (@dd_templates_core_resets = alternate) { @import (optional) '@{theme_path}/core/resets'; }
 .dd_templates_core(tables) when (@dd_templates_core_tables = alternate) { @import (optional) '@{theme_path}/core/tables'; }
+.dd_templates_core(meta) when (@dd_templates_core_meta = alternate) { @import (optional) '@{theme_path}/core/meta'; }
 .dd_templates_core(webforms) when (@dd_templates_core_webforms = alternate) { @import (optional) '@{theme_path}/core/webforms'; }
 .dd_templates_core(links) when (@dd_templates_core_links = alternate) { @import (optional) '@{theme_path}/core/links'; }
 .dd_templates_core(file-attachments) when (@dd_templates_core_file_attachments = alternate) { @import (optional) '@{theme_path}/core/file-attachments'; }
