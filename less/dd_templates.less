@@ -45,20 +45,20 @@
 // Tool Components
 // -----------------------------------------------------------------------------
 
-@dd_templates_tools: mixins, easing;
+@dd_templates_tools: easing, clearfix;
 
-@dd_templates_tools_mixins: true;
 @dd_templates_tools_easing: true;
+@dd_templates_tools_clearfix: true;
 
 // default
 
-.dd_templates_tools(mixins) when (@dd_templates_tools_mixins = true) { @import 'tools/mixins'; }
 .dd_templates_tools(easing) when (@dd_templates_tools_easing = true) { @import 'tools/easing'; }
+.dd_templates_tools(clearfix) when (@dd_templates_tools_clearfix = true) { @import 'tools/clearfix'; }
 
 // alternate
 
-.dd_templates_tools(mixins) when (@dd_templates_tools_mixins = alternate) { @import (optional) '@{theme_path}/tools/mixins'; }
 .dd_templates_tools(easing) when (@dd_templates_tools_easing = alternate) { @import (optional) '@{theme_path}/tools/easing'; }
+.dd_templates_tools(clearfix) when (@dd_templates_tools_clearfix = alternate) { @import (optional) '@{theme_path}/tools/clearfix'; }
 
 // -----------------------------------------------------------------------------
 // Core Components

@@ -11,7 +11,7 @@
 
   .views-row-odd {
     background-color: @C1;
-    .transition(background-color 0.3s ease-out);
+    transition: background-color 0.3s ease-out;
 
     &:hover {
       background-color: lighten(@C1, 7%);
@@ -20,7 +20,7 @@
 
   .views-row-even {
     background-color: @C2;
-    .transition(background-color 0.3s ease-out);
+    transition: background-color 0.3s ease-out;
 
     &:hover {
       background-color: lighten(@C2, 7%);
@@ -122,9 +122,9 @@
     .view-content {
       margin-left: -3%;
       font-size: 0;
-      .flexbox();
-      .flex-flow(wrap row);
-      .justify-content(center);
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: center;
     }
 
     .views-row {
@@ -146,9 +146,9 @@
     .view-content {
       margin-left: -3%;
       font-size: 0;
-      .flexbox();
-      .flex-flow(wrap row);
-      .justify-content(center);
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: center;
     }
 
     .views-row {
