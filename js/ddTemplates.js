@@ -1,5 +1,11 @@
-define(['jquery'], function($) {
-
+// Define a module that works with CommonJS (Node/Babel) and AMD (RequireJS).
+(function(factory) {
+  if (typeof define === 'function' && define.amd) {
+    define(['jquery'], factory);
+  } else {
+    module.exports = factory(require('jquery'));
+  }
+})(function($) {
   'use strict';
 
   var defaults = {
