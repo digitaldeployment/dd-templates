@@ -23,7 +23,7 @@
 // FONT AND LINE HEIGHT SIZING
 
 .page, .above-page, .below-page {
-  font-size:  14px;
+  font-size: 14px;
   line-height: 1.5;
 }
 
@@ -60,6 +60,7 @@
     &:before {
       float: left;
       &:extend(.dd-templates-font);
+
       content: @chevron-down-normal;
       font-size: 24px;
       margin-top: -2px;
@@ -149,6 +150,7 @@ span.ext {
 
   &:after {
     &:extend(.dd-templates-font);
+
     content: @attachments-external;
     line-height: inherit;
     vertical-align: middle;
@@ -185,6 +187,7 @@ span.ext {
     margin-left: -24px;
     font-size: 48px;
     &:extend(.dd-templates-font);
+
     content: @dd-templates-play;
     color: white;
   }

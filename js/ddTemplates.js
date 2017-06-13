@@ -93,7 +93,7 @@
      * Helper class for theming related links sitewide.
      * @status DEPRECATED
      */
-    relatedLinks: function(context) {},
+    relatedLinks: function() {},
     /**
      * Helper class for theming the appearing navigation block
      */
@@ -122,8 +122,8 @@
     bundledReferringContent: function(context) {
       var $blocks = $('#block-digitaldcore-node_referring, #block-digitaldcore-node_bundled', context);
       $blocks.each(function() {
-        var $block = $(this),
-            $nodes = $block.find('.node-teaser');
+        var $block = $(this);
+        var $nodes = $block.find('.node-teaser');
         if (!$nodes.length) {
           $block.addClass('placeholder-block');
         }
@@ -136,9 +136,9 @@
       var $nodes = $('.node', context);
       $nodes.each(function() {
         // Create a meta object
-        var $node = $(this),
-            $meta = $node.find('.node-upper-meta'),
-            $items = $meta.find('.meta-item');
+        var $node = $(this);
+        var $meta = $node.find('.node-upper-meta');
+        var $items = $meta.find('.meta-item');
 
         // Clean up last classname
         $items.removeClass('last');
