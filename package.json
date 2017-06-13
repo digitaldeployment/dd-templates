@@ -12,6 +12,7 @@
     "eslint": "eslint js/",
     "stylelint": "stylelint less/**/*.less"
   },
+  "main": "js/ddTemplates.js",
   "devDependencies": {
     "eslint": "^4.0.0",
     "stylelint": "^7.11.0",
