@@ -86,6 +86,8 @@
     }
   }
 
+  /* stylelint-disable declaration-colon-space-after */
+
   // Two Columns with a line
   .lines.two-columns > *:nth-child(1):after { left: 50%; }
 
@@ -97,6 +99,8 @@
   .lines.four-columns > *:nth-child(1):after { left:  25%; }
   .lines.four-columns > *:nth-child(2):after { left:  50%; }
   .lines.four-columns > *:nth-child(3):after { right: 25%; }
+
+  /* stylelint-enable */
 }
 
 // =============================================================================
@@ -135,8 +139,10 @@ blockquote {
       padding: 6px 0;
     }
 
-    tr.odd, tr:nth-child(odd),
-    tr.even, tr:nth-child(even) {
+    tr.odd,
+    tr:nth-child(odd),
+    tr.even,
+    tr:nth-child(even) {
       background-color: transparent;
     }
   }
@@ -147,6 +153,7 @@ blockquote {
       td:first-child {
         text-align: left;
       }
+
       td:last-child {
         text-align: right;
       }

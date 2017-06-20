@@ -1,5 +1,11 @@
-define(['jquery'], function($) {
-
+// Define a module that works with CommonJS (Node/Babel) and AMD (RequireJS).
+(function(factory) {
+  if (typeof define === 'function' && define.amd) {
+    define(['jquery'], factory);
+  } else {
+    module.exports = factory(require('jquery'));
+  }
+})(function($) {
   'use strict';
 
   var defaults = {
@@ -87,7 +93,7 @@ define(['jquery'], function($) {
      * Helper class for theming related links sitewide.
      * @status DEPRECATED
      */
-    relatedLinks: function(context) {},
+    relatedLinks: function() {},
     /**
      * Helper class for theming the appearing navigation block
      */
@@ -116,8 +122,8 @@ define(['jquery'], function($) {
     bundledReferringContent: function(context) {
       var $blocks = $('#block-digitaldcore-node_referring, #block-digitaldcore-node_bundled', context);
       $blocks.each(function() {
-        var $block = $(this),
-            $nodes = $block.find('.node-teaser');
+        var $block = $(this);
+        var $nodes = $block.find('.node-teaser');
         if (!$nodes.length) {
           $block.addClass('placeholder-block');
         }
@@ -130,9 +136,9 @@ define(['jquery'], function($) {
       var $nodes = $('.node', context);
       $nodes.each(function() {
         // Create a meta object
-        var $node = $(this),
-            $meta = $node.find('.node-upper-meta'),
-            $items = $meta.find('.meta-item');
+        var $node = $(this);
+        var $meta = $node.find('.node-upper-meta');
+        var $items = $meta.find('.meta-item');
 
         // Clean up last classname
         $items.removeClass('last');
