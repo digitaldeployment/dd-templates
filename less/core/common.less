@@ -2,6 +2,23 @@
 // COMMON ELEMENTS
 // =============================================================================
 
+.link a,
+.link a.active {
+  color: @C1;
+}
+
+.link a:hover {
+  color: @C2;
+}
+
+.link-read-more a {
+  color: @C1;
+}
+
+.link-read-more a:hover {
+  color: @C2;
+}
+
 // This class is used to hide items offscreen eg. Skip to main content link for
 // website accessibility.
 
@@ -20,8 +37,6 @@
   font-family: @F1;
 }
 
-// FONT AND LINE HEIGHT SIZING
-
 .page, .above-page, .below-page {
   font-size: 14px;
   line-height: 1.5;
@@ -31,27 +46,51 @@
   font-size: @base_font_size;
 }
 
-.overview .node-header,
-.node-full .node-header {
-  &:extend(h1);
-}
-
 .node-teaser {
+  margin-bottom: @post-bottom-margin;
   padding-bottom: 0;
   clear: both; // mainly to clear floated images
 }
 
 .node-header {
   line-height: 1.2;
+
+  a {
+    color: @C2;
+  }
+
+  a:hover {
+    color: @C1;
+  }
+}
+
+.overview .node-header,
+.node-full .node-header {
+  &:extend(h1);
+}
+
+.overview .node-header a,
+.overview .node-header a:hover,
+.node-full .node-header {
+  color: #555;
 }
 
 .subtitle {
   font-size: 0.667em;
+  color: @C4;
+
+  .overview &,
+  .node-full & {
+    color: @C1;
+  }
+}
+
+.block-title {
+  color: @C2;
 }
 
 .page-right {
-  .block-title,
-  .sidebar-title {
+  .block-title {
     padding-top: 10px;
     margin-bottom: 5px;
     border-top: 1px solid @base_border_color;
@@ -94,8 +133,6 @@
   margin-top: 0;
 }
 
-// captions
-
 .caption {
   font-size: 12px;
   line-height: 1.333;
@@ -120,6 +157,19 @@
   .node-full & {
     display: block;
   }
+}
+
+.meta-item,
+.meta-item a {
+  color: @base_border_color;
+}
+
+.meta-item a:hover {
+  color: @C2;
+}
+
+.meta .meta-item {
+  border-right-color: @base_border_color;
 }
 
 .meta .event-date {
