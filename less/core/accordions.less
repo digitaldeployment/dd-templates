@@ -15,34 +15,30 @@
   a {
     cursor: pointer;
     text-decoration: none;
+
+    &:before {
+      position: absolute;
+      top: 0;
+      right: -5px;
+      display: block;
+      &:extend(.dd-templates-font);
+
+      font-size: 32px;
+      content: @chevron-down-medium;
+      transition: all 0.3s ease-out;
+    }
   }
 
   &:first-child {
     margin-top: 10px;
   }
 
-  &:before {
-    position: absolute;
-    top: 0;
-    left: -5px;
-    display: block;
-    &:extend(.dd-templates-font);
-
-    font-size: 32px;
-    content: @chevron-right-medium;
-    transition: all 0.3s ease-out;
-  }
-
   .link-text {
     display: block;
-    margin-left: 24px;
+    margin-right: 24px;
   }
 
-  &.active:before {
-    transform: rotate(90deg);
+  &.active a:before {
+    content: @chevron-up-medium;
   }
-}
-
-.accordion-content {
-  margin-left: 24px;
 }
