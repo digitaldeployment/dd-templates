@@ -24,6 +24,16 @@ body {
   &.node-content {
     font-family: @F1;
   }
+
+  &.search-active {
+    overflow: hidden;
+  }
+
+  @media (max-width: @mobile-breakpoint) {
+    &.menu-active {
+      overflow: hidden;
+    }
+  }
 }
 
 body, caption, th, td, input, textarea, select, option, legend, fieldset, button {
