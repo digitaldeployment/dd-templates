@@ -21,7 +21,7 @@
   }
 }
 
-@media (max-width: 1023px) {
+@media (max-width: @mobile-breakpoint) {
   .term-nav {
     position: relative;
     z-index: 1;
@@ -186,7 +186,7 @@
 // TERM NAVIGATION MENU: DESKTOP VERSION
 // =============================================================================
 
-@media (min-width: 1024px) {
+@media (min-width: @desktop-breakpoint) {
   .term-nav {
     margin-left: 0;
     font-size: @base_font_size;
