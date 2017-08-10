@@ -2,14 +2,20 @@
 // PAGE
 // =============================================================================
 
-.page {
-  min-height: 100%;
-}
-
 .page,
 .above-page,
 .below-page {
+  clear: both;
   position: relative;
+  box-sizing: border-box;
+}
+
+.page {
+  min-height: 100%;
+
+  @media (max-width: @mobile-breakpoint) {
+    padding-top: @mobile-header-height;
+  }
 }
 
 // PAGE HEADER, MAIN, & FOOTER
@@ -17,13 +23,22 @@
 .page-header,
 .page-main,
 .page-footer {
-  position: relative;
   clear: both;
+  position: relative;
+  box-sizing: border-box;
 }
 
-.page-header { z-index: 3; }
-.page-main   { z-index: 1; }
-.page-footer { z-index: 2; }
+.page-header {
+  z-index: 3;
+}
+
+.page-main {
+  z-index: 2;
+}
+
+.page-footer {
+  z-index: 1;
+}
 
 // PAGE TOP, CENTER, & BOTTOM
 
@@ -31,29 +46,47 @@
 .page-center,
 .page-bottom {
   position: relative;
+  box-sizing: border-box;
 }
 
-.page-top    { z-index: 3; }
-.page-center { z-index: 2; }
-.page-bottom { z-index: 1; }
+.page-top {
+  z-index: 3;
+}
+
+.page-center {
+  z-index: 2;
+}
+
+.page-bottom {
+  z-index: 1;
+}
 
 // PAGE LEFT, CONTENT, & RIGHT
 
 .page-left,
-.page-content,
-.page-right {
+.page-right,
+.page-content {
   position: relative;
+  box-sizing: border-box;
 }
 
-.page-left    { z-index: 3; }
-.page-content { z-index: 2; }
-.page-right   { z-index: 1; }
+.page-left {
+  z-index: 3;
+}
+
+.page-content {
+  z-index: 2;
+}
+
+.page-right {
+  z-index: 1;
+}
 
 // PAGE LAYOUT
 
-.page-content,
 .page-left,
-.page-right {
+.page-right,
+.page-content {
   width: 100%;
   margin-top: 20px;
   margin-bottom: 20px;
@@ -68,16 +101,11 @@
 // Content with left sidebar
 
 .page-left {
-  @media (min-width: 640px) {
-    margin-bottom: 0;
-  }
-
   @media (min-width: @desktop-breakpoint) {
     width: @sidebar-left-width;
-  }
+    margin-bottom: 0;
 
-  .page-sidebar {
-    @media (min-width: @desktop-breakpoint) {
+    .page-sidebar {
       margin-right: @standard-gutter;
     }
   }
@@ -92,29 +120,19 @@
 // Content with right sidebar
 
 .page-right {
-  @media (min-width: 640px) {
-    float: left;
-    width: @sidebar-right-width + 5%;
-  }
-
   @media (min-width: @desktop-breakpoint) {
+    float: left;
     width: @sidebar-right-width;
-  }
 
-  .page-sidebar {
-    @media (min-width: 640px) {
+    .page-sidebar {
       margin-left: @standard-gutter;
     }
   }
 }
 
 .sidebar-right .page-content {
-  @media (min-width: 640px) {
-    float: left;
-    width: 100% - @sidebar-right-width - 5%;
-  }
-
   @media (min-width: @desktop-breakpoint) {
+    float: left;
     width: 100% - @sidebar-right-width;
   }
 }
@@ -122,13 +140,9 @@
 // Content with both sidebars
 
 .two-sidebars .page-content {
-  @media (min-width: 640px) {
-    float: left;
-    width: 100% - @sidebar-right-width - 5%;
-  }
-
   @media (min-width: @desktop-breakpoint) {
-    width: 100% - (@sidebar-left-width + @sidebar-right-width);
+    float: left;
+    width: 100% - (@sidebar-right-width + @sidebar-left-width);
   }
 }
 
