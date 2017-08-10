@@ -1,19 +1,16 @@
 // =============================================================================
-// CONTENT LAYOUT
+// LAYOUT
 // =============================================================================
 
 .layout {
-  max-width: 980px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 20px;
 
-  &:before,
-  &:after {
-    content: " ";
-    display: table;
+  @media (min-width: 720px) {
+    margin: 0 22px;
   }
 
-  &:after {
-    clear: both;
+  @media (min-width: @desktop-breakpoint) {
+    max-width: 980px;
+    margin: 0 auto;
   }
 }
