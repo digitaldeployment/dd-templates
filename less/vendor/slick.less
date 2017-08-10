@@ -1,0 +1,313 @@
+// =============================================================================
+// SLICK
+// =============================================================================
+
+@slick-dot-size: 12px;
+@slick-dot-color: white;
+@slick-dot-color-active: @slick-dot-color;
+
+@slick-arrow-size: 32px;
+@slick-arrow-color: white;
+
+@slick-opacity-on-hover: 1;
+@slick-opacity-default: 0.75;
+@slick-opacity-not-active: 0.25;
+
+.slick-slider {
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  -webkit-touch-callout: none;
+  user-select: none;
+  touch-action: pan-y;
+  -webkit-tap-highlight-color: transparent;
+
+  .slick-track,
+  .slick-list {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.slick-list {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  margin: 0;
+  padding: 0;
+
+  &:focus {
+    outline: none;
+  }
+
+  &.dragging {
+    cursor: pointer;
+    cursor: hand;
+  }
+}
+
+.slick-track {
+  display: block;
+  position: relative;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  margin: 0 auto;
+
+  &:before,
+  &:after {
+    content: "";
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+  }
+
+  .slick-loading & {
+    visibility: hidden;
+  }
+}
+
+.slick-slide {
+  display: none;
+  min-height: 1px;
+
+  img {
+    display: block;
+  }
+
+  &.slick-loading img {
+    display: none;
+  }
+
+  &.dragging img {
+    pointer-events: none;
+  }
+
+  .slick-initialized & {
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  .slick-loading & {
+    visibility: hidden;
+  }
+
+  .slick-vertical & {
+    display: block;
+    height: auto;
+    border: 1px solid transparent;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &.slick-current {
+    z-index: 100;
+  }
+}
+
+// DOT NAVIGATION
+
+.slick-dots {
+  display: block;
+  position: absolute;
+  z-index: 2;
+  bottom: 10px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-align: center;
+
+  li {
+    position: relative;
+    display: inline-block;
+
+    button {
+      display: block;
+      padding: 5px 3px;
+      border: 0;
+      outline: none;
+      font-size: 0;
+      line-height: 0;
+      background: transparent;
+      color: transparent;
+      cursor: pointer;
+
+      &:hover,
+      &:focus {
+        outline: none;
+
+        &:before {
+          opacity: @slick-opacity-on-hover;
+          transform: scale(1.25);
+        }
+      }
+
+      &:before {
+        content: '';
+        display: block;
+        width: @slick-dot-size;
+        height: @slick-dot-size;
+        border-radius: 100%;
+        background-color: @slick-dot-color;
+        opacity: @slick-opacity-not-active;
+        transition: transform 0.1s;
+      }
+    }
+
+    &.slick-active button:before {
+      background-color: @slick-dot-color-active;
+      opacity: @slick-opacity-default;
+    }
+  }
+}
+
+// SLICK ARROWS
+
+.slick-arrow {
+  display: block;
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  bottom: 0;
+  width: 10%;
+  padding: 0;
+  border: none;
+  font-size: 0;
+  line-height: 0;
+  outline: none;
+  background: transparent;
+  color: transparent;
+  cursor: pointer;
+
+  &:before {
+    &:extend(.dd-templates-font);
+
+    display: block;
+    position: absolute;
+    top: 50%;
+    width: @slick-arrow-size * 2;
+    margin-top: -@slick-arrow-size/2;
+    font-size: @slick-arrow-size;
+    line-height: 1;
+    opacity: @slick-opacity-default;
+    color: @slick-arrow-color;
+    transition: opacity 0.2s;
+  }
+
+  &:hover,
+  &:focus {
+    outline: none;
+    background: transparent;
+    color: transparent;
+
+    &:before {
+      opacity: @slick-opacity-on-hover;
+    }
+  }
+
+  &.slick-disabled:before {
+    opacity: @slick-opacity-not-active;
+  }
+
+  &.slick-prev {
+    left: 0;
+
+    &:before {
+      left: 0;
+      content: @chevron-left-medium;
+    }
+  }
+
+  &.slick-next {
+    right: 0;
+
+    &:before {
+      right: 0;
+      content: @chevron-right-medium;
+    }
+  }
+}
+
+// SLICK PLAY/PAUSE FUNCTIONALITY
+
+.slick-btn {
+  @button-color: white;
+
+  display: block;
+  position: absolute;
+  z-index: 4;
+  right: 0;
+  bottom: 0;
+  padding: 20px;
+  border: none;
+  font-size: 0;
+  line-height: 0;
+  outline: none;
+  white-space: nowrap;
+  background: transparent;
+  color: transparent;
+  cursor: pointer;
+  opacity: 0;
+  transition: all 0.2s ease-out;
+
+  &:hover,
+  &:focus {
+    outline: none;
+    background: transparent;
+    color: transparent;
+  }
+
+  &.slick-play {
+    &:before {
+      content: '';
+      display: block;
+      border-top: 10px solid transparent;
+      border-left: 16px solid @button-color;
+      border-bottom: 10px solid transparent;
+    }
+  }
+
+  &.slick-pause {
+    &:before,
+    &:after {
+      content: '';
+      display: inline-block;
+      vertical-align: top;
+      width: 6px;
+      height: 20px;
+      background-color: @button-color;
+    }
+
+    &:before {
+      margin-right: 2px;
+    }
+
+    &:after {
+      margin-left: 2px;
+    }
+  }
+
+  &[aria-hidden='true'] {
+    &,
+    &:hover,
+    &:focus {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+
+  &[aria-hidden='false'] {
+    z-index: 5;
+    opacity: 0.75;
+    visibility: visible;
+
+    &:hover,
+    &:focus {
+      opacity: 1;
+    }
+  }
+}

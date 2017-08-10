@@ -250,18 +250,35 @@
 .dd_templates_libraries(content-control) when (@dd_templates_libraries_content_control = alternate) { @import (optional) '@{theme_path}/libraries/content-control'; }
 
 // -----------------------------------------------------------------------------
+// Vendor Libraries
+// -----------------------------------------------------------------------------
+
+@dd_templates_vendors: slick;
+
+@dd_templates_vendors_slick: true;
+
+// default
+
+.dd_templates_vendors(slick) when (@dd_templates_vendors_slick = true) { @import 'vendor/slick'; }
+
+// alternate
+
+.dd_templates_vendors(slick) when (@dd_templates_vendors_slick = alternate) { @import (optional) '@{theme_path}/vendor/slick'; }
+
+// -----------------------------------------------------------------------------
 // A loop for loading each less file as part of a set
 // -----------------------------------------------------------------------------
 
 .dd_templates_factory(@type, @components, @total, @index: 1) when (@index =< @total) {
   @component: extract(@components, @index);
-  .factory(tools)     { .dd_templates_tools(@component); }
-  .factory(core)      { .dd_templates_core(@component); }
-  .factory(modules)   { .dd_templates_modules(@component);   }
-  .factory(regions)   { .dd_templates_regions(@component);   }
-  .factory(views)     { .dd_templates_views(@component);     }
-  .factory(blocks)    { .dd_templates_blocks(@component);    }
+  .factory(tools) { .dd_templates_tools(@component); }
+  .factory(core) { .dd_templates_core(@component); }
+  .factory(modules) { .dd_templates_modules(@component); }
+  .factory(regions) { .dd_templates_regions(@component); }
+  .factory(views) { .dd_templates_views(@component); }
+  .factory(blocks) { .dd_templates_blocks(@component); }
   .factory(libraries) { .dd_templates_libraries(@component); }
+  .factory(vendors) { .dd_templates_vendors(@component); }
   // load the component
   .factory(@type);
   // continue the loop as long as there is another component in the set
@@ -281,4 +298,5 @@
   .dd_templates_factory(views, @dd_templates_views, length(@dd_templates_views));
   .dd_templates_factory(blocks, @dd_templates_blocks, length(@dd_templates_blocks));
   .dd_templates_factory(libraries, @dd_templates_libraries, length(@dd_templates_libraries));
+  .dd_templates_factory(vendors, @dd_templates_vendors, length(@dd_templates_vendors));
 }
