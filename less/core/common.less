@@ -303,3 +303,11 @@ form[action*='/tblock/order'] .views-field-field-image-fid a.imagecache {
   font-size: @base_font_size;
 }
 
+// Fixed table headings
+table.sticky-header {
+  margin-top: @mobile-header-height;
+
+  @media (min-width: @desktop-breakpoint) {
+    margin-top: @desktop-header-height;
+  }
+}
