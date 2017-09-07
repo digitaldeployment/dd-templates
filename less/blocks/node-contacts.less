@@ -3,46 +3,30 @@
 // =============================================================================
 
 .contact-posts {
+  .views-row {
+    padding-top: 1em;
+
+    &:not(:first-child) {
+      border-top: 1px solid @base_border_color;
+    }
+  }
+
   .node-item {
     display: none;
   }
 
-  .node-upper-meta,
   .node-header,
-  .node-contact,
-  .node-links {
+  .node-contact {
     display: block;
   }
 
-  .views-row:first-child {
-    .node-upper-meta {
-      border-top: 0;
-    }
+  .title {
+    font-size: 18px;
+    line-height: 1.3;
   }
 
-  .has-image {
-    .node-upper-image {
-      display: block;
-    }
-
-    .field-image {
-      float: right;
-      max-width: 28% !important;
-      margin-left: 1em;
-    }
-
-    .field-image img {
-      border: 1px solid @base_border_color;
-      border-radius: 100%;
-    }
-  }
-
-  .node-header {
-    font-size: 1.286em;
-    line-height: 1.333;
-
-    .subtitle {
-      font-size: 0.778em;
-    }
+  .subtitle {
+    font-size: 14px;
+    line-height: 1.3;
   }
 }
