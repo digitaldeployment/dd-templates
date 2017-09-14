@@ -92,7 +92,6 @@
   margin-bottom: 20px;
 
   @media (min-width: @desktop-breakpoint) {
-    float: left;
     margin-top: @gutter-top-height;
     margin-bottom: @gutter-bottom-height;
   }
@@ -102,6 +101,7 @@
 
 .page-left {
   @media (min-width: @desktop-breakpoint) {
+    float: left;
     width: @sidebar-left-width;
     margin-bottom: 0;
 
@@ -113,6 +113,7 @@
 
 .sidebar-left .page-content {
   @media (min-width: @desktop-breakpoint) {
+    float: left;
     width: 100% - @sidebar-left-width;
   }
 }
