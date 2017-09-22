@@ -12,9 +12,10 @@
 
 .page {
   min-height: 100%;
+  padding-top: @mobile-header-height;
 
-  @media (max-width: @mobile-breakpoint) {
-    padding-top: @mobile-header-height;
+  @media (min-width: @desktop-breakpoint) {
+    padding-top: @desktop-header-height;
   }
 }
 
