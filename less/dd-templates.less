@@ -61,7 +61,7 @@
 // Core Components
 // -----------------------------------------------------------------------------
 
-@dd_templates_core: elements, fonts, clearfix, common, layout, resets, tables, meta, webforms, links, file-attachments, read-more-links, expanding-dates, accordions, slideshow, gallery, site-identity, pager, tab, glossary, lightbox;
+@dd_templates_core: elements, fonts, clearfix, common, layout, resets, tables, meta, webforms, links, file-attachments, read-more-links, expanding-dates, accordions, slideshow, gallery, pager, tab, glossary, lightbox;
 
 @dd_templates_core_elements: true;
 @dd_templates_core_fonts: true;
@@ -103,7 +103,6 @@
 .dd_templates_core(accordions) when (@dd_templates_core_accordions = true) { @import 'core/accordions'; }
 .dd_templates_core(slideshow) when (@dd_templates_core_slideshow = true) { @import 'core/slideshow'; }
 .dd_templates_core(gallery) when (@dd_templates_core_gallery = true) { @import 'core/gallery'; }
-.dd_templates_core(site-identity) when (@dd_templates_core_site_identity = true) { @import 'core/site-identity'; }
 .dd_templates_core(pager) when (@dd_templates_core_pager = true) { @import 'core/pager'; }
 .dd_templates_core(tab) when (@dd_templates_core_tabs = true) { @import 'core/tabs'; }
 .dd_templates_core(glossary) when (@dd_templates_core_glossary = true) { @import 'core/glossary'; }
@@ -127,7 +126,6 @@
 .dd_templates_core(accordions) when (@dd_templates_core_accordions = alternate) { @import (optional) '@{theme_path}/core/accordions'; }
 .dd_templates_core(slideshow) when (@dd_templates_core_slideshow = alternate) { @import (optional) '@{theme_path}/core/slideshow'; }
 .dd_templates_core(gallery) when (@dd_templates_core_gallery = alternate) { @import (optional) '@{theme_path}/core/gallery'; }
-.dd_templates_core(site-identity) when (@dd_templates_core_site_identity = alternate) { @import (optional) '@{theme_path}/core/site-identity'; }
 .dd_templates_core(pager) when (@dd_templates_core_pager = alternate) { @import (optional) '@{theme_path}/core/pager'; }
 .dd_templates_core(tab) when (@dd_templates_core_tabs = alternate) { @import (optional) '@{theme_path}/core/tabs'; }
 .dd_templates_core(glossary) when (@dd_templates_core_glossary = alternate) { @import (optional) '@{theme_path}/core/glossary'; }
