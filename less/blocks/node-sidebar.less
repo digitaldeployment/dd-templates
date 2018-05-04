@@ -3,8 +3,6 @@
 // =============================================================================
 
 .node-fields {
-  font-size: @base_font_size;
-
   .node-upper-meta {
     display: none;
   }
@@ -22,42 +20,29 @@
   }
 
   .node-contact {
-    margin-top: 10px;
-    margin-bottom: 0;
+    margin: 0;
+    padding: 0;
     border: none;
   }
 
   .node-contact-wrapper {
+    margin: 0;
     padding: 0;
     background-color: transparent;
   }
 
   .node-links {
     clear: both;
-    margin-bottom: 0;
+    margin-bottom: 30px;
 
     &.placeholder-block {
       display: none;
     }
 
-    .link-text {
-      position: relative;
-      display: inline-block;
-      vertical-align: middle;
-      margin-left: 1.2em;
-      line-height: inherit;
-
-      &:before {
-        position: absolute;
-        left: -1.2em;
-        top: 0;
-      }
-    }
-
-    .link-related {
-      .link-text {
-        margin-left: 0;
-      }
+    .link a,
+    .file a {
+      display: flex;
+      padding-bottom: 5px;
     }
   }
 }
