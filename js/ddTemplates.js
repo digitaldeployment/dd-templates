@@ -204,19 +204,22 @@
         // Continue processing this title isn't an empty string
         if (caption.length) {
           var $field = $image.parents('.field-image');
-          var $link = $field.find('a');
+          var $wrapper = $field.find('a');
+          var $caption = $('<span class="caption">' + caption + '</span>');
+
           // delete the existing caption if it exists
           $field.find('.caption').remove();
-          // Add a helper class for theming
-          $field.addClass('has-caption');
-          // Add the caption to the link
-          $link.append('<span class="caption">' + caption + '</span>');
-          // Sets the container link a maximum width so the caption doesn't expand
-          // bigger than the image width
-          //var imgWidth = $image.attr('width');
-          //if (imgWidth && imgWidth > 0) {
-          //  $link.css('max-width', imgWidth + 'px');
-          //}
+
+          // Add image as a link support
+          $caption.insertAfter($image);
+
+          if (!$wrapper.length) {
+            $field.find('img, .caption').wrapAll('<span />');
+            $wrapper = $field.children('span');
+          }
+
+          // Add a helper class to aid styling of the image and caption
+          $wrapper.addClass('has-caption');
         }
       });
     },
