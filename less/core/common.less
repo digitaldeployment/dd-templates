@@ -2,47 +2,33 @@
 // COMMON ELEMENTS
 // =============================================================================
 
-.link a,
-.link a.active {
-  color: @C1;
+.block {
+  position: relative;
 }
 
-.link a:hover {
-  color: @C2;
-}
-
-.link-read-more a {
-  color: @C1;
-}
-
-.link-read-more a:hover {
-  color: @C2;
-}
-
-// This class is used to hide items offscreen eg. Skip to main content link for
-// website accessibility.
-
-.offscreen {
-  position: absolute;
-  top: -9999px;
-  left: 0;
-}
-
-.channel, .subterm, .node {
+.channel,
+.subterm,
+.node {
   float: none;
   width: auto;
 }
 
-.channel, .subterm, .block, .node, .messages {
+.channel,
+.subterm,
+.block,
+.node,
+.messages {
   font-family: @F1;
 }
 
-.page, .above-page, .below-page {
+.page,
+.above-page,
+.below-page {
   font-size: 14px;
   line-height: 1.5;
 }
 
-.node-content {
+.node {
   font-size: @base_font_size;
 }
 
@@ -77,6 +63,7 @@
 
 .subtitle {
   font-size: 0.667em;
+  line-height: 1.4;
   color: @C4;
 
   .overview &,
@@ -95,9 +82,10 @@
     margin-bottom: 5px;
     border-top: 1px solid @base_border_color;
     font-size: 16px;
+    color: #555;
 
     &:before {
-      float: left;
+      float: right;
       &:extend(.dd-templates-font);
 
       content: @chevron-down-normal;
@@ -125,7 +113,8 @@
   }
 }
 
-.node-image .field-image, .node-image .gallery {
+.node-image .field-image,
+.node-image .gallery {
   margin-top: 1em;
 }
 
@@ -290,4 +279,26 @@ form[action*='/tblock/order'] .views-field-field-image-fid a.imagecache {
 .add-term,
 .edit-term {
   z-index: 1;
+}
+
+// Content zones block names
+
+.block-name {
+  font-size: 12px;
+}
+
+// Login screen
+
+.ui-dialog {
+  font-size: @base_font_size;
+}
+
+// Fixed table headings
+
+table.sticky-header {
+  margin-top: @mobile-header-height;
+
+  @media (min-width: @desktop-breakpoint) {
+    margin-top: @desktop-header-height;
+  }
 }

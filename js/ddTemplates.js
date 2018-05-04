@@ -45,7 +45,7 @@
      * Simple check to see if the current body element contains the node class.
      */
     isNode: function(context) {
-      return $(document.body, context).is('.n');
+      return $(document.body, context).is('.n, .section-node');
     },
     /**
      * A way to enable only behaviors the theme requires.

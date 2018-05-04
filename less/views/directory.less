@@ -64,20 +64,27 @@
 
     li {
       display: inline-block;
+      vertical-align: top;
       margin: 0;
       padding: 0;
       list-style: none;
+
+      &.pager-current {
+        margin-bottom: 4px;
+        padding: 3px 10px;
+      }
     }
 
     a {
-      display: inline-block;
-      background-color: @C1;
-      color: white;
+      display: block;
+      margin-bottom: 4px;
       padding: 3px 9px;
       line-height: 21px;
       border-radius: 4px;
       text-decoration: none;
       transition: background-color 0.3s ease-out;
+      background-color: @C1;
+      color: white;
 
       &:hover {
         background-color: @C2;

@@ -15,11 +15,11 @@
 @F2: Georgia, Times, "Times New Roman", serif;
 
 // Default Colors
-@C1: #009ABF;
+@C1: #009abf;
 @C2: #005766;
-@C3: #00718C;
-@C4: #5ABDD5;
-@C5: #87C3D0;
+@C3: #00718c;
+@C4: #5abdd5;
+@C5: #87c3d0;
 
 // Post bottom margin
 @post-bottom-margin: 20px;
@@ -61,10 +61,11 @@
 // Core Components
 // -----------------------------------------------------------------------------
 
-@dd_templates_core: elements, fonts, clearfix, common, layout, resets, tables, meta, webforms, links, file-attachments, read-more-links, expanding-dates, accordions, slideshow, gallery, site-identity, pager, tab, glossary, lightbox;
+@dd_templates_core: elements, fonts, accessibility, clearfix, common, layout, resets, tables, meta, webforms, links, file-attachments, read-more-links, expanding-dates, accordions, slideshow, gallery, pager, tab, glossary, lightbox;
 
 @dd_templates_core_elements: true;
 @dd_templates_core_fonts: true;
+@dd_templates_core_accessibility: true;
 @dd_templates_core_clearfix: true;
 @dd_templates_core_common: true;
 @dd_templates_core_layout: true;
@@ -89,6 +90,7 @@
 
 .dd_templates_core(elements) when (@dd_templates_core_elements = true) { @import 'core/elements'; }
 .dd_templates_core(fonts) when (@dd_templates_core_fonts = true) { @import 'core/fonts'; }
+.dd_templates_core(accessibility) when (@dd_templates_core_accessibility = true) { @import 'core/accessibility'; }
 .dd_templates_core(clearfix) when (@dd_templates_core_clearfix = true) { @import 'core/clearfix'; }
 .dd_templates_core(common) when (@dd_templates_core_common = true) { @import 'core/common'; }
 .dd_templates_core(layout) when (@dd_templates_core_layout = true) { @import 'core/layout'; }
@@ -103,7 +105,6 @@
 .dd_templates_core(accordions) when (@dd_templates_core_accordions = true) { @import 'core/accordions'; }
 .dd_templates_core(slideshow) when (@dd_templates_core_slideshow = true) { @import 'core/slideshow'; }
 .dd_templates_core(gallery) when (@dd_templates_core_gallery = true) { @import 'core/gallery'; }
-.dd_templates_core(site-identity) when (@dd_templates_core_site_identity = true) { @import 'core/site-identity'; }
 .dd_templates_core(pager) when (@dd_templates_core_pager = true) { @import 'core/pager'; }
 .dd_templates_core(tab) when (@dd_templates_core_tabs = true) { @import 'core/tabs'; }
 .dd_templates_core(glossary) when (@dd_templates_core_glossary = true) { @import 'core/glossary'; }
@@ -113,6 +114,7 @@
 
 .dd_templates_core(elements) when (@dd_templates_core_elements = alternate) { @import (optional) '@{theme_path}/core/elements'; }
 .dd_templates_core(fonts) when (@dd_templates_core_fonts = alternate) { @import (optional) '@{theme_path}/core/fonts'; }
+.dd_templates_core(accessibility) when (@dd_templates_core_accessibility = alternate) { @import (optional) '@{theme_path}/core/accessibility'; }
 .dd_templates_core(clearfix) when (@dd_templates_core_clearfix = alternate) { @import (optional) '@{theme_path}/core/clearfix'; }
 .dd_templates_core(common) when (@dd_templates_core_common = alternate) { @import (optional) '@{theme_path}/core/common'; }
 .dd_templates_core(layout) when (@dd_templates_core_layout = alternate) { @import (optional) '@{theme_path}/core/layout'; }
@@ -127,7 +129,6 @@
 .dd_templates_core(accordions) when (@dd_templates_core_accordions = alternate) { @import (optional) '@{theme_path}/core/accordions'; }
 .dd_templates_core(slideshow) when (@dd_templates_core_slideshow = alternate) { @import (optional) '@{theme_path}/core/slideshow'; }
 .dd_templates_core(gallery) when (@dd_templates_core_gallery = alternate) { @import (optional) '@{theme_path}/core/gallery'; }
-.dd_templates_core(site-identity) when (@dd_templates_core_site_identity = alternate) { @import (optional) '@{theme_path}/core/site-identity'; }
 .dd_templates_core(pager) when (@dd_templates_core_pager = alternate) { @import (optional) '@{theme_path}/core/pager'; }
 .dd_templates_core(tab) when (@dd_templates_core_tabs = alternate) { @import (optional) '@{theme_path}/core/tabs'; }
 .dd_templates_core(glossary) when (@dd_templates_core_glossary = alternate) { @import (optional) '@{theme_path}/core/glossary'; }
@@ -194,19 +195,18 @@
 // Blocks Components
 // -----------------------------------------------------------------------------
 
-@dd_templates_blocks: search, breadcrumb, pods, overviews, bundled-content, related-profiles, term-navigation, appearing-navigation, dd-social, node-sidebar, node-contacts;
+@dd_templates_blocks: search, breadcrumb, pods, overviews, term-navigation, appearing-navigation, dd-social, node-sidebar, node-contacts, node-profiles;
 
 @dd_templates_blocks_search: true;
 @dd_templates_blocks_breadcrumb: true;
 @dd_templates_blocks_pods: true;
 @dd_templates_blocks_overviews: true;
-@dd_templates_blocks_bundled_content: true;
-@dd_templates_blocks_related_profiles: true;
 @dd_templates_blocks_term_navigation: true;
 @dd_templates_blocks_appearing_navigation: true;
 @dd_templates_blocks_dd_social: true;
 @dd_templates_blocks_node_sidebar: true;
 @dd_templates_blocks_node_contacts: true;
+@dd_templates_blocks_node_profiles: true;
 
 // default
 
@@ -214,13 +214,12 @@
 .dd_templates_blocks(breadcrumb) when (@dd_templates_blocks_breadcrumb = true) { @import 'blocks/breadcrumb'; }
 .dd_templates_blocks(pods) when (@dd_templates_blocks_pods = true) { @import 'blocks/pods'; }
 .dd_templates_blocks(overviews) when (@dd_templates_blocks_overviews = true) { @import 'blocks/overviews'; }
-.dd_templates_blocks(bundled-content) when (@dd_templates_blocks_bundled_content = true) { @import 'blocks/bundled-content'; }
-.dd_templates_blocks(related-profiles) when (@dd_templates_blocks_related_profiles = true) { @import 'blocks/related-profiles'; }
 .dd_templates_blocks(term-navigation) when (@dd_templates_blocks_term_navigation = true) { @import 'blocks/term-navigation'; }
 .dd_templates_blocks(appearing-navigation) when (@dd_templates_blocks_appearing_navigation = true) { @import 'blocks/appearing-navigation'; }
 .dd_templates_blocks(dd-social) when (@dd_templates_blocks_dd_social = true) { @import 'blocks/dd-social'; }
 .dd_templates_blocks(node-sidebar) when (@dd_templates_blocks_node_sidebar = true) { @import 'blocks/node-sidebar'; }
 .dd_templates_blocks(node-contacts) when (@dd_templates_blocks_node_contacts = true) { @import 'blocks/node-contacts'; }
+.dd_templates_blocks(node-profiles) when (@dd_templates_blocks_node_profiles = true) { @import 'blocks/node-profiles'; }
 
 // alternate
 
@@ -228,13 +227,12 @@
 .dd_templates_blocks(breadcrumb) when (@dd_templates_blocks_breadcrumb = alternate) { @import (optional) '@{theme_path}/blocks/breadcrumb'; }
 .dd_templates_blocks(pods) when (@dd_templates_blocks_pods = alternate) { @import (optional) '@{theme_path}/blocks/pods'; }
 .dd_templates_blocks(overviews) when (@dd_templates_blocks_overviews = alternate) { @import (optional) '@{theme_path}/blocks/overviews'; }
-.dd_templates_blocks(bundled-content) when (@dd_templates_blocks_bundled_content = alternate) { @import (optional) '@{theme_path}/blocks/bundled-content'; }
-.dd_templates_blocks(related-profiles) when (@dd_templates_blocks_related_profiles = alternate) { @import (optional) '@{theme_path}/blocks/related-profiles'; }
 .dd_templates_blocks(term-navigation) when (@dd_templates_blocks_term_navigation = alternate) { @import (optional) '@{theme_path}/blocks/term-navigation'; }
 .dd_templates_blocks(appearing-navigation) when (@dd_templates_blocks_appearing_navigation = alternate) { @import (optional) '@{theme_path}/blocks/appearing-navigation'; }
 .dd_templates_blocks(dd-social) when (@dd_templates_blocks_dd_social = alternate) { @import (optional) '@{theme_path}/blocks/dd-social'; }
 .dd_templates_blocks(node-sidebar) when (@dd_templates_blocks_node_sidebar = alternate) { @import (optional) '@{theme_path}/blocks/node-sidebar'; }
 .dd_templates_blocks(node-contacts) when (@dd_templates_blocks_node_contacts = alternate) { @import (optional) '@{theme_path}/blocks/node-contacts'; }
+.dd_templates_blocks(node-profiles) when (@dd_templates_blocks_node_profiles = alternate) { @import (optional) '@{theme_path}/blocks/node-profiles'; }
 
 // -----------------------------------------------------------------------------
 // Content Layout Libraries/Helpers

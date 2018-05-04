@@ -79,7 +79,6 @@
   .slick-slide {
     float: none;
     display: inline-block;
-    vertical-align: middle;
     margin: 0;
     background-color: #17191a;
 
@@ -90,8 +89,14 @@
     }
 
     img {
-      width: 100%;
       margin: 0 auto;
+    }
+  }
+
+  .slick-initialized,
+  &.slick-initialized {
+    .slick-slide {
+      vertical-align: middle;
     }
   }
 

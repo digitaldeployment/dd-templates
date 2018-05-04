@@ -1,36 +1,32 @@
 // =============================================================================
-// FULL POST CONTACT REFERENCE -> RIGHT SIDEBAR
+// CONTACT POSTS
 // =============================================================================
 
 .contact-posts {
+  .views-row {
+    padding-top: 1em;
+
+    &:not(:first-child) {
+      border-top: 1px solid @base_border_color;
+    }
+  }
+
   .node-item {
     display: none;
   }
 
-  .node-upper-meta,
   .node-header,
-  .node-upper-image,
-  .node-contact,
-  .node-links {
+  .node-contact {
     display: block;
   }
 
-  .node-upper-meta {
-    padding-top: 0.5em;
-    margin-bottom: 0.5em;
+  .title {
+    font-size: 18px;
+    line-height: 1.3;
   }
 
-  .node-header {
-    font-size: 1.286em; // 18px
-    line-height: 1.333; // 24px
-
-    .subtitle {
-      font-size: 0.778em; // 14px
-    }
-  }
-
-  .field-image {
-    margin-top: 1em;
-    margin-bottom: 1em;
+  .subtitle {
+    font-size: 14px;
+    line-height: 1.3;
   }
 }

@@ -3,7 +3,11 @@
 // =============================================================================
 
 .block-dd_social {
-  margin-bottom: 20px;
+  margin-bottom: @post-bottom-margin;
+
+  .block-title {
+    margin-bottom: 10px;
+  }
 
   ul {
     margin: 0;
@@ -52,7 +56,8 @@
       content: @social-share-facebook;
     }
 
-    &:hover, &:active {
+    &:hover,
+    &:active {
       background-color: #3c5a9b;
     }
   }
@@ -62,7 +67,8 @@
       content: @social-share-googleplus;
     }
 
-    &:hover, &:active {
+    &:hover,
+    &:active {
       background-color: #db4c3f;
     }
   }
@@ -72,7 +78,8 @@
       content: @social-share-linkedin;
     }
 
-    &:hover, &:active {
+    &:hover,
+    &:active {
       background-color: #1879b3;
     }
   }
@@ -82,7 +89,8 @@
       content: @social-share-twitter;
     }
 
-    &:hover, &:active {
+    &:hover,
+    &:active {
       background-color: #30aade;
     }
   }

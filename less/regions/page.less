@@ -12,9 +12,10 @@
 
 .page {
   min-height: 100%;
+  padding-top: @mobile-header-height;
 
-  @media (max-width: @mobile-breakpoint) {
-    padding-top: @mobile-header-height;
+  @media (min-width: @desktop-breakpoint) {
+    padding-top: @desktop-header-height;
   }
 }
 
@@ -92,7 +93,6 @@
   margin-bottom: 20px;
 
   @media (min-width: @desktop-breakpoint) {
-    float: left;
     margin-top: @gutter-top-height;
     margin-bottom: @gutter-bottom-height;
   }
@@ -102,6 +102,7 @@
 
 .page-left {
   @media (min-width: @desktop-breakpoint) {
+    float: left;
     width: @sidebar-left-width;
     margin-bottom: 0;
 
@@ -113,6 +114,7 @@
 
 .sidebar-left .page-content {
   @media (min-width: @desktop-breakpoint) {
+    float: left;
     width: 100% - @sidebar-left-width;
   }
 }
