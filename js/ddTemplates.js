@@ -219,7 +219,7 @@
           }
 
           // Add a helper class to aid styling of the image and caption
-          $wrapper.addClass('has-caption');
+          $field.addClass('has-caption');
         }
       });
     },
