@@ -196,9 +196,8 @@
 // Blocks Components
 // -----------------------------------------------------------------------------
 
-@dd_templates_blocks: search, breadcrumb, pods, overviews, term-navigation, appearing-navigation, dd-social, node-sidebar, node-contacts, node-profiles;
+@dd_templates_blocks: breadcrumb, pods, overviews, term-navigation, appearing-navigation, dd-social, node-sidebar, node-contacts, node-profiles;
 
-@dd_templates_blocks_search: true;
 @dd_templates_blocks_breadcrumb: true;
 @dd_templates_blocks_pods: true;
 @dd_templates_blocks_overviews: true;
@@ -211,7 +210,6 @@
 
 // default
 
-.dd_templates_blocks(search) when (@dd_templates_blocks_search = true) { @import 'blocks/search'; }
 .dd_templates_blocks(breadcrumb) when (@dd_templates_blocks_breadcrumb = true) { @import 'blocks/breadcrumb'; }
 .dd_templates_blocks(pods) when (@dd_templates_blocks_pods = true) { @import 'blocks/pods'; }
 .dd_templates_blocks(overviews) when (@dd_templates_blocks_overviews = true) { @import 'blocks/overviews'; }
@@ -224,7 +222,6 @@
 
 // alternate
 
-.dd_templates_blocks(search) when (@dd_templates_blocks_search = alternate) { @import (optional) '@{theme_path}/blocks/search'; }
 .dd_templates_blocks(breadcrumb) when (@dd_templates_blocks_breadcrumb = alternate) { @import (optional) '@{theme_path}/blocks/breadcrumb'; }
 .dd_templates_blocks(pods) when (@dd_templates_blocks_pods = alternate) { @import (optional) '@{theme_path}/blocks/pods'; }
 .dd_templates_blocks(overviews) when (@dd_templates_blocks_overviews = alternate) { @import (optional) '@{theme_path}/blocks/overviews'; }
