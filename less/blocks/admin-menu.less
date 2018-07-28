@@ -1,0 +1,32 @@
+// =============================================================================
+// ADMIN MENU
+// =============================================================================
+
+#admin-menu {
+  .admin-menu-icon {
+    & > a {
+      display: block;
+
+      img {
+        display: none;
+      }
+
+      &:before {
+        content: '';
+        display: block;
+        width: 16px;
+        height: 16px;
+        background: url(/sites/all/themes/dtheme/favicon.ico) no-repeat left top transparent;
+        background-size: 16px;
+      }
+    }
+  }
+}
+
+.admin-menu {
+  @media (min-width: @desktop-breakpoint) {
+    .above-page {
+      border-top: 20px solid black;
+    }
+  }
+}

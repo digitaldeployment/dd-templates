@@ -196,8 +196,9 @@
 // Blocks Components
 // -----------------------------------------------------------------------------
 
-@dd_templates_blocks: breadcrumb, pods, overviews, appearing-navigation, dd-social, node-sidebar, node-contacts, node-profiles;
+@dd_templates_blocks: admin-menu, breadcrumb, pods, overviews, appearing-navigation, dd-social, node-sidebar, node-contacts, node-profiles;
 
+@dd_templates_blocks_admin_menu: true;
 @dd_templates_blocks_breadcrumb: true;
 @dd_templates_blocks_pods: true;
 @dd_templates_blocks_overviews: true;
@@ -209,6 +210,7 @@
 
 // default
 
+.dd_templates_blocks(admin-menu) when (@dd_templates_blocks_admin_menu = true) { @import 'blocks/admin-menu'; }
 .dd_templates_blocks(breadcrumb) when (@dd_templates_blocks_breadcrumb = true) { @import 'blocks/breadcrumb'; }
 .dd_templates_blocks(pods) when (@dd_templates_blocks_pods = true) { @import 'blocks/pods'; }
 .dd_templates_blocks(overviews) when (@dd_templates_blocks_overviews = true) { @import 'blocks/overviews'; }
@@ -220,6 +222,7 @@
 
 // alternate
 
+.dd_templates_blocks(admin-menu) when (@dd_templates_blocks_admin_menu = alternate) { @import (optional) '@{theme_path}/blocks/admin-menu'; }
 .dd_templates_blocks(breadcrumb) when (@dd_templates_blocks_breadcrumb = alternate) { @import (optional) '@{theme_path}/blocks/breadcrumb'; }
 .dd_templates_blocks(pods) when (@dd_templates_blocks_pods = alternate) { @import (optional) '@{theme_path}/blocks/pods'; }
 .dd_templates_blocks(overviews) when (@dd_templates_blocks_overviews = alternate) { @import (optional) '@{theme_path}/blocks/overviews'; }
