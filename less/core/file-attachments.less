@@ -5,14 +5,15 @@
 .link,
 .file {
   a:before {
-    .dd-templates-font;
+    .dd-templates-font();
 
+    display: inline-block;
     line-height: inherit;
     padding-right: 0.2em;
   }
 }
 
-.link a:before {
+.link:not(.link-read-more) a:before {
   content: @attachments-link;
 }
 
