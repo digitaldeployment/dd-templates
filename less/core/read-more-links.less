@@ -13,10 +13,18 @@
 
   a:hover {
     color: @C2;
+
+    &:after {
+      transform: translateX(0.1em);
+    }
   }
 
   a:after {
-    padding-left: 0.3em;
-    content: "»";
+    .dd-templates-font();
+
+    display: inline-block;
+    vertical-align: text-bottom;
+    content: @chevron-right-bold;
+    transition: transform 0.15s ease-in-out;
   }
 }
