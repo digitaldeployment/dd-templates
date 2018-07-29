@@ -7,13 +7,14 @@ const defaults = {
     itemAppearsIn: true,
     fullNodeRelatedLinks: true,
     bundledReferringContent: true,
-    lexiconGlossary: true,
+    overviews: true,
     subtermOverviews: true,
+    lexiconGlossary: true,
     nodeMeta: true,
     imageCaptions: true,
     slideshowIcons: true,
-    expandingDates: true
-  }
+    expandingDates: true,
+  },
 };
 
 export default class DDTemplates {
@@ -55,19 +56,20 @@ export default class DDTemplates {
       node: [
         'itemAppearsIn',
         'fullNodeRelatedLinks',
-        'bundledReferringContent'
+        'bundledReferringContent',
       ],
       term: [
+        'overviews',
+        'subtermOverviews',
         'lexiconGlossary',
-        'subtermOverviews'
       ],
       global: [
         'nodeMeta',
         'relatedLinks',
         'imageCaptions',
         'slideshowIcons',
-        'expandingDates'
-      ]
+        'expandingDates',
+      ],
     };
 
     // Cycle through each behavior and only add it if it's enabled
@@ -237,6 +239,13 @@ export default class DDTemplates {
       });
     });
 
+  }
+
+  /**
+   * Removes the link from overview headings.
+   */
+  overviews() {
+    $('.overview .node-header a', this.context).children().unwrap();
   }
 
   /**
