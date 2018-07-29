@@ -30,6 +30,7 @@
 
 .node {
   font-size: @base_font_size;
+  overflow: hidden;
 }
 
 .node-teaser {
@@ -39,14 +40,18 @@
 }
 
 .node-header {
+  margin-bottom: 1.6rem;
+  font-weight: bold;
   line-height: 1.2;
+}
 
-  a {
-    color: @C2;
-  }
+.node-header a {
+  color: inherit !important;
 
-  a:hover {
-    color: @C1;
+  &:focus,
+  &:hover {
+    text-decoration: none;
+    color: @C1 !important;
   }
 }
 
@@ -55,44 +60,36 @@
   &:extend(h1);
 }
 
-.overview .node-header a,
-.overview .node-header a:hover,
-.node-full .node-header {
-  color: #555;
+.title {
+  color: inherit;
 }
 
 .subtitle {
-  font-size: 0.667em;
-  line-height: 1.4;
-  color: @C4;
+  margin-top: 0.5rem;
+  font-size: 87.5%;
+  line-height: 1.2;
+  color: #363636;
 
   .overview &,
-  .node-full & {
-    color: @C1;
+  .full-node & {
+    font-size: 80%;
   }
 }
 
-.block-title {
-  color: @C2;
-}
-
 .page-right {
+  .block {
+    margin-bottom: 20px;
+    font-size: @base_font_size;
+  }
+
   .block-title {
-    padding-top: 10px;
-    margin-bottom: 5px;
+    padding-top: 16px;
+    margin-bottom: 10px;
     border-top: 1px solid @base_border_color;
-    font-size: 16px;
-    color: #555;
-
-    &:before {
-      float: right;
-      &:extend(.dd-templates-font);
-
-      content: @chevron-down-normal;
-      font-size: 24px;
-      margin-top: -2px;
-      margin-left: -6px;
-    }
+    text-transform: uppercase;
+    font-size: 15px;
+    font-weight: bold;
+    color: #363636;
   }
 }
 
@@ -127,14 +124,16 @@
   line-height: 1.333;
 }
 
-.field-image {
-  &.has-caption {
+.field-image.has-caption {
+  a {
     display: table;
+    table-layout: fixed;
+    width: 100%;
+  }
 
-    .caption {
-      display: table-caption;
-      caption-side: bottom;
-    }
+  .caption {
+    display: table-caption;
+    caption-side: bottom;
   }
 }
 
@@ -148,15 +147,15 @@
 
 .meta-item,
 .meta-item a {
-  color: #999;
+  color: #777;
 }
 
-.meta-item a:hover {
-  color: @C2;
+.meta .meta-item a:hover {
+  text-decoration: underline @C1;
 }
 
 .meta .meta-item {
-  border-right-color: @base_border_color;
+  text-transform: uppercase;
 }
 
 .meta .event-date {
@@ -164,7 +163,8 @@
 }
 
 .node-content {
-  ul, ol {
+  ul,
+  ol {
     clear: both;
     margin: 1em 0;
     padding-left: 3em;
@@ -294,9 +294,13 @@ form[action*='/tblock/order'] .views-field-field-image-fid a.imagecache {
 // Fixed table headings
 
 table.sticky-header {
-  margin-top: @mobile-header-height;
-
   @media (min-width: @desktop-breakpoint) {
-    margin-top: @desktop-header-height;
+    margin-top: @desktop-breakpoint;
   }
+}
+
+// Remove bottom margin from messages
+
+div.messages {
+  margin-bottom: 0;
 }
