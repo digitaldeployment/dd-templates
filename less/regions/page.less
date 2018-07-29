@@ -62,6 +62,13 @@
   z-index: 1;
 }
 
+@media (min-width: @desktop-breakpoint) {
+  .page-center {
+    display: flex;
+    flex-flow: row nowrap;
+  }
+}
+
 // PAGE LEFT, CONTENT, & RIGHT
 
 .page-left,
@@ -102,19 +109,22 @@
 
 .page-left {
   @media (min-width: @desktop-breakpoint) {
-    float: left;
     width: @sidebar-left-width;
-    margin-bottom: 0;
 
     .page-sidebar {
       margin-right: @standard-gutter;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .page-sidebar {
+      margin-right: @standard-gutter * 2;
     }
   }
 }
 
 .sidebar-left .page-content {
   @media (min-width: @desktop-breakpoint) {
-    float: left;
     width: 100% - @sidebar-left-width;
   }
 }
@@ -123,19 +133,35 @@
 
 .page-right {
   @media (min-width: @desktop-breakpoint) {
-    float: left;
     width: @sidebar-right-width;
 
     .page-sidebar {
       margin-left: @standard-gutter;
     }
   }
+
+  @media (min-width: 1200px) {
+    .page-sidebar {
+      margin-left: @standard-gutter * 2;
+    }
+  }
 }
 
 .sidebar-right .page-content {
   @media (min-width: @desktop-breakpoint) {
-    float: left;
     width: 100% - @sidebar-right-width;
+  }
+}
+
+// Add sticky display to the appropriate sidebars based on window height
+
+.page-left,
+.page-right {
+  @media (min-width: @desktop-breakpoint) {
+    .sticky.page-sidebar {
+      position: sticky;
+      top: @gutter-top-height + @desktop-header-height;
+    }
   }
 }
 
@@ -143,13 +169,6 @@
 
 .two-sidebars .page-content {
   @media (min-width: @desktop-breakpoint) {
-    float: left;
     width: 100% - (@sidebar-right-width + @sidebar-left-width);
   }
-}
-
-// Since we float the left, content, and right regions we need to clear them here
-
-.page-center {
-  &:extend(.clearfix all);
 }
