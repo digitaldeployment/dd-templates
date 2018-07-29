@@ -11,7 +11,7 @@
   textarea,
   fieldset {
     font-family: @F1;
-    font-size: 16px;
+    font-size: @base_font_size;
   }
 
   label,
@@ -20,9 +20,9 @@
   }
 
   .form-text {
-    padding: 8px 10px;
+    padding: 0.8rem 1rem;
     border: 1px solid @base_border_color;
-    border-radius: 5px;
+    border-radius: 0.5rem;
     background: white;
     color: @base_text_color;
   }
@@ -50,16 +50,20 @@
   }
 
   .form-textarea {
-    padding: 10px;
+    padding: 1rem;
     border: 1px solid @base_border_color;
-    border-radius: 5px;
+    border-radius: 0.5rem;
   }
 
   .form-select {
-    height: 36px;
+    height: 3.6rem;
     border-color: @base_border_color;
     background: white;
     color: @base_text_color;
+  }
+
+  .form-submit {
+    padding: 1rem;
   }
 
   .grippie {
@@ -70,7 +74,7 @@
     min-width: 100%; // Fixes issue where the native element contains a predefined min-width value
     margin-top: 0;
     border: 1px solid @base_border_color !important;
-    border-radius: 5px;
+    border-radius: 0.5rem;
     overflow: hidden;
   }
 
@@ -87,8 +91,8 @@
   legend {
     float: left;
     width: 100%;
-    padding: 10px 20px;
-    margin: -10px -20px 10px;
+    padding: 1rem 2rem;
+    margin: -1rem -2rem 1rem;
     border-bottom: 1px solid @base_border_color;
     background-color: #eee;
     user-select: none;
