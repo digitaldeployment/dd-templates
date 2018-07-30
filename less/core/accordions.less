@@ -6,26 +6,32 @@
   position: relative;
   clear: both;
   margin: 0;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding: 0;
   border-top: 1px solid @base_border_color;
-  font-size: 1em;
-  line-height: 24px;
+
+  h3& {
+    font-size: 2.4rem;
+  }
+
+  h4& {
+    font-size: 2.1rem;
+  }
 
   a {
-    cursor: pointer;
-    text-decoration: none;
-
     &:before {
-      position: absolute;
-      top: 0;
-      right: -5px;
-      display: block;
-      &:extend(.dd-templates-font);
+      .theme-font;
 
-      font-size: 32px;
-      content: @chevron-down-medium;
+      content: @term-plus;
+      position: absolute;
+      top: 50%;
+      right: 0;
+      display: block;
+      margin-top: -12px;
+      padding: 2px;
+      border-radius: 100%;
+      font-size: 16px;
       transition: all 0.3s ease-out;
+      border: 2px solid;
     }
   }
 
@@ -35,10 +41,15 @@
 
   .link-text {
     display: block;
-    margin-right: 24px;
+    margin-right: 40px;
+    padding: 15px 0;
   }
 
   &.active a:before {
-    content: @chevron-up-medium;
+    content: @term-minus;
   }
+}
+
+.accordion-content > *:first-child {
+  margin-top: 0;
 }
