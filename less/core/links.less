@@ -12,6 +12,27 @@
       clear: left;
       margin: 0;
     }
+
+    .link:not(.link-read-more) {
+      a {
+        display: flex;
+        padding: 5px 0;
+        line-height: 1.3;
+      }
+
+      a:hover {
+        text-decoration: none;
+      }
+
+      a:hover .link-text {
+        text-decoration: underline;
+      }
+
+      span {
+        display: flex;
+        align-items: center;
+      }
+    }
   }
 }
 
