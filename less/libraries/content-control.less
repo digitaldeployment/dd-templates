@@ -31,30 +31,27 @@
     position: relative;
     margin-left: -10px;
     margin-right: -10px;
-    font-size: 0;
+    display: flex;
   }
 
   .two-columns > *,
   .three-columns > *,
   .four-columns > * {
-    display: inline-block;
     padding-left: 10px;
     padding-right: 10px;
     box-sizing: border-box;
-    vertical-align: top;
-    font-size: @base_font_size                     ;
   }
 
   .two-columns > * {
-    width: 50%;
+    flex: 0 0 percentage(1/2);
   }
 
   .three-columns > * {
-    width: 100%/3;
+    flex: 0 0 percentage(1/3);
   }
 
   .four-columns > * {
-    width: 100%/4;
+    flex: 0 0 percentage(1/4);
   }
 
   // Columns with lines
@@ -68,39 +65,14 @@
     }
 
     &.lines > * {
-      padding-left: 20px;
-      padding-right: 20px;
+      padding-left: 21px;
+      padding-right: 19px;
     }
 
-    &.lines > *:after {
-      content: ' ';
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      width: 1px;
-      background-color: #ccc;
-    }
-
-    &.lines > *:last-child:after {
-      display: none;
+    &.lines > *:not(:first-child) {
+      border-left: 1px solid #ccc;
     }
   }
-
-  /* stylelint-disable declaration-colon-space-after */
-
-  // Two Columns with a line
-  .lines.two-columns > *:nth-child(1):after { left: 50%; }
-
-  // Three Columns with a lines
-  .lines.three-columns > *:nth-child(1):after { left:  100%/3; }
-  .lines.three-columns > *:nth-child(2):after { right: 100%/3; }
-
-  // Four Columns with a lines
-  .lines.four-columns > *:nth-child(1):after { left:  25%; }
-  .lines.four-columns > *:nth-child(2):after { left:  50%; }
-  .lines.four-columns > *:nth-child(3):after { right: 25%; }
-
-  /* stylelint-enable */
 }
 
 // =============================================================================
@@ -117,13 +89,13 @@ blockquote {
     &.left {
       float: left;
       margin-left: 0;
-      margin-right: 40px;
+      margin-right: 30px;
     }
 
     &.right {
       float: right;
       margin-right: 0;
-      margin-left: 40px;
+      margin-left: 30px;
     }
   }
 }
