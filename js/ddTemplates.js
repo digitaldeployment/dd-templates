@@ -114,7 +114,7 @@ export default class DDTemplates {
    * Hides the blocks if no content is present.
    */
   bundledReferringContent() {
-    var $blocks = $('#block-digitaldcore-node_referring, #block-digitaldcore-node_bundled', context);
+    var $blocks = $('#block-digitaldcore-node_referring, #block-digitaldcore-node_bundled', this.context);
     $blocks.each(function() {
       var $block = $(this);
       var $nodes = $block.find('.node-teaser');
