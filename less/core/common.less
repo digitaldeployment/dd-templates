@@ -289,8 +289,11 @@ form[action*='/tblock/order'] .views-field-field-image-fid a.imagecache {
 // Fixed table headings
 
 table.sticky-header {
+  z-index: 1;
+  background-color: white;
+
   @media (min-width: @desktop-breakpoint) {
-    margin-top: @desktop-breakpoint;
+    margin-top: @desktop-header-height;
   }
 }
 
