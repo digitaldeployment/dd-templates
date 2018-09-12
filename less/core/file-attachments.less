@@ -2,7 +2,8 @@
    ICONS AND INLINE FILE ATTACHMENTS
 \* ========================================================================== */
 
-.link {
+.link,
+.file {
   a:before {
     .dd-templates-font();
 
@@ -32,12 +33,11 @@
   &.file-application-pdf a:before { content: @attachments-file-pdf; color: #f91916; }
   &.file-application-msword a:before { content: @attachments-file-word; color: #2a5699; }
   &.file-application-vnd-ms-excel a:before { content: @attachments-file-excel; color: #227547; }
-  &.file-application-vnd-openxmlformats-officedocument-spreadsheetml-sheet a:before { content: @attachments-file-excel; color: #227547; }
   &.file-application-vnd-ms-powerpoint a:before { content: @attachments-file-powerpoint; color: #d14524; }
-  &.file-application-vnd-openxmlformats-officedocument-presentationml-presentation a:before { content: @attachments-file-powerpoint; color: #d14524; }
   // Open Office Documents
   &.file-application-vnd-openxmlformats-officedocument-spreadsheetml-sheet a:before { content: @attachments-file-excel; color: #227547; }
   &.file-application-vnd-openxmlformats-officedocument-wordprocessingml-document a:before { content: @attachments-file-word; color: #2a5699; }
+  &.file-application-vnd-openxmlformats-officedocument-presentationml-presentation a:before { content: @attachments-file-powerpoint; color: #d14524; }
   // Console
   &.file-application-x-msdos-program a:before { content: @attachments-console; color: black; }
   // Image
