@@ -18,10 +18,6 @@
     }
   }
 
-  .node-item .field-image {
-    margin: 0;
-  }
-
   .field-image {
     position: relative;
     float: none !important;
@@ -43,6 +39,10 @@
         display: block;
       }
     }
+  }
+
+  .node-item .field-image {
+    margin: 0;
   }
 
   // Node Image or Upper Image
@@ -71,7 +71,9 @@
   // Field Image
 
   .slick-slide {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: #17191a;
 
     a {
