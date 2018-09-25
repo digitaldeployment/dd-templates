@@ -238,14 +238,13 @@ export default class DDTemplates {
         $img.before('<i class="slideshow-icon"></i>');
       });
     });
-
   }
 
   /**
    * Removes the link from overview headings.
    */
   overviews() {
-    $('.overview .node-header a', this.context).children().unwrap();
+    $('.overview .node-header a').children().unwrap();
   }
 
   /**
