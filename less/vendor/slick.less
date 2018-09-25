@@ -21,11 +21,6 @@
   user-select: none;
   touch-action: pan-y;
   -webkit-tap-highlight-color: transparent;
-
-  .slick-track,
-  .slick-list {
-    transform: translate3d(0, 0, 0);
-  }
 }
 
 .slick-list {
@@ -42,6 +37,10 @@
   &.dragging {
     cursor: pointer;
     cursor: hand;
+  }
+
+  .slick-slider & {
+    transform: translate3d(0, 0, 0);
   }
 }
 
@@ -67,10 +66,13 @@
   .slick-loading & {
     visibility: hidden;
   }
+
+  .slick-slider & {
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 .slick-slide {
-  display: none;
   min-height: 1px;
 
   img {
