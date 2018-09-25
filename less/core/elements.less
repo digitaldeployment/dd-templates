@@ -29,9 +29,7 @@ body {
   text-align: left;
   background-color: white;
   color: @base_text_color;
-}
 
-body {
   &.user-1,
   &.admin-menu {
     margin-top: 0 !important;
@@ -41,6 +39,7 @@ body {
   // Set the WYSIWYG editor to display the default font the site is using
   &.node-content {
     font-family: @F1;
+    font-size: @base_font_size;
   }
 
   &.menu-active {
@@ -129,7 +128,7 @@ blockquote {
     margin-bottom: 2.4rem;
     color: @C1;
     text-align: right;
-  
+
     &:before {
       content: "\2014 \00A0";
     }
