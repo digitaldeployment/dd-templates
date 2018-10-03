@@ -1,6 +1,6 @@
 {
   "name": "dd-templates",
-  "version": "3.1.1",
+  "version": "3.2.0",
   "description": "A Less library that can serve as a great starting point for all Digital Deployment project themes.",
   "repository": {
     "type": "git",
@@ -8,16 +8,10 @@
   },
   "private": true,
   "scripts":{
-    "test": "npm run eslint && npm run stylelint",
-    "eslint": "eslint js/",
+    "test": "npm run stylelint",
     "stylelint": "stylelint less/**/*.less"
   },
-  "main": "js/ddTemplates.js",
-  "dependencies": {
-    "jquery": "^3.3.1"
-  },
   "devDependencies": {
-    "eslint": "^4.0.0",
     "stylelint": "^7.11.0",
     "stylelint-config-standard": "^16.0.0"
   }
