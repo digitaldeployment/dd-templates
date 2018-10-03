@@ -3,7 +3,6 @@ import $ from 'jquery';
 const defaults = {
   photoGalleryPID: 107,
   behaviors: {
-    relatedLinks: true,
     itemAppearsIn: true,
     fullNodeRelatedLinks: true,
     bundledReferringContent: true,
@@ -20,8 +19,8 @@ const defaults = {
 export default class DDTemplates {
   constructor(context, options) {
     this.context = context;
-    this.isNodeView = this.isNode(context);
-    this.settings = Object.assign(defaults, options);
+    this.isNodeView = this.isNode();
+    this.settings = Object.assign({}, defaults, options);
     // Global behaviors
     this.defineApplicableBehaviors('global', this.context);
     // Current view behaviors only
@@ -31,19 +30,8 @@ export default class DDTemplates {
   /**
    * Simple check to see if the current body element contains the node class.
    */
-  isNode(context) {
-    return $(document.body, context).is('.n, .section-node');
-  }
-
-  /**
-   * A way to enable only behaviors the theme requires.
-   */
-  addEnabledBehavior(behavior) {
-    var enabled = this.settings.behaviors[behavior];
-    if (enabled) {
-      this[behavior]();
-    }
-    return true;
+  isNode() {
+    return $(document.body, this.context).is('.n, .section-node');
   }
 
   /**
@@ -51,8 +39,7 @@ export default class DDTemplates {
    * enabled, define them in this module.
    */
   defineApplicableBehaviors(view) {
-    var self = this;
-    var behaviors = {
+    const behaviors = {
       node: [
         'itemAppearsIn',
         'fullNodeRelatedLinks',
@@ -65,7 +52,6 @@ export default class DDTemplates {
       ],
       global: [
         'nodeMeta',
-        'relatedLinks',
         'imageCaptions',
         'slideshowIcons',
         'expandingDates',
@@ -73,25 +59,27 @@ export default class DDTemplates {
     };
 
     // Cycle through each behavior and only add it if it's enabled
-    $.each(behaviors[view], function(i, behavior) {
-      self.addEnabledBehavior(behavior);
+    behaviors[view].forEach((behavior) => {
+      this.addEnabledBehavior(behavior);
     });
-
-    return true;
   }
 
   /**
-   * Helper class for theming related links sitewide.
-   * @status DEPRECATED
+   * A way to enable only behaviors the theme requires.
    */
-  relatedLinks() {}
+  addEnabledBehavior(behavior) {
+    const enabled = this.settings.behaviors[behavior];
+    if (enabled) {
+      this[behavior].call(this);
+    }
+  }
 
   /**
    * Helper class for theming the appearing navigation block
    */
   itemAppearsIn() {
-    var $appearingNav = $('.appearing-nav', this.context);
-    var $links = $appearingNav.find('ul.links li');
+    const $appearingNav = $('.appearing-nav', this.context);
+    const $links = $appearingNav.find('ul.links li');
     if (!$links.length) {
       $appearingNav.addClass('placeholder-block');
     }
@@ -101,9 +89,9 @@ export default class DDTemplates {
    * Sets the block to show if one or more links are found
    */
   fullNodeRelatedLinks() {
-    var $nodeFields = $('#block-digitaldcore-node_fields', this.context);
-    var $relatedLinks = $nodeFields.find('.node-links');
-    var numLinks = $relatedLinks.find('.link-related, .link-file').length;
+    const $nodeFields = $('#block-digitaldcore-node_fields', this.context);
+    const $relatedLinks = $nodeFields.find('.node-links');
+    const numLinks = $relatedLinks.find('.link-related, .link-file').length;
 
     if (!numLinks) {
       $relatedLinks.addClass('placeholder-block');
@@ -114,10 +102,10 @@ export default class DDTemplates {
    * Hides the blocks if no content is present.
    */
   bundledReferringContent() {
-    var $blocks = $('#block-digitaldcore-node_referring, #block-digitaldcore-node_bundled', this.context);
-    $blocks.each(function() {
-      var $block = $(this);
-      var $nodes = $block.find('.node-teaser');
+    const $blocks = $('#block-digitaldcore-node_referring, #block-digitaldcore-node_bundled', this.context);
+    $blocks.each((i, element) => {
+      const $block = $(element);
+      const $nodes = $block.find('.node-teaser');
       if (!$nodes.length) {
         $block.addClass('placeholder-block');
       }
@@ -128,19 +116,21 @@ export default class DDTemplates {
    * Finds the real last meta item and identifies node of visible meta info
    */
   nodeMeta() {
-    var $nodes = $('.node', this.context);
-    $nodes.each(function() {
+    const $nodes = $('.node', this.context);
+    $nodes.each((a, node) => {
       // Create a meta object
-      var $node = $(this);
-      var $meta = $node.find('.node-upper-meta');
-      var $items = $meta.find('.meta-item');
+      const $node = $(node);
+      const $meta = $node.find('.node-upper-meta');
+      const $items = $meta.find('.meta-item');
 
       // Clean up last classname
       $items.removeClass('last');
 
-      // Get all visible meta items
-      var $visible = $items.map(function() {
-        return $(this).css('display') !== 'none' ? this : null;
+      // Filter to just visible items
+      const $visible = $items.map((i, item) => {
+        const props = window.getComputedStyle(item);
+        const display = props.getPropertyValue('display');
+        return display !== 'none' ? item : null;
       });
 
       // Correctly identify last meta item and label node with the has-meta flag
@@ -162,27 +152,23 @@ export default class DDTemplates {
    *   full post views
    */
   expandingDates() {
-    $('.posts .node, .node-full', this.context).each(function(i, node) {
-      var $meta = $('.node-meta, .node-upper-meta', node);
-      $meta.each(function(i, meta) {
-        var $meta = $(meta);
-        var $dates = $('.event-date', node);
+    $('.posts .node, .node-full', this.context).each((a, node) => {
+      $('.node-meta, .node-upper-meta', node).each((b, meta) => {
+        const $meta = $(meta);
+        const $dates = $('.event-date', node);
+
         if ($dates.length > 2) {
           // Create and add functionality to display all other dates
-          var $link = $('<a class="meta-item all-dates-link" href="#">Show all dates</a>');
-          $link.bind('click', function(event) {
+          const $link = $('<a class="meta-item all-dates-link" href="#">Show all dates</a>');
+          $link.bind('click', (event) => {
             event.preventDefault();
             $meta.toggleClass('show-all-dates');
-            $(this).text(
-              $meta.is('.show-all-dates')
-                ? 'Hide all dates'
-                : 'Show all dates'
-            );
+            $(event.currentTarget).text($meta.is('.show-all-dates') ? 'Hide all dates' : 'Show all dates');
           });
           $link.insertBefore($dates.eq(0));
 
           // Move all other dates
-          var $container = $('<div class="all-dates"></div>');
+          const $container = $('<div class="all-dates"></div>');
           $dates.appendTo($container);
           $meta.append($container);
         }
@@ -195,24 +181,23 @@ export default class DDTemplates {
    */
   imageCaptions() {
     // Identifies an image that should have a caption added
-    $('.field-image img[title]', this.context).each(function() {
-      var $image = $(this);
-      var caption = $image.attr('title');
+    $('.field-image img[title]', this.context).each((i, element) => {
+      const $image = $(element);
+      const title = $image.attr('title');
       // Continue processing this title isn't an empty string
-      if (caption.length) {
-        var $field = $image.parents('.field-image');
-        var $wrapper = $field.find('a');
-        var $caption = $('<span class="caption">' + caption + '</span>');
+      if (title.length) {
+        const $field = $image.parents('.field-image');
+        const caption = `<span class="caption">${title}</span>`;
+        const $wrapper = $field.find('a');
 
         // delete the existing caption if it exists
         $field.find('.caption').remove();
 
         // Add image as a link support
-        $caption.insertAfter($image);
+        $image.after(caption);
 
         if (!$wrapper.length) {
           $field.find('img, .caption').wrapAll('<span />');
-          $wrapper = $field.children('span');
         }
 
         // Add a helper class to aid styling of the image and caption
@@ -225,15 +210,15 @@ export default class DDTemplates {
    * Adds markup to slideshow teasers to show an icon overlay
    */
   slideshowIcons() {
-    var $slideshowNodes = $('.pt' + this.settings.photoGalleryPID + '.node-teaser', this.context);
+    const $slideshowNodes = $(`.pt${this.settings.photoGalleryPID}.node-teaser`, this.context);
     // cycle through each node instance
-    $slideshowNodes.each(function() {
-      var $images = $(this).find('.field-image');
+    $slideshowNodes.each((a, element) => {
+      const $images = $(element).find('.field-image');
       // cycle through each field image instance
-      $images.each(function() {
-        var $img = $(this).find('img');
+      $images.each((b, image) => {
+        const $img = $(image).find('img');
         // add a button helper classname
-        $(this).find('a').addClass('slideshow-btn');
+        $(image).find('a').addClass('slideshow-btn');
         // prepend the icon overlay
         $img.before('<i class="slideshow-icon"></i>');
       });
@@ -244,7 +229,10 @@ export default class DDTemplates {
    * Removes the link from overview headings.
    */
   overviews() {
-    $('.overview .node-header a').children().unwrap();
+    const $context = $(this.context);
+    if ($context.length) {
+      $context.find('.overview .node-header a').children().unwrap();
+    }
   }
 
   /**
@@ -258,9 +246,9 @@ export default class DDTemplates {
    * Helper function to theme the category letters and seperate the sections
    */
   lexiconGlossary() {
-    $('#glossary', this.context).find('.lexicon-list > a').each(function() {
-      var letter = $(this).attr('id').replace('letter_', '');
-      $(this).html(letter.toUpperCase());
+    $('#glossary', this.context).find('.lexicon-list > a').each((i, element) => {
+      const letter = $(element).attr('id').replace('letter_', '');
+      $(element).html(letter.toUpperCase());
     });
   }
 }
