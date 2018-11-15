@@ -32,6 +32,7 @@
     margin-left: -10px;
     margin-right: -10px;
     display: flex;
+    flex-wrap: wrap;
   }
 
   .two-columns > *,
@@ -43,15 +44,15 @@
   }
 
   .two-columns > * {
-    flex: 0 0 percentage(1/2);
+    flex: 1 0 percentage(1/2);
   }
 
   .three-columns > * {
-    flex: 0 0 percentage(1/3);
+    flex: 1 0 percentage(1/3);
   }
 
   .four-columns > * {
-    flex: 0 0 percentage(1/4);
+    flex: 1 0 percentage(1/4);
   }
 
   // Columns with lines
