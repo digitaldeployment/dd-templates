@@ -8,19 +8,14 @@
   margin-right: 20px;
   box-sizing: border-box;
 
-  @media (min-width: 375px) {
+  @media (min-width: 375px) and (max-width: 767px) {
     margin-left: 36px;
     margin-right: 36px;
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 768px) and (max-width: @mobile-breakpoint) {
     margin-left: 80px;
     margin-right: 80px;
-  }
-
-  @media (min-width: 1025px) {
-    margin-left: 20px;
-    margin-right: 20px;
   }
 
   @media (min-width: 1240px) {
