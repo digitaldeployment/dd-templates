@@ -22,7 +22,7 @@
 // Core Components
 // -----------------------------------------------------------------------------
 
-@dd_templates_core: elements, code, fonts, accessibility, clearfix, common, layout, resets, tables, meta, webforms, links, file-attachments, read-more-links, expanding-dates, accordions, slideshow, gallery, pager, tab, glossary, lightbox;
+@dd_templates_core: elements, code, fonts, accessibility, clearfix, common, layout, resets, buttons, tables, meta, webforms, links, file-attachments, read-more-links, expanding-dates, accordions, slideshow, gallery, pager, tab, glossary, lightbox;
 
 @dd_templates_core_elements: true;
 @dd_templates_core_code: true;
@@ -32,6 +32,7 @@
 @dd_templates_core_common: true;
 @dd_templates_core_layout: true;
 @dd_templates_core_resets: true;
+@dd_templates_core_buttons: true;
 @dd_templates_core_tables: true;
 @dd_templates_core_meta: true;
 @dd_templates_core_webforms: true;
@@ -58,6 +59,7 @@
 .dd_templates_core(common) when (@dd_templates_core_common = true) { @import 'core/common'; }
 .dd_templates_core(layout) when (@dd_templates_core_layout = true) { @import 'core/layout'; }
 .dd_templates_core(resets) when (@dd_templates_core_resets = true) { @import 'core/resets'; }
+.dd_templates_core(buttons) when (@dd_templates_core_buttons = true) { @import 'core/buttons'; }
 .dd_templates_core(tables) when (@dd_templates_core_tables = true) { @import 'core/tables'; }
 .dd_templates_core(meta) when (@dd_templates_core_meta = true) { @import 'core/meta'; }
 .dd_templates_core(webforms) when (@dd_templates_core_webforms = true) { @import 'core/webforms'; }
@@ -83,6 +85,7 @@
 .dd_templates_core(common) when (@dd_templates_core_common = alternate) { @import (optional) '@{theme_path}/core/common'; }
 .dd_templates_core(layout) when (@dd_templates_core_layout = alternate) { @import (optional) '@{theme_path}/core/layout'; }
 .dd_templates_core(resets) when (@dd_templates_core_resets = alternate) { @import (optional) '@{theme_path}/core/resets'; }
+.dd_templates_core(buttons) when (@dd_templates_core_buttons = alternate) { @import (optional) '@{theme_path}/core/buttons'; }
 .dd_templates_core(tables) when (@dd_templates_core_tables = alternate) { @import (optional) '@{theme_path}/core/tables'; }
 .dd_templates_core(meta) when (@dd_templates_core_meta = alternate) { @import (optional) '@{theme_path}/core/meta'; }
 .dd_templates_core(webforms) when (@dd_templates_core_webforms = alternate) { @import (optional) '@{theme_path}/core/webforms'; }
