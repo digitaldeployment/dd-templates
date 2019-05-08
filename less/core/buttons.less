@@ -1,0 +1,132 @@
+// =============================================================================
+// BUTTON FACTORY
+// =============================================================================
+
+.button-factory(@textColor, @backgroundColor, @borderColor) {
+  display: block;
+  margin: 0.25em 0;
+  padding: 0.75em 2em;
+  border-radius: 4px;
+  white-space: nowrap;
+  text-align: center;
+  font-weight: bold;
+  line-height: 1;
+  border: 2px solid @borderColor;
+  text-decoration: none;
+  transition: 0.2s;
+  background-color: @backgroundColor;
+  color: @textColor;
+
+  &:hover,
+  &:focus {
+    outline: none;
+    text-decoration: underline;
+  }
+
+  @media (min-width: 768px) {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+.btn-primary {
+  .button-factory(white, @C1, @C1);
+
+  &:hover,
+  &:focus {
+    border-color: @C1;
+    background-color: white;
+    color: @C1;
+  }
+}
+
+.btn-secondary {
+  .button-factory(white, @C2, @C2);
+
+  &:hover,
+  &:focus {
+    border-color: @C2;
+    background-color: white;
+    color: @C2;
+  }
+}
+
+.btn-light {
+  .button-factory(@base_text_color, #ddd, #ddd);
+
+  &:hover,
+  &:focus {
+    border-color: @base_text_color;
+    background-color: white;
+    color: @base_text_color;
+  }
+}
+
+.btn-dark {
+  .button-factory(white, @base_text_color, @base_text_color);
+
+  &:hover,
+  &:focus {
+    border-color: @base_text_color;
+    background-color: white;
+    color: @base_text_color;
+  }
+}
+
+.btn-outline-primary {
+  .button-factory(@C1, white, @C1);
+
+  &:hover,
+  &:focus {
+    border-color: @C1;
+    background-color: @C1;
+    color: white;
+  }
+}
+
+.btn-outline-secondary {
+  .button-factory(@C2, white, @C2);
+
+  &:hover,
+  &:focus {
+    border-color: @C2;
+    background-color: @C2;
+    color: white;
+  }
+}
+
+.btn-outline-light {
+  .button-factory(#666, white, #ddd);
+
+  &:hover,
+  &:focus {
+    border-color: #ddd;
+    background-color: #ddd;
+    color: @base_text_color;
+  }
+}
+
+.btn-outline-dark {
+  .button-factory(@base_text_color, white, @base_text_color);
+
+  &:hover,
+  &:focus {
+    border-color: @base_text_color;
+    background-color: @base_text_color;
+    color: white;
+  }
+}
+
+.btn-small {
+  padding: 0.75em 1.5em;
+  font-size: 0.8em;
+}
+
+.btn-large {
+  padding: 2rem 7rem;
+  font-size: 1em;
+}
+
+.btn-block {
+  display: block;
+}
