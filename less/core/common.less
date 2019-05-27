@@ -42,7 +42,6 @@
 .node-header a {
   color: inherit !important;
 
-  &:focus,
   &:hover {
     text-decoration: none;
     color: @C1 !important;
@@ -245,6 +244,17 @@ a.video-lightframe:hover .video-play {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+}
+
+// Add focus state to match form-submit button
+
+.btn,
+.form-submit,
+.form-button {
+  &:focus {
+    outline: 0;
+    box-shadow: 0 0 0 2px @C1;
+  }
 }
 
 // Allow the thumbnail images to display bigger on the manage content page
