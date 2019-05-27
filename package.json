@@ -1,6 +1,6 @@
 {
   "name": "dd-templates",
-  "version": "3.5.2",
+  "version": "3.6.0",
   "description": "A Less library that can serve as a great starting point for all Digital Deployment project themes.",
   "repository": {
     "type": "git",
