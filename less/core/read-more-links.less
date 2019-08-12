@@ -3,28 +3,24 @@
 // =============================================================================
 
 .link-read-more {
-  display: block;
-
   a {
-    display: block;
-    margin-top: 1em;
     color: @C1;
-  }
-
-  a:hover {
-    color: @C2;
 
     &:after {
-      transform: translateX(0.1em);
+      .dd-templates-font();
+
+      display: inline-block;
+      vertical-align: text-bottom;
+      content: @chevron-right-bold;
+      transition: transform 0.15s ease-in-out;
     }
-  }
 
-  a:after {
-    .dd-templates-font();
+    &:hover {
+      color: @C2;
 
-    display: inline-block;
-    vertical-align: text-bottom;
-    content: @chevron-right-bold;
-    transition: transform 0.15s ease-in-out;
+      &:after {
+        transform: translateX(0.1em);
+      }
+    }
   }
 }
