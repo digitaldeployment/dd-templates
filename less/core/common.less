@@ -88,6 +88,11 @@
 
   a {
     text-decoration: none;
+
+    &:focus,
+    &.focus-visible {
+      outline: none;
+    }
   }
 
   img,
@@ -298,4 +303,48 @@ table.sticky-header {
 
 div.messages {
   margin-bottom: 0;
+}
+
+// Non-interactive elements which are targets of skip links.
+// @info https://www.w3.org/TR/html5/editing.html#the-tabindex-attribute
+
+#content,
+#navigation {
+  outline: 0;
+}
+
+// Helps manipulates dd_hover to work with custom templates.
+
+.dd-hover-help {
+  .node {
+    position: static;
+    margin-bottom: 0;
+    overflow: inherit;
+  }
+
+  .dd-hover-expand {
+    top: 0;
+  }
+
+  &:hover .dd-hover-expand {
+    visibility: visible;
+  }
+}
+
+// Helps unpublished state of nodes using custom templates and improves the default unpublished state.
+
+.node-unpublished {
+  opacity: 0.75;
+  background-color: rgba(226, 83, 82, 0.25);
+
+  & & {
+    opacity: 1;
+  }
+}
+
+// Only display focus state for keyboard accessed components
+
+.focus-visible {
+  outline: 2px solid #222;
+  outline-offset: 2px;
 }
