@@ -103,7 +103,7 @@
 
 .node-image .field-image,
 .node-image .gallery {
-  margin-top: 0.5em;
+  margin-top: @base_font_size;
 }
 
 .node-image .gallery .field-image {
@@ -151,7 +151,7 @@
 .node-content {
   ul,
   ol {
-    margin: 0 0 1.6rem;
+    margin: 1em 0;
     padding-left: 1em;
     list-style-position: inside;
     overflow: visible;
@@ -235,14 +235,6 @@ a.video-lightframe:hover .video-play {
   margin: 1em 0;
 }
 
-.node-contact .field-email {
-  display: inline-block;
-  max-width: 100%;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-}
-
 // Add focus state to match form-submit button
 
 .btn,
@@ -293,10 +285,6 @@ form[action*='/tblock/order'] .views-field-field-image-fid a.imagecache {
 table.sticky-header {
   z-index: 1;
   background-color: white;
-
-  @media (min-width: @desktop-breakpoint) {
-    margin-top: @desktop-header-height;
-  }
 }
 
 // Remove bottom margin from messages
