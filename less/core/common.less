@@ -38,18 +38,9 @@
   clear: both; // mainly to clear floated images
 }
 
-.node-header a {
-  color: inherit !important;
-
-  &:hover {
-    text-decoration: none;
-    color: @C1 !important;
-  }
-}
-
-.overview .node-header,
-.node-full .node-header {
-  &:extend(h1);
+.node-header a,
+.node-header a:hover {
+  color: inherit;
 }
 
 .title {
@@ -57,15 +48,17 @@
 }
 
 .subtitle {
-  margin-top: 0.5rem;
-  font-size: 87.5%;
+  margin: 0.5rem 0 0;
   font-weight: 500;
   line-height: 1.2;
   color: #363636;
 
-  .overview &,
-  .full-node & {
-    font-size: 80%;
+  h1 + & {
+    font-size: 3rem;
+  }
+
+  h2 + & {
+    font-size: 2.4rem;
   }
 }
 
