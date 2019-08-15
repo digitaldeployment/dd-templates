@@ -45,3 +45,11 @@
     clip: auto;
   }
 }
+
+// Prevent focusable jump-to-content button when mobile flyout is active.
+
+@media (max-width: @mobile-breakpoint) {
+  .sr-only[href="#content"] {
+    visibility: hidden;
+  }
+}
