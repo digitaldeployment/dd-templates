@@ -3,18 +3,16 @@
 // =============================================================================
 
 .overview {
-  &:extend(.clearfix all);
-
-  .node-upper-meta {
-    display: none;
-  }
-
-  .has-meta .node-upper-meta {
+  .node-header {
     display: block;
+
+    h1 {
+      display: block;
+    }
   }
 
-  .node-header a {
-    cursor: default;
+  .node-meta {
+    margin-top: 5px;
   }
 
   .caption {

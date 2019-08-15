@@ -5,17 +5,10 @@
 .pods {
   color: white;
 
-  .view-content {
-    display: flex;
-    flex-wrap: wrap;
-    margin-left: -28px;
-  }
-
   .views-row {
     width: 100%;
-    margin-bottom: 28px;
-    padding-left: 28px;
     box-sizing: border-box;
+    margin-bottom: 2rem;
   }
 
   .node {
@@ -23,37 +16,34 @@
     margin-bottom: 0;
     transition: background-color 0.2s ease-out;
     background-color: @C1;
-  }
+    overflow: hidden;
 
-  .node-inner {
-    padding: 25px 20px;
-  }
-
-  .node-item {
-    display: none;
-  }
-
-  .node-links,
-  .node-header,
-  .node-webform,
-  .node-upper-image {
-    display: block;
-  }
-
-  .node-upper-image {
-    margin: -25px -20px 0;
+    &:focus-within {
+      background-color: @C2;
+    }
   }
 
   .field-image {
-    margin-bottom: 25px;
+    margin-bottom: 0;
+
+    a {
+      outline: none;
+    }
   }
 
-  .node-header {
-    font-size: 18px;
+  .node-header a {
+    padding: 2rem;
+    outline: none;
+  }
+
+  .title {
+    font-size: 1.8rem;
+    font-weight: bold;
     color: inherit;
   }
 
   .subtitle {
+    margin-bottom: 0;
     font-weight: normal;
     font-size: @base_font_size;
     line-height: 1.4;
@@ -64,43 +54,11 @@
     color: white;
   }
 
-  ul.links {
-    li {
-      display: none;
-    }
-
-    .link-read-more {
-      display: block;
-    }
-  }
-
-  .link-read-more {
-    a {
-      position: absolute;
-      z-index: 2;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      margin-top: 0;
-      transition: border 0.2s ease-out;
-      background-color: transparent;
-
-      span,
-      &:after,
-      &:before {
-        display: none;
-      }
-    }
-
-    span.ext {
-      display: none;
-    }
-  }
-
   .node-webform {
     position: relative;
     z-index: 3;
+    margin-top: -2rem;
+    padding: 0 2rem 2rem;
 
     fieldset,
     .form-submit,
@@ -115,14 +73,17 @@
 
   .node:hover {
     background-color: @C2;
-
-    .link-read-more a {
-      background-color: transparent;
-    }
   }
 
   @media (min-width: 500px) {
+    .view-content {
+      display: flex;
+      flex-wrap: wrap;
+      margin-left: -2rem;
+    }
+
     .views-row {
+      padding-left: 2rem;
       flex: 0 0 percentage(1/2);
     }
   }

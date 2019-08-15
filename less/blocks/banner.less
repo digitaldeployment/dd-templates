@@ -1,0 +1,75 @@
+// =============================================================================
+// BANNER
+// =============================================================================
+
+.banner {
+  max-height: 300px;
+  overflow: hidden;
+
+  .node-banner {
+    &:after {
+      content: '';
+      position: absolute;
+      z-index: 2;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: linear-gradient(to bottom, rgba(84, 84, 84, 0), black);
+      opacity: 0.86;
+    }
+  }
+
+  figure {
+    margin-bottom: 0;
+  }
+
+  img {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+  }
+
+  figcaption {
+    .layout;
+
+    position: absolute;
+    z-index: 3;
+    bottom: 5rem;
+    left: 50%;
+    width: 100%;
+    transform: translateX(-50%);
+    color: white;
+
+    h2 {
+      font-size: 2.4rem;
+    }
+
+    p {
+      margin: 0.5rem 0 0;
+      font-size: 1.8rem;
+    }
+  }
+
+  @media (max-width: 600px) {
+    min-height: 200px;
+
+    img {
+      width: 200vw;
+      max-width: none;
+      margin-left: -50vw;
+    }
+  }
+
+  @media (min-width: @desktop-breakpoint) {
+    max-height: 720px;
+
+    img {
+      margin-top: -160px;
+    }
+
+    header h1 {
+      font-size: 3.5rem;
+    }
+  }
+}

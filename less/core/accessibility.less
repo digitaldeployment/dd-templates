@@ -2,6 +2,13 @@
 // WEBSITE ACCESSIBILITY
 // =============================================================================
 
+.accessibility {
+  position: relative;
+  z-index: 100;
+  font-size: @base_font_size;
+  background-color: white;
+}
+
 // Only display content to screen readers
 //
 // See: http://a11yproject.com/posts/how-to-hide-content
@@ -14,6 +21,7 @@
   margin: -1px;
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
+  background-color: white;
   border: 0;
 }
 
@@ -26,11 +34,22 @@
 .sr-only-focusable {
   &:active,
   &:focus {
-    position: static;
+    display: inline-block;
     width: auto;
     height: auto;
     margin: 0;
+    padding: 10px;
     overflow: visible;
+    outline-offset: -1px;
+    text-decoration: underline;
     clip: auto;
+  }
+}
+
+// Prevent focusable jump-to-content button when mobile flyout is active.
+
+@media (max-width: @mobile-breakpoint) {
+  .sr-only[href="#content"] {
+    visibility: hidden;
   }
 }

@@ -38,18 +38,9 @@
   clear: both; // mainly to clear floated images
 }
 
-.node-header a {
-  color: inherit !important;
-
-  &:hover {
-    text-decoration: none;
-    color: @C1 !important;
-  }
-}
-
-.overview .node-header,
-.node-full .node-header {
-  &:extend(h1);
+.node-header a,
+.node-header a:hover {
+  color: inherit;
 }
 
 .title {
@@ -57,15 +48,17 @@
 }
 
 .subtitle {
-  margin-top: 0.5rem;
-  font-size: 87.5%;
+  margin: 0.5rem 0 0;
   font-weight: 500;
   line-height: 1.2;
   color: #363636;
 
-  .overview &,
-  .full-node & {
-    font-size: 80%;
+  h1 + & {
+    font-size: 3rem;
+  }
+
+  h2 + & {
+    font-size: 2.4rem;
   }
 }
 
@@ -95,6 +88,11 @@
 
   a {
     text-decoration: none;
+
+    &:focus,
+    &.focus-visible {
+      outline: none;
+    }
   }
 
   img,
@@ -105,7 +103,7 @@
 
 .node-image .field-image,
 .node-image .gallery {
-  margin-top: 0.5em;
+  margin-top: @base_font_size;
 }
 
 .node-image .gallery .field-image {
@@ -153,7 +151,7 @@
 .node-content {
   ul,
   ol {
-    margin: 0 0 1.6rem;
+    margin: 1em 0;
     padding-left: 1em;
     list-style-position: inside;
     overflow: visible;
@@ -237,14 +235,6 @@ a.video-lightframe:hover .video-play {
   margin: 1em 0;
 }
 
-.node-contact .field-email {
-  display: inline-block;
-  max-width: 100%;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-}
-
 // Add focus state to match form-submit button
 
 .btn,
@@ -295,14 +285,54 @@ form[action*='/tblock/order'] .views-field-field-image-fid a.imagecache {
 table.sticky-header {
   z-index: 1;
   background-color: white;
-
-  @media (min-width: @desktop-breakpoint) {
-    margin-top: @desktop-header-height;
-  }
 }
 
 // Remove bottom margin from messages
 
 div.messages {
   margin-bottom: 0;
+}
+
+// Non-interactive elements which are targets of skip links.
+// @info https://www.w3.org/TR/html5/editing.html#the-tabindex-attribute
+
+#content,
+#navigation {
+  outline: 0;
+}
+
+// Helps manipulates dd_hover to work with custom templates.
+
+.dd-hover-help {
+  .node {
+    position: static;
+    margin-bottom: 0;
+    overflow: inherit;
+  }
+
+  .dd-hover-expand {
+    top: 0;
+  }
+
+  &:hover .dd-hover-expand {
+    visibility: visible;
+  }
+}
+
+// Helps unpublished state of nodes using custom templates and improves the default unpublished state.
+
+.node-unpublished {
+  opacity: 0.75;
+  background-color: rgba(226, 83, 82, 0.25);
+
+  & & {
+    opacity: 1;
+  }
+}
+
+// Only display focus state for keyboard accessed components
+
+.focus-visible {
+  outline: 2px solid @a11y-grey;
+  outline-offset: 2px;
 }
