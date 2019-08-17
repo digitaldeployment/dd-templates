@@ -22,11 +22,11 @@
 // Core Components
 // -----------------------------------------------------------------------------
 
-@dd_templates_core: elements, code, fonts, accessibility, clearfix, common, layout, resets, buttons, tables, meta, webforms, links, file-attachments, read-more-links, expanding-dates, accordions, slideshow, gallery, pager, tab, glossary, lightbox;
+@dd_templates_core: fonts, elements, code, accessibility, clearfix, common, layout, resets, buttons, tables, meta, webforms, links, file-attachments, read-more-links, expanding-dates, accordions, slideshow, gallery, pager, tab, glossary, lightbox;
 
+@dd_templates_core_fonts: true;
 @dd_templates_core_elements: true;
 @dd_templates_core_code: true;
-@dd_templates_core_fonts: true;
 @dd_templates_core_accessibility: true;
 @dd_templates_core_clearfix: true;
 @dd_templates_core_common: true;
@@ -51,9 +51,9 @@
 
 // default
 
+.dd_templates_core(fonts) when (@dd_templates_core_fonts = true) { @import 'core/fonts'; }
 .dd_templates_core(elements) when (@dd_templates_core_elements = true) { @import 'core/elements'; }
 .dd_templates_core(code) when (@dd_templates_core_code = true) { @import 'core/code'; }
-.dd_templates_core(fonts) when (@dd_templates_core_fonts = true) { @import 'core/fonts'; }
 .dd_templates_core(accessibility) when (@dd_templates_core_accessibility = true) { @import 'core/accessibility'; }
 .dd_templates_core(clearfix) when (@dd_templates_core_clearfix = true) { @import 'core/clearfix'; }
 .dd_templates_core(common) when (@dd_templates_core_common = true) { @import 'core/common'; }
@@ -77,9 +77,9 @@
 
 // alternate
 
+.dd_templates_core(fonts) when (@dd_templates_core_fonts = alternate) { @import (optional) '@{theme_path}/core/fonts'; }
 .dd_templates_core(elements) when (@dd_templates_core_elements = alternate) { @import (optional) '@{theme_path}/core/elements'; }
 .dd_templates_core(code) when (@dd_templates_core_code = alternate) { @import (optional) '@{theme_path}/core/code'; }
-.dd_templates_core(fonts) when (@dd_templates_core_fonts = alternate) { @import (optional) '@{theme_path}/core/fonts'; }
 .dd_templates_core(accessibility) when (@dd_templates_core_accessibility = alternate) { @import (optional) '@{theme_path}/core/accessibility'; }
 .dd_templates_core(clearfix) when (@dd_templates_core_clearfix = alternate) { @import (optional) '@{theme_path}/core/clearfix'; }
 .dd_templates_core(common) when (@dd_templates_core_common = alternate) { @import (optional) '@{theme_path}/core/common'; }
