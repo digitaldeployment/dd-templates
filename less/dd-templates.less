@@ -162,9 +162,10 @@
 // Blocks Components
 // -----------------------------------------------------------------------------
 
-@dd_templates_blocks: admin-menu, breadcrumb, overviews, pods, banner, appearing-navigation, dd-social, node-sidebar, node-contacts, node-profiles;
+@dd_templates_blocks: admin-menu, ui-dialog, breadcrumb, overviews, pods, banner, appearing-navigation, dd-social, node-sidebar, node-contacts, node-profiles;
 
 @dd_templates_blocks_admin_menu: true;
+@dd_templates_blocks_ui_dialog: true;
 @dd_templates_blocks_breadcrumb: true;
 @dd_templates_blocks_banner: true;
 @dd_templates_blocks_overviews: true;
@@ -178,6 +179,7 @@
 // default
 
 .dd_templates_blocks(admin-menu) when (@dd_templates_blocks_admin_menu = true) { @import 'blocks/admin-menu'; }
+.dd_templates_blocks(ui-dialog) when (@dd_templates_blocks_ui_dialog = true) { @import 'blocks/ui-dialog'; }
 .dd_templates_blocks(breadcrumb) when (@dd_templates_blocks_breadcrumb = true) { @import 'blocks/breadcrumb'; }
 .dd_templates_blocks(overviews) when (@dd_templates_blocks_overviews = true) { @import 'blocks/overviews'; }
 .dd_templates_blocks(banner) when (@dd_templates_blocks_banner = true) { @import 'blocks/banner'; }
@@ -191,6 +193,7 @@
 // alternate
 
 .dd_templates_blocks(admin-menu) when (@dd_templates_blocks_admin_menu = alternate) { @import (optional) '@{theme_path}/blocks/admin-menu'; }
+.dd_templates_blocks(ui-dialog) when (@dd_templates_blocks_ui_dialog = alternate) { @import (optional) '@{theme_path}/blocks/ui-dialog'; }
 .dd_templates_blocks(breadcrumb) when (@dd_templates_blocks_breadcrumb = alternate) { @import (optional) '@{theme_path}/blocks/breadcrumb'; }
 .dd_templates_blocks(overviews) when (@dd_templates_blocks_overviews = alternate) { @import (optional) '@{theme_path}/blocks/overviews'; }
 .dd_templates_blocks(banner) when (@dd_templates_blocks_banner = alternate) { @import (optional) '@{theme_path}/blocks/banner'; }
