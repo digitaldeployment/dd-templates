@@ -42,8 +42,10 @@ body {
     font-size: @base_font_size;
   }
 
-  &.menu-active {
-    overflow: hidden;
+  @media (max-width: @mobile-breakpoint) {
+    &.menu-active {
+      overflow: hidden;
+    }
   }
 }
 
