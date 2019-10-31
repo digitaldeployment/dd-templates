@@ -24,7 +24,6 @@
     display: none !important;
   }
 
-  .accessibility,
   .above-page,
   .below-page,
   .hidden {
@@ -37,9 +36,12 @@
     background: none !important;
   }
 
+  .page-closure {
+    display: none !important;
+  }
+
   .flyout,
-  .page-footer,
-  .footprint {
+  .page-footer {
     display: none !important;
   }
 
@@ -55,22 +57,33 @@
     padding: 0 !important;
   }
 
-  .header {
+  .page-header,
+  .page-header .header {
     position: relative !important;
     box-shadow: none !important;
     transform: none !important;
-
-    .headerlinks,
-    .toolbar {
-      display: none !important;
-    }
   }
 
-  .term-nav {
+  .toolbar {
     display: none !important;
   }
 
   .link-read-more {
     display: none !important;
+  }
+
+  .dtabs {
+    display: none !important;
+  }
+
+  .under-tab {
+    display: block !important;
+  }
+
+  .field-image {
+    float: right !important;
+    width: 25% !important;
+    margin-left: 1.5em !important;
+    margin-bottom: 1em !important;
   }
 }
