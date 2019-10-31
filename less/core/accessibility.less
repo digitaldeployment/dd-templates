@@ -53,3 +53,23 @@
     visibility: hidden;
   }
 }
+
+// Only display focus state for keyboard accessed components
+
+.focus-visible {
+  animation: focus-visible 1s;
+}
+
+// Animation for focusing interactive elements by the focus-visible framework
+
+@keyframes focus-visible {
+  from {
+    z-index: 20;
+    outline: 5px auto @C1;
+  }
+
+  to {
+    z-index: 1;
+    outline-width: 0;
+  }
+}

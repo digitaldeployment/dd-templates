@@ -274,12 +274,6 @@ form[action*='/tblock/order'] .views-field-field-image-fid a.imagecache {
   font-size: 12px;
 }
 
-// Login screen
-
-.ui-dialog {
-  font-size: @base_font_size;
-}
-
 // Fixed table headings
 
 table.sticky-header {
@@ -304,10 +298,13 @@ div.messages {
 // Helps manipulates dd_hover to work with custom templates.
 
 .dd-hover-help {
+  position: relative;
+
   .node {
     position: static;
     margin-bottom: 0;
     overflow: inherit;
+    min-width: 0;
   }
 
   .dd-hover-expand {
@@ -322,17 +319,10 @@ div.messages {
 // Helps unpublished state of nodes using custom templates and improves the default unpublished state.
 
 .node-unpublished {
-  opacity: 0.75;
+  opacity: 0.5;
   background-color: rgba(226, 83, 82, 0.25);
 
-  & & {
+  &:hover {
     opacity: 1;
   }
-}
-
-// Only display focus state for keyboard accessed components
-
-.focus-visible {
-  outline: 2px solid @a11y-grey;
-  outline-offset: 2px;
 }

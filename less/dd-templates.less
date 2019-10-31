@@ -6,23 +6,26 @@
 // Tool Components
 // -----------------------------------------------------------------------------
 
-@dd_templates_tools: easing;
+@dd_templates_tools: easing, reboot-button;
 
 @dd_templates_tools_easing: true;
+@dd_templates_tools_reboot_button: true;
 
 // default
 
 .dd_templates_tools(easing) when (@dd_templates_tools_easing = true) { @import 'tools/easing'; }
+.dd_templates_tools(reboot-button) when (@dd_templates_tools_reboot_button = true) { @import 'tools/reboot-button'; }
 
 // alternate
 
 .dd_templates_tools(easing) when (@dd_templates_tools_easing = alternate) { @import (optional) '@{theme_path}/tools/easing'; }
+.dd_templates_tools(reboot-button) when (@dd_templates_tools_reboot_button = alternate) { @import (optional) '@{theme_path}/tools/reboot-button'; }
 
 // -----------------------------------------------------------------------------
 // Core Components
 // -----------------------------------------------------------------------------
 
-@dd_templates_core: fonts, elements, code, accessibility, clearfix, common, layout, resets, buttons, tables, meta, webforms, links, file-attachments, read-more-links, expanding-dates, accordions, slideshow, gallery, pager, tab, glossary, lightbox;
+@dd_templates_core: fonts, elements, code, accessibility, clearfix, common, layout, resets, buttons, tables, meta, webforms, links, file-attachments, read-more-links, expanding-dates, accordions, slideshow, pager, tab, glossary, lightbox;
 
 @dd_templates_core_fonts: true;
 @dd_templates_core_elements: true;
@@ -42,7 +45,6 @@
 @dd_templates_core_expanding_dates: true;
 @dd_templates_core_accordions: true;
 @dd_templates_core_slideshow: true;
-@dd_templates_core_gallery: true;
 @dd_templates_core_site_identity: true;
 @dd_templates_core_pager: true;
 @dd_templates_core_tabs: true;
@@ -69,7 +71,6 @@
 .dd_templates_core(expanding-dates) when (@dd_templates_core_expanding_dates = true) { @import 'core/expanding-dates'; }
 .dd_templates_core(accordions) when (@dd_templates_core_accordions = true) { @import 'core/accordions'; }
 .dd_templates_core(slideshow) when (@dd_templates_core_slideshow = true) { @import 'core/slideshow'; }
-.dd_templates_core(gallery) when (@dd_templates_core_gallery = true) { @import 'core/gallery'; }
 .dd_templates_core(pager) when (@dd_templates_core_pager = true) { @import 'core/pager'; }
 .dd_templates_core(tab) when (@dd_templates_core_tabs = true) { @import 'core/tabs'; }
 .dd_templates_core(glossary) when (@dd_templates_core_glossary = true) { @import 'core/glossary'; }
@@ -95,7 +96,6 @@
 .dd_templates_core(expanding-dates) when (@dd_templates_core_expanding_dates = alternate) { @import (optional) '@{theme_path}/core/expanding-dates'; }
 .dd_templates_core(accordions) when (@dd_templates_core_accordions = alternate) { @import (optional) '@{theme_path}/core/accordions'; }
 .dd_templates_core(slideshow) when (@dd_templates_core_slideshow = alternate) { @import (optional) '@{theme_path}/core/slideshow'; }
-.dd_templates_core(gallery) when (@dd_templates_core_gallery = alternate) { @import (optional) '@{theme_path}/core/gallery'; }
 .dd_templates_core(pager) when (@dd_templates_core_pager = alternate) { @import (optional) '@{theme_path}/core/pager'; }
 .dd_templates_core(tab) when (@dd_templates_core_tabs = alternate) { @import (optional) '@{theme_path}/core/tabs'; }
 .dd_templates_core(glossary) when (@dd_templates_core_glossary = alternate) { @import (optional) '@{theme_path}/core/glossary'; }
@@ -118,28 +118,13 @@
 .dd_templates_modules(dd-classes) when (@dd_templates_modules_dd_classes = alternate) { @import (optional) '@{theme_path}/modules/dd-classes'; }
 
 // -----------------------------------------------------------------------------
-// Regions Components
-// -----------------------------------------------------------------------------
-
-@dd_templates_regions: page;
-
-@dd_templates_regions_page: true;
-
-// default
-
-.dd_templates_regions(page) when (@dd_templates_regions_page = true) { @import 'regions/page'; }
-
-// alternate
-
-.dd_templates_regions(page) when (@dd_templates_regions_page = alternate) { @import (optional) '@{theme_path}/regions/page'; }
-
-// -----------------------------------------------------------------------------
 // Views Components
 // -----------------------------------------------------------------------------
 
-@dd_templates_views: full, search, subterms, directory;
+@dd_templates_views: full, print, search, subterms, directory;
 
 @dd_templates_views_full: true;
+@dd_templates_views_print: true;
 @dd_templates_views_search: true;
 @dd_templates_views_subterms: true;
 @dd_templates_views_directory: true;
@@ -147,6 +132,7 @@
 // default
 
 .dd_templates_views(full) when (@dd_templates_views_full = true) { @import 'views/full'; }
+.dd_templates_views(print) when (@dd_templates_views_print = true) { @import 'views/print'; }
 .dd_templates_views(search) when (@dd_templates_views_search = true) { @import 'views/search'; }
 .dd_templates_views(subterms) when (@dd_templates_views_subterms = true) { @import 'views/subterms'; }
 .dd_templates_views(directory) when (@dd_templates_views_directory = true) { @import 'views/directory'; }
@@ -154,6 +140,7 @@
 // alternate
 
 .dd_templates_views(full) when (@dd_templates_views_full = alternate) { @import (optional) '@{theme_path}/views/full'; }
+.dd_templates_views(print) when (@dd_templates_views_print = alternate) { @import (optional) '@{theme_path}/views/print'; }
 .dd_templates_views(search) when (@dd_templates_views_search = alternate) { @import (optional) '@{theme_path}/views/search'; }
 .dd_templates_views(subterms) when (@dd_templates_views_subterms = alternate) { @import (optional) '@{theme_path}/views/subterms'; }
 .dd_templates_views(directory) when (@dd_templates_views_directory = alternate) { @import (optional) '@{theme_path}/views/directory'; }
@@ -162,13 +149,12 @@
 // Blocks Components
 // -----------------------------------------------------------------------------
 
-@dd_templates_blocks: admin-menu, breadcrumb, overviews, pods, banner, appearing-navigation, dd-social, node-sidebar, node-contacts, node-profiles;
+@dd_templates_blocks: admin-menu, ui-dialog, breadcrumb, overviews, appearing-navigation, dd-social, node-sidebar, node-contacts, node-profiles;
 
 @dd_templates_blocks_admin_menu: true;
+@dd_templates_blocks_ui_dialog: true;
 @dd_templates_blocks_breadcrumb: true;
-@dd_templates_blocks_banner: true;
 @dd_templates_blocks_overviews: true;
-@dd_templates_blocks_pods: true;
 @dd_templates_blocks_appearing_navigation: true;
 @dd_templates_blocks_dd_social: true;
 @dd_templates_blocks_node_sidebar: true;
@@ -178,10 +164,9 @@
 // default
 
 .dd_templates_blocks(admin-menu) when (@dd_templates_blocks_admin_menu = true) { @import 'blocks/admin-menu'; }
+.dd_templates_blocks(ui-dialog) when (@dd_templates_blocks_ui_dialog = true) { @import 'blocks/ui-dialog'; }
 .dd_templates_blocks(breadcrumb) when (@dd_templates_blocks_breadcrumb = true) { @import 'blocks/breadcrumb'; }
 .dd_templates_blocks(overviews) when (@dd_templates_blocks_overviews = true) { @import 'blocks/overviews'; }
-.dd_templates_blocks(banner) when (@dd_templates_blocks_banner = true) { @import 'blocks/banner'; }
-.dd_templates_blocks(pods) when (@dd_templates_blocks_pods = true) { @import 'blocks/pods'; }
 .dd_templates_blocks(appearing-navigation) when (@dd_templates_blocks_appearing_navigation = true) { @import 'blocks/appearing-navigation'; }
 .dd_templates_blocks(dd-social) when (@dd_templates_blocks_dd_social = true) { @import 'blocks/dd-social'; }
 .dd_templates_blocks(node-sidebar) when (@dd_templates_blocks_node_sidebar = true) { @import 'blocks/node-sidebar'; }
@@ -191,10 +176,9 @@
 // alternate
 
 .dd_templates_blocks(admin-menu) when (@dd_templates_blocks_admin_menu = alternate) { @import (optional) '@{theme_path}/blocks/admin-menu'; }
+.dd_templates_blocks(ui-dialog) when (@dd_templates_blocks_ui_dialog = alternate) { @import (optional) '@{theme_path}/blocks/ui-dialog'; }
 .dd_templates_blocks(breadcrumb) when (@dd_templates_blocks_breadcrumb = alternate) { @import (optional) '@{theme_path}/blocks/breadcrumb'; }
 .dd_templates_blocks(overviews) when (@dd_templates_blocks_overviews = alternate) { @import (optional) '@{theme_path}/blocks/overviews'; }
-.dd_templates_blocks(banner) when (@dd_templates_blocks_banner = alternate) { @import (optional) '@{theme_path}/blocks/banner'; }
-.dd_templates_blocks(pods) when (@dd_templates_blocks_pods = alternate) { @import (optional) '@{theme_path}/blocks/pods'; }
 .dd_templates_blocks(appearing-navigation) when (@dd_templates_blocks_appearing_navigation = alternate) { @import (optional) '@{theme_path}/blocks/appearing-navigation'; }
 .dd_templates_blocks(dd-social) when (@dd_templates_blocks_dd_social = alternate) { @import (optional) '@{theme_path}/blocks/dd-social'; }
 .dd_templates_blocks(node-sidebar) when (@dd_templates_blocks_node_sidebar = alternate) { @import (optional) '@{theme_path}/blocks/node-sidebar'; }
@@ -221,22 +205,6 @@
 .dd_templates_libraries(content-control) when (@dd_templates_libraries_content_control = alternate) { @import (optional) '@{theme_path}/libraries/content-control'; }
 
 // -----------------------------------------------------------------------------
-// Vendor Libraries
-// -----------------------------------------------------------------------------
-
-@dd_templates_vendors: slick;
-
-@dd_templates_vendors_slick: true;
-
-// default
-
-.dd_templates_vendors(slick) when (@dd_templates_vendors_slick = true) { @import 'vendor/slick'; }
-
-// alternate
-
-.dd_templates_vendors(slick) when (@dd_templates_vendors_slick = alternate) { @import (optional) '@{theme_path}/vendor/slick'; }
-
-// -----------------------------------------------------------------------------
 // A loop for loading each less file as part of a set
 // -----------------------------------------------------------------------------
 
@@ -245,11 +213,9 @@
   .factory(tools) { .dd_templates_tools(@component); }
   .factory(core) { .dd_templates_core(@component); }
   .factory(modules) { .dd_templates_modules(@component); }
-  .factory(regions) { .dd_templates_regions(@component); }
   .factory(views) { .dd_templates_views(@component); }
   .factory(blocks) { .dd_templates_blocks(@component); }
   .factory(libraries) { .dd_templates_libraries(@component); }
-  .factory(vendors) { .dd_templates_vendors(@component); }
   // load the component
   .factory(@type);
   // continue the loop as long as there is another component in the set
@@ -265,9 +231,7 @@
   .dd_templates_factory(tools, @dd_templates_tools, length(@dd_templates_tools));
   .dd_templates_factory(core, @dd_templates_core, length(@dd_templates_core));
   .dd_templates_factory(modules, @dd_templates_modules, length(@dd_templates_modules));
-  .dd_templates_factory(regions, @dd_templates_regions, length(@dd_templates_regions));
   .dd_templates_factory(views, @dd_templates_views, length(@dd_templates_views));
   .dd_templates_factory(blocks, @dd_templates_blocks, length(@dd_templates_blocks));
   .dd_templates_factory(libraries, @dd_templates_libraries, length(@dd_templates_libraries));
-  .dd_templates_factory(vendors, @dd_templates_vendors, length(@dd_templates_vendors));
 }
