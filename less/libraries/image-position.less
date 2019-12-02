@@ -79,35 +79,27 @@
 // IMAGES WITH CAPTIONS OFF TO THE SIDES
 
 @media (min-width: 640px) {
-  .node-content .has-caption {
+  .node-content .field-image {
     &.caption-left,
     &.caption-right {
-      .clearfix();
+      display: flex;
 
       a {
-        width: 100%;
         display: block;
-        table-layout: inherit;
-      }
-
-      img {
-        max-width: 76% !important;
+        flex: 1 0 76%;
       }
 
       .caption {
+        display: block;
         margin-top: 0;
-        display: inline-block;
-        caption-side: inherit;
-        width: 21%;
+        flex: 1 0 21%;
         padding-top: 10px;
         border-top: 1px solid @base_border_color;
       }
     }
 
     &.caption-left {
-      img {
-        float: right;
-      }
+      flex-direction: row-reverse;
 
       .caption {
         margin-left: 0;
@@ -117,10 +109,6 @@
     }
 
     &.caption-right {
-      img {
-        float: left;
-      }
-
       .caption {
         margin-right: 0;
         margin-left: 3%;
