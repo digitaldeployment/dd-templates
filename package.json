@@ -1,11 +1,14 @@
 {
   "name": "dd-templates",
-  "version": "3.8.3",
+  "version": "3.9.0",
   "description": "A Less library that can serve as a great starting point for all Digital Deployment project themes.",
   "repository": {
     "type": "git",
     "author": "Jason McWhorter",
-    "url": "git+ssh://git@bitbucket.org/digitaldeployment/dd-templates.git"
+    "url": "https://github.com/digitaldeployment/dd-templates"
   },
-  "private": true
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "private": false
 }
