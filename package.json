@@ -1,14 +1,20 @@
 {
-  "name": "dd-templates",
-  "version": "3.9.1",
-  "description": "A Less library that can serve as a great starting point for all Digital Deployment project themes.",
+  "name": "@digitaldeployment/dd-templates",
+  "version": "3.9.4",
+  "description": "A {less} library that can serve as a great starting point for all Digital Deployment project themes.",
+  "main": "dd-templates.less",
+  "author": "Jason McWhorter",
+  "license": "ISC",
   "repository": {
     "type": "git",
-    "author": "Jason McWhorter",
-    "url": "https://github.com/digitaldeployment/dd-templates"
+    "url": "git+https://github.com/digitaldeployment/dd-templates.git"
   },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
+  "private": false,
+  "bugs": {
+    "url": "https://github.com/digitaldeployment/dd-templates/issues"
   },
-  "private": false
+  "homepage": "https://github.com/digitaldeployment/dd-templates#readme",
+  "scripts": {
+    "test": "echo \"This is a test. This is only a test.\" && exit 1"
+  }
 }
