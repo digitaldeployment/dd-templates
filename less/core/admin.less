@@ -1,0 +1,41 @@
+// ============================================================================
+// Admin related styling
+// ============================================================================
+
+body {
+  &.user-1,
+  &.admin-menu {
+    padding-bottom: 0;
+  }
+
+  // Set the WYSIWYG editor to display the default font the site is using
+  &.node-content {
+    font-family: @F1;
+    font-size: @base_font_size;
+    line-height: @base_line_height;
+  }
+}
+
+#admin-menu {
+  // Flatten the admin menu background to a plain color.
+  outline: 1px solid #323232;
+  outline-offset: -1px;
+  background: black;
+
+  ul a {
+    padding: 4px 10px;
+  }
+}
+
+// Make sure admin block level links aren't accessible if inactive.
+.block-controls-wrapper {
+  .block-controls {
+    visibility: hidden;
+  }
+
+  body.show-vblocks .with-block-editing & {
+    &.show-block-controls .block-controls {
+      visibility: inherit;
+    }
+  }
+}
