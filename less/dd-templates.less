@@ -3,31 +3,44 @@
 // =============================================================================
 
 // -----------------------------------------------------------------------------
-// Tool Components
+// Mixins Components
 // -----------------------------------------------------------------------------
 
-@dd_templates_tools: easing, reboot-button;
+@dd_templates_mixins: reboot-button, icon-builder, arrow-button, plusminus-button, progress-loop, underline;
 
-@dd_templates_tools_easing: true;
-@dd_templates_tools_reboot_button: true;
+@dd_templates_mixins_reboot_button: true;
+@dd_templates_mixins_icon_builder: true;
+@dd_templates_mixins_arrow_button: true;
+@dd_templates_mixins_plusminus_button: true;
+@dd_templates_mixins_progress_loop: true;
+@dd_templates_mixins_underline: true;
 
 // default
 
-.dd_templates_tools(easing) when (@dd_templates_tools_easing = true) { @import 'tools/easing'; }
-.dd_templates_tools(reboot-button) when (@dd_templates_tools_reboot_button = true) { @import 'tools/reboot-button'; }
+.dd_templates_mixins(reboot-button) when (@dd_templates_mixins_reboot_button = true) { @import 'mixins/reboot-button'; }
+.dd_templates_mixins(icon-builder) when (@dd_templates_mixins_icon_builder = true) { @import 'mixins/icon-builder'; }
+.dd_templates_mixins(arrow-button) when (@dd_templates_mixins_arrow_button = true) { @import 'mixins/arrow-button'; }
+.dd_templates_mixins(plusminus-button) when (@dd_templates_mixins_plusminus_button = true) { @import 'mixins/plusminus-button'; }
+.dd_templates_mixins(progress-loop) when (@dd_templates_mixins_progress_loop = true) { @import 'mixins/progress-loop'; }
+.dd_templates_mixins(underline) when (@dd_templates_mixins_underline = true) { @import 'mixins/underline'; }
 
 // alternate
 
-.dd_templates_tools(easing) when (@dd_templates_tools_easing = alternate) { @import (optional) '@{theme_path}/tools/easing'; }
-.dd_templates_tools(reboot-button) when (@dd_templates_tools_reboot_button = alternate) { @import (optional) '@{theme_path}/tools/reboot-button'; }
+.dd_templates_mixins(reboot-button) when (@dd_templates_mixins_reboot_button = alternate) { @import (optional) '@{theme_path}/mixins/reboot-button'; }
+.dd_templates_mixins(icon-builder) when (@dd_templates_mixins_icon_builder = alternate) { @import (optional) '@{theme_path}/mixins/icon-builder'; }
+.dd_templates_mixins(arrow-button) when (@dd_templates_mixins_arrow_button = alternate) { @import (optional) '@{theme_path}/mixins/arrow-button'; }
+.dd_templates_mixins(plusminus-button) when (@dd_templates_mixins_plusminus_button = alternate) { @import (optional) '@{theme_path}/mixins/plusminus-button'; }
+.dd_templates_mixins(progress-loop) when (@dd_templates_mixins_progress_loop = alternate) { @import (optional) '@{theme_path}/mixins/progress-loop'; }
+.dd_templates_mixins(underline) when (@dd_templates_mixins_underline = alternate) { @import (optional) '@{theme_path}/mixins/underline'; }
 
 // -----------------------------------------------------------------------------
 // Core Components
 // -----------------------------------------------------------------------------
 
-@dd_templates_core: fonts, elements, admin, code, messages, accessibility, clearfix, common, layout, resets, buttons, tables, meta, webforms, links, file-attachments, read-more-links, expanding-dates, accordions, slideshow, pager, tab, glossary, lightbox;
+@dd_templates_core: fonts, easing, elements, admin, code, messages, accessibility, clearfix, common, layout, resets, buttons, tables, meta, webforms, links, file-attachments, read-more-links, expanding-dates, accordions, slideshow, pager, tab, glossary, lightbox;
 
 @dd_templates_core_fonts: true;
+@dd_templates_core_easing: true;
 @dd_templates_core_elements: true;
 @dd_templates_core_admin: true;
 @dd_templates_core_code: true;
@@ -56,6 +69,7 @@
 // default
 
 .dd_templates_core(fonts) when (@dd_templates_core_fonts = true) { @import 'core/fonts'; }
+.dd_templates_core(easing) when (@dd_templates_core_easing = true) { @import 'core/easing'; }
 .dd_templates_core(elements) when (@dd_templates_core_elements = true) { @import 'core/elements'; }
 .dd_templates_core(admin) when (@dd_templates_core_admin = true) { @import 'core/admin'; }
 .dd_templates_core(code) when (@dd_templates_core_code = true) { @import 'core/code'; }
@@ -83,6 +97,7 @@
 // alternate
 
 .dd_templates_core(fonts) when (@dd_templates_core_fonts = alternate) { @import (optional) '@{theme_path}/core/fonts'; }
+.dd_templates_core(easing) when (@dd_templates_core_easing = alternate) { @import (optional) '@{theme_path}/core/easing'; }
 .dd_templates_core(elements) when (@dd_templates_core_elements = alternate) { @import (optional) '@{theme_path}/core/elements'; }
 .dd_templates_core(admin) when (@dd_templates_core_admin = alternate) { @import (optional) '@{theme_path}/core/admin'; }
 .dd_templates_core(code) when (@dd_templates_core_code = alternate) { @import (optional) '@{theme_path}/core/code'; }
@@ -216,7 +231,7 @@
 
 .dd_templates_factory(@type, @components, @total, @index: 1) when (@index =< @total) {
   @component: extract(@components, @index);
-  .factory(tools) { .dd_templates_tools(@component); }
+  .factory(mixins) { .dd_templates_mixins(@component); }
   .factory(core) { .dd_templates_core(@component); }
   .factory(modules) { .dd_templates_modules(@component); }
   .factory(views) { .dd_templates_views(@component); }
@@ -234,7 +249,7 @@
 // -----------------------------------------------------------------------------
 
 .dd_templates_init() {
-  .dd_templates_factory(tools, @dd_templates_tools, length(@dd_templates_tools));
+  .dd_templates_factory(mixins, @dd_templates_mixins, length(@dd_templates_mixins));
   .dd_templates_factory(core, @dd_templates_core, length(@dd_templates_core));
   .dd_templates_factory(modules, @dd_templates_modules, length(@dd_templates_modules));
   .dd_templates_factory(views, @dd_templates_views, length(@dd_templates_views));

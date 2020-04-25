@@ -30,7 +30,7 @@
 }
 
 .btn-primary {
-  .button-factory(white, @C1, @C1);
+  .button-factory(@textColor: white, @backgroundColor: @C1, @borderColor: @C1);
 
   &:hover,
   &:focus {
@@ -41,7 +41,7 @@
 }
 
 .btn-secondary {
-  .button-factory(white, @C2, @C2);
+  .button-factory(@textColor: white, @backgroundColor: @C2, @borderColor: @C2);
 
   &:hover,
   &:focus {
@@ -52,7 +52,7 @@
 }
 
 .btn-light {
-  .button-factory(@base_text_color, #ddd, #ddd);
+  .button-factory(@textColor: @base_text_color, @backgroundColor: #ddd, @borderColor: #ddd);
 
   &:hover,
   &:focus {
@@ -63,7 +63,7 @@
 }
 
 .btn-dark {
-  .button-factory(white, @base_text_color, @base_text_color);
+  .button-factory(@textColor: white, @backgroundColor: @base_text_color, @borderColor: @base_text_color);
 
   &:hover,
   &:focus {
@@ -74,7 +74,7 @@
 }
 
 .btn-outline-primary {
-  .button-factory(@C1, white, @C1);
+  .button-factory(@textColor: @C1, @backgroundColor: transparent, @borderColor: @C1);
 
   &:hover,
   &:focus {
@@ -85,7 +85,7 @@
 }
 
 .btn-outline-secondary {
-  .button-factory(@C2, white, @C2);
+  .button-factory(@textColor: @C2, @backgroundColor: transparent, @borderColor: @C2);
 
   &:hover,
   &:focus {
@@ -96,7 +96,7 @@
 }
 
 .btn-outline-light {
-  .button-factory(#666, white, #ddd);
+  .button-factory(@textColor: #666, @backgroundColor: transparent, @borderColor: #ddd);
 
   &:hover,
   &:focus {
@@ -107,13 +107,24 @@
 }
 
 .btn-outline-dark {
-  .button-factory(@base_text_color, white, @base_text_color);
+  .button-factory(@textColor: @base_text_color, @backgroundColor: transparent, @borderColor: @base_text_color);
 
   &:hover,
   &:focus {
     border-color: @base_text_color;
     background-color: @base_text_color;
     color: white;
+  }
+}
+
+.btn-outline-white {
+  .button-factory(@textColor: white, @backgroundColor: transparent, @borderColor: white);
+
+  &:hover,
+  &:focus {
+    border-color: white;
+    background-color: white;
+    color: @C1;
   }
 }
 
