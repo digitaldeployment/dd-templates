@@ -52,28 +52,37 @@
   // FIELD IMAGE WIDTH HELPER CLASSES
 
   @media (min-width: 640px) {
-    &.w25 { max-width: 25% !important; }
-    &.w30 { max-width: 30% !important; }
-    &.w35, &.w40, &.w45, &.w50 { max-width: 35% !important; }
+    &.w25 {
+      max-width: 25% !important;
+    }
+
+    &.w30 {
+      max-width: 30% !important;
+    }
+
+    &.w35,
+    &.w40,
+    &.w45,
+    &.w50 {
+      max-width: 35% !important;
+    }
   }
 
-  /* stylelint-disable declaration-colon-space-after */
   @media (min-width: @desktop-breakpoint) {
-    &.w40  { max-width:  40% !important; }
-    &.w45  { max-width:  45% !important; }
-    &.w50  { max-width:  50% !important; }
-    &.w55  { max-width:  55% !important; }
-    &.w60  { max-width:  60% !important; }
-    &.w65  { max-width:  65% !important; }
-    &.w70  { max-width:  70% !important; }
-    &.w75  { max-width:  75% !important; }
-    &.w80  { max-width:  80% !important; }
-    &.w85  { max-width:  85% !important; }
-    &.w90  { max-width:  90% !important; }
-    &.w95  { max-width:  95% !important; }
+    &.w40 { max-width: 40% !important; }
+    &.w45 { max-width: 45% !important; }
+    &.w50 { max-width: 50% !important; }
+    &.w55 { max-width: 55% !important; }
+    &.w60 { max-width: 60% !important; }
+    &.w65 { max-width: 65% !important; }
+    &.w70 { max-width: 70% !important; }
+    &.w75 { max-width: 75% !important; }
+    &.w80 { max-width: 80% !important; }
+    &.w85 { max-width: 85% !important; }
+    &.w90 { max-width: 90% !important; }
+    &.w95 { max-width: 95% !important; }
     &.w100 { max-width: 100% !important; }
   }
-  /* stylelint-enable */
 }
 
 // IMAGES WITH CAPTIONS OFF TO THE SIDES
@@ -86,14 +95,18 @@
 
       a {
         display: block;
-        flex: 1 0 76%;
+        max-width: 76%;
+      }
+
+      img {
+        width: 200px;
       }
 
       .caption {
         display: block;
+        max-width: 21%;
         margin-top: 0;
-        flex: 1 0 21%;
-        padding-top: 10px;
+        padding-top: 1rem;
         border-top: 1px solid @base_border_color;
       }
     }
