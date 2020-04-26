@@ -3,23 +3,28 @@
 // =============================================================================
 
 .layout {
-  max-width: 1200px;
-  margin-left: 20px;
-  margin-right: 20px;
+  max-width: @max-width;
   box-sizing: border-box;
+  margin-left: @gutters[base];
+  margin-right: @gutters[base];
 
-  @media (min-width: 375px) and (max-width: 767px) {
-    margin-left: 36px;
-    margin-right: 36px;
+  @media @mobile {
+    margin-left: @gutters[mobile];
+    margin-right: @gutters[mobile];
   }
 
-  @media (min-width: 768px) and (max-width: @mobile-breakpoint) {
-    margin-left: 80px;
-    margin-right: 80px;
+  @media @tablet {
+    margin-left: @gutters[tablet];
+    margin-right: @gutters[tablet];
   }
 
-  @media (min-width: 1240px) {
-    margin-left: auto;
-    margin-right: auto;
+  @media @desktop {
+    margin-left: @gutters[desktop];
+    margin-right: @gutters[desktop];
+  }
+
+  @media @desktop-xl {
+    margin-left: @gutters[desktop-xl];
+    margin-right: @gutters[desktop-xl];
   }
 }
