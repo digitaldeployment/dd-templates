@@ -52,7 +52,7 @@
 }
 
 // Allow the intended column count
-@media (min-width: @desktop-breakpoint) {
+@media @desktop {
   .col-3 .views-row { width: 100%/3; }
   .col-4 .views-row { width: 100%/4; }
   .col-5 .views-row { width: 100%/5; }
@@ -94,7 +94,7 @@
   .fiw-35 .node-item:not(.node-content) .field-image { max-width: 35% !important; }
 }
 
-@media (min-width: @desktop-breakpoint) {
+@media @desktop {
   .fiw-40 .node-item:not(.node-content) .field-image { max-width: 40% !important; }
   .fiw-50 .node-item:not(.node-content) .field-image { max-width: 50% !important; }
   .fiw-60 .node-item:not(.node-content) .field-image { max-width: 60% !important; }
@@ -120,7 +120,7 @@
 }
 
 .fif-lt .node-item:not(.node-content) .field-image {
-  @media (min-width: @desktop-breakpoint) {
+  @media @desktop {
     float: left;
     margin-left: 0;
     margin-right: 20px;
@@ -128,7 +128,7 @@
 }
 
 .fif-rt .node-item:not(.node-content) .field-image {
-  @media (min-width: @desktop-breakpoint) {
+  @media @desktop {
     float: right;
     margin-right: 0;
     margin-left: 20px;
@@ -157,7 +157,7 @@
   &.fiw-60 .node-item:not(.node-content),
   &.fiw-75 .node-item:not(.node-content) {
     .field-image {
-      @media (min-width: @desktop-breakpoint) {
+      @media @desktop {
         .float-image-left();
       }
     }
@@ -180,7 +180,7 @@
   &.fiw-60 .node-item:not(.node-content),
   &.fiw-75 .node-item:not(.node-content) {
     .field-image {
-      @media (min-width: @desktop-breakpoint) {
+      @media @desktop {
         .float-image-right();
       }
     }
