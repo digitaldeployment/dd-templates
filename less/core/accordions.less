@@ -1,7 +1,6 @@
 // =============================================================================
 // ACCORDIONS
 // =============================================================================
-
 .accordion-heading {
   position: relative;
   clear: both;
@@ -20,43 +19,63 @@
   a {
     display: block;
 
-    &:before {
-      .theme-font;
+    .icon {
+      .plusminus-button(30px, 16px, 2px);
 
-      content: @theme-plus;
       position: absolute;
-      top: 50%;
       right: 0;
-      display: block;
-      margin-top: -12px;
-      padding: 2px;
+      top: 50%;
       border-radius: 100%;
-      font-size: 24px;
-      transition: all 0.3s ease-out;
-      border: 2px solid;
+      transition: 0.2s ease-out;
+      border: 0.2rem solid transparent;
+      transform: translateY(-50%);
+      color: inherit;
+    }
+
+    &:hover,
+    &.focus-visible {
+      .icon {
+        background-color: @a11y-bg--hover;
+      }
+    }
+
+    &:active {
+      .icon {
+        background-color: @a11y-bg--active;
+      }
+    }
+  }
+
+  &.active {
+    a {
+      border-bottom-color: transparent;
+
+      .icon:after {
+        top: 50%;
+        height: 0;
+        opacity: 0;
+      }
     }
   }
 
   &:first-child {
-    margin-top: 10px;
+    margin-top: 1rem;
   }
 
   .link-text {
     display: block;
-    margin-right: 40px;
-    padding: 15px 0;
-  }
-
-  &.active a:before {
-    content: @theme-minus;
+    margin-right: 4rem;
+    padding: 1.5rem 0;
   }
 }
 
 .accordion-content {
-  margin-bottom: -1em;
-  padding-bottom: 1em;
-
-  & > *:first-child {
+  *:first-child {
     margin-top: 0;
+  }
+
+  *:last-child {
+    margin-bottom: 0;
+    padding-bottom: 1.5em;
   }
 }

@@ -27,10 +27,11 @@ body {
   font-size: 1rem;
   line-height: 1.5;
   text-align: left;
+  box-sizing: border-box;
   background-color: white;
   color: @base_text_color;
 
-  @media (max-width: @mobile-breakpoint) {
+  @media @tablet-down {
     &.menu-active {
       overflow: hidden;
     }
@@ -137,6 +138,11 @@ blockquote {
     line-height: 0;
     color: #e3e3e3;
   }
+}
+
+address {
+  color: @a11y-grey;
+  font-size: inherit;
 }
 
 ul,

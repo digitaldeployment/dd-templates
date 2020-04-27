@@ -3,6 +3,15 @@
 // =============================================================================
 
 #admin-menu {
+  // Flatten the admin menu background to a plain color.
+  outline: 1px solid #323232;
+  outline-offset: -1px;
+  background: black;
+
+  ul a {
+    padding: 4px 10px;
+  }
+
   .admin-menu-icon {
     & > a {
       display: block;
@@ -19,14 +28,6 @@
         background: url('@{faviconPath}/favicon.ico') no-repeat left top transparent;
         background-size: 16px;
       }
-    }
-  }
-}
-
-.admin-menu {
-  @media (min-width: @desktop-breakpoint) {
-    .above-page {
-      border-top: 20px solid black;
     }
   }
 }
