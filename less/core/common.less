@@ -247,83 +247,10 @@ a.video-lightframe:hover .video-play {
   }
 }
 
-// Allow the thumbnail images to display bigger on the manage content page
-
-.admin-content .views-field-field-image-fid img {
-  max-width: none;
-}
-
-// Better control images appearing on a reorder page.
-
-form[action*='/tblock/order'] .views-field-field-image-fid a.imagecache {
-  display: block;
-  overflow: hidden;
-  max-width: 75px;
-  max-height: 75px;
-}
-
-// Force menu admin controls to be layered above positioned elements
-
-.add-term,
-.edit-term {
-  z-index: 1;
-}
-
-// Content zones block names
-
-.block-name {
-  font-size: 12px;
-}
-
-// Fixed table headings
-
-table.sticky-header {
-  z-index: 1;
-  background-color: white;
-}
-
-// Remove bottom margin from messages
-
-div.messages {
-  margin-bottom: 0;
-}
-
 // Non-interactive elements which are targets of skip links.
 // @info https://www.w3.org/TR/html5/editing.html#the-tabindex-attribute
 
 #content,
 #navigation {
   outline: 0;
-}
-
-// Helps manipulates dd_hover to work with custom templates.
-
-.dd-hover-help {
-  position: relative;
-
-  .node {
-    position: static;
-    margin-bottom: 0;
-    overflow: inherit;
-    min-width: 0;
-  }
-
-  .dd-hover-expand {
-    top: 0;
-  }
-
-  &:hover .dd-hover-expand {
-    visibility: visible;
-  }
-}
-
-// Helps unpublished state of nodes using custom templates and improves the default unpublished state.
-
-.node-unpublished {
-  opacity: 0.5;
-  background-color: rgba(226, 83, 82, 0.25);
-
-  &:hover {
-    opacity: 1;
-  }
 }
