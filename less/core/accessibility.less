@@ -2,7 +2,7 @@
 // WEBSITE ACCESSIBILITY
 // =============================================================================
 
-.accessibility {
+.a11y_quicklinks {
   position: relative;
   z-index: 100;
   font-size: @base_font_size;
@@ -15,10 +15,10 @@
 
 .sr-only {
   position: absolute;
-  width: 1px;
-  height: 1px;
+  width: 0.1rem;
+  height: 0.1rem;
   padding: 0;
-  margin: -1px;
+  margin: -0.1rem;
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   background-color: white;
@@ -38,9 +38,9 @@
     width: auto;
     height: auto;
     margin: 0;
-    padding: 10px;
+    padding: 1rem;
     overflow: visible;
-    outline-offset: -1px;
+    outline-offset: -0.1rem;
     text-decoration: underline;
     clip: auto;
   }
@@ -48,7 +48,7 @@
 
 // Prevent focusable jump-to-content button when mobile flyout is active.
 
-@media @tablet-down {
+@media (max-width: @mobile-breakpoint) {
   .sr-only[href="#content"] {
     visibility: hidden;
   }
@@ -65,7 +65,7 @@
 @keyframes focus-visible {
   from {
     z-index: 20;
-    outline: 5px auto @C1;
+    outline: 0.5rem auto @C1;
   }
 
   to {
