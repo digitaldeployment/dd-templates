@@ -1,6 +1,6 @@
 {
   "name": "@digitaldeployment/dd-templates",
-  "version": "3.11.1",
+  "version": "3.11.2",
   "description": "A {less} library that can serve as a great starting point for all Digital Deployment project themes.",
   "main": "dd-templates.less",
   "author": "Jason McWhorter",
